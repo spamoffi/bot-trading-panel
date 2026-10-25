@@ -1,5 +1,5 @@
 {
- "generado": "2026-10-25T20:16:43",
+ "generado": "2026-10-25T20:32:14",
  "modo": "PRÁCTICA",
  "broker": "simulado",
  "estrategia": {
@@ -2469,5 +2469,5 @@
   "valor_total": 2990.1,
   "rendimiento_total_pct": -0.33
  },
- "ultimo_ciclo": "2026-10-25T18:54:50 (ok)"
+ "ultimo_ciclo": "2026-10-25T20:16:45 (ok)"
 }
