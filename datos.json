@@ -1,0 +1,2473 @@
+{
+ "generado": "2026-10-25T20:10:41",
+ "modo": "PRÁCTICA",
+ "broker": "simulado",
+ "estrategia": {
+  "tipo": "tendencia",
+  "frecuencia": "mensual",
+  "media_dias": 200,
+  "confirmacion_dias": 1,
+  "momentum_dias": 252,
+  "max_activos": 1,
+  "refugio": "liquidez",
+  "exposicion_minima_pct": 50
+ },
+ "resumen": {
+  "valor": 200.0,
+  "inicial": 200.0,
+  "maximo": 200.0,
+  "rentabilidad_pct": 0.0,
+  "caida_desde_maximo_pct": 0.0,
+  "comisiones": 0,
+  "num_operaciones": 0
+ },
+ "posiciones": {},
+ "curva": [
+  {
+   "f": "2026-10-25",
+   "v": 200.0
+  }
+ ],
+ "operaciones": [],
+ "bloqueadas": [],
+ "decisiones": [
+  {
+   "fecha": "2026-10-23",
+   "estrategia": "tendencia",
+   "activos": [
+    {
+     "simbolo": "EUNL",
+     "precio": 129.84,
+     "rol": "riesgo",
+     "media": 120.9908,
+     "distancia_media_pct": 7.31,
+     "momentum_pct": 18.27
+    },
+    {
+     "simbolo": "VWCE",
+     "precio": 169.3,
+     "rol": "riesgo",
+     "media": 159.0828,
+     "distancia_media_pct": 6.42,
+     "momentum_pct": 18.39
+    }
+   ],
+   "estrategia_vigente": {
+    "id": "base",
+    "nombre": "Base: tendencia 200 días (50 % siempre invertido)",
+    "origen": "config",
+    "descripcion": "La estrategia configurada en config.json",
+    "activos": [
+     "EUNL",
+     "VWCE"
+    ]
+   },
+   "objetivo": {
+    "VWCE": 100.0
+   },
+   "rebalanceo": [
+    {
+     "simbolo": "VWCE",
+     "objetivo_pct": 100.0,
+     "actual_pct": 0.0,
+     "desviacion_pct": -100.0,
+     "mover": true
+    }
+   ],
+   "protecciones": []
+  }
+ ],
+ "eventos": [],
+ "protecciones": [],
+ "integridad": {
+  "ok": true,
+  "mensaje": "Registro íntegro"
+ },
+ "selector": [
+  {
+   "simbolo": "EUNL",
+   "nombre": "iShares Core MSCI World UCITS ETF (Acc)",
+   "ter": 0.2,
+   "rol": "riesgo",
+   "estado": "OK"
+  },
+  {
+   "simbolo": "VWCE",
+   "nombre": "Vanguard FTSE All-World UCITS ETF (Acc)",
+   "ter": 0.19,
+   "rol": "riesgo",
+   "estado": "OK"
+  },
+  {
+   "simbolo": "XEON",
+   "nombre": "Xtrackers II EUR Overnight Rate Swap UCITS ETF",
+   "ter": 0.1,
+   "rol": "refugio",
+   "estado": "refugio"
+  },
+  {
+   "simbolo": "SXR8",
+   "nombre": "iShares Core S&P 500 UCITS ETF (Acc)",
+   "ter": null,
+   "rol": "extra",
+   "estado": "solo laboratorio"
+  },
+  {
+   "simbolo": "SXRV",
+   "nombre": "iShares Nasdaq 100 UCITS ETF (Acc)",
+   "ter": null,
+   "rol": "extra",
+   "estado": "solo laboratorio"
+  },
+  {
+   "simbolo": "EUNK",
+   "nombre": "iShares Core MSCI Europe UCITS ETF (Acc)",
+   "ter": null,
+   "rol": "extra",
+   "estado": "solo laboratorio"
+  },
+  {
+   "simbolo": "IS3N",
+   "nombre": "iShares Core MSCI EM IMI UCITS ETF (Acc)",
+   "ter": null,
+   "rol": "extra",
+   "estado": "solo laboratorio"
+  },
+  {
+   "simbolo": "IUSN",
+   "nombre": "iShares MSCI World Small Cap UCITS ETF (Acc)",
+   "ter": null,
+   "rol": "extra",
+   "estado": "solo laboratorio"
+  },
+  {
+   "simbolo": "XDWT",
+   "nombre": "Xtrackers MSCI World Information Technology UCITS ETF 1C",
+   "ter": null,
+   "rol": "extra",
+   "estado": "solo laboratorio"
+  },
+  {
+   "simbolo": "XDWH",
+   "nombre": "Xtrackers MSCI World Health Care UCITS ETF 1C",
+   "ter": null,
+   "rol": "extra",
+   "estado": "solo laboratorio"
+  },
+  {
+   "simbolo": "XDWS",
+   "nombre": "Xtrackers MSCI World Consumer Staples UCITS ETF 1C",
+   "ter": null,
+   "rol": "extra",
+   "estado": "solo laboratorio"
+  },
+  {
+   "simbolo": "EUNH",
+   "nombre": "iShares Core € Govt Bond UCITS ETF (Dist)",
+   "ter": null,
+   "rol": "extra",
+   "estado": "solo laboratorio"
+  },
+  {
+   "simbolo": "4GLD",
+   "nombre": "Xetra-Gold (ETC de oro físico)",
+   "ter": null,
+   "rol": "extra",
+   "estado": "solo laboratorio"
+  }
+ ],
+ "impuestos": {
+  "anio": 2026,
+  "ganancias": 0,
+  "perdidas_computables": 0,
+  "perdidas_diferidas_2_meses": 0,
+  "saldo_neto": 0,
+  "cuota_estimada_irpf": 0.0,
+  "aviso": "Estimación orientativa. Si el saldo es negativo, puede compensarse en los 4 años siguientes."
+ },
+ "backtest": {
+  "generado": "2026-10-25T18:41:40",
+  "estrategia": {
+   "tipo": "tendencia",
+   "frecuencia": "mensual",
+   "media_dias": 200,
+   "confirmacion_dias": 1,
+   "momentum_dias": 252,
+   "max_activos": 1,
+   "refugio": "liquidez",
+   "exposicion_minima_pct": 50
+  },
+  "referencia": "EUNL",
+  "capital": 200.0,
+  "con_tu_capital": {
+   "bot": {
+    "inicio": "2009-09-25",
+    "fin": "2026-10-23",
+    "anios": 17.08,
+    "valor_inicial": 200.0,
+    "valor_final": 797.12,
+    "rentabilidad_total_pct": 298.56,
+    "cagr_pct": 8.43,
+    "volatilidad_pct": 11.12,
+    "sharpe": 0.78,
+    "sortino": 0.7,
+    "caida_maxima_pct": -20.44,
+    "calmar": 0.41,
+    "ulcer": 6.08,
+    "var95_diario_pct": -1.14,
+    "peor_anio_pct": -11.29,
+    "mejor_anio_pct": 24.83,
+    "caida_mas_larga_dias": 744,
+    "por_anio_pct": {
+     "2009": 0.0,
+     "2010": 7.61,
+     "2011": -3.32,
+     "2012": 9.42,
+     "2013": 20.24,
+     "2014": 19.1,
+     "2015": 4.68,
+     "2016": 8.6,
+     "2017": 5.02,
+     "2018": -7.65,
+     "2019": 21.48,
+     "2020": 2.66,
+     "2021": 24.83,
+     "2022": -11.29,
+     "2023": 11.23,
+     "2024": 23.18,
+     "2025": 3.15,
+     "2026": 13.61
+    }
+   },
+   "comprar_y_mantener": {
+    "inicio": "2009-09-25",
+    "fin": "2026-10-23",
+    "anios": 17.08,
+    "valor_inicial": 198.66,
+    "valor_final": 1437.59,
+    "rentabilidad_total_pct": 623.66,
+    "cagr_pct": 12.29,
+    "volatilidad_pct": 14.93,
+    "sharpe": 0.85,
+    "sortino": 0.77,
+    "caida_maxima_pct": -33.17,
+    "calmar": 0.37,
+    "ulcer": 6.1,
+    "var95_diario_pct": -1.44,
+    "peor_anio_pct": -13.44,
+    "mejor_anio_pct": 32.25,
+    "caida_mas_larga_dias": 616,
+    "por_anio_pct": {
+     "2009": 4.43,
+     "2010": 18.51,
+     "2011": -3.13,
+     "2012": 11.96,
+     "2013": 21.12,
+     "2014": 19.79,
+     "2015": 10.55,
+     "2016": 10.67,
+     "2017": 7.55,
+     "2018": -5.04,
+     "2019": 30.74,
+     "2020": 5.4,
+     "2021": 32.25,
+     "2022": -13.44,
+     "2023": 19.88,
+     "2024": 25.66,
+     "2025": 7.84,
+     "2026": 16.04
+    }
+   },
+   "operaciones": 40,
+   "comisiones_totales": 50.0,
+   "ordenes_bloqueadas": 3,
+   "tiempo_invertido_pct": 93.6,
+   "ultimas_operaciones": [
+    {
+     "fecha": "2023-11-01",
+     "simbolo": "EUNL",
+     "lado": "VENTA",
+     "cantidad": 3.0,
+     "precio": 75.4403,
+     "comision": 1.25
+    },
+    {
+     "fecha": "2023-12-01",
+     "simbolo": "EUNL",
+     "lado": "COMPRA",
+     "cantidad": 3.0,
+     "precio": 79.8579,
+     "comision": 1.25
+    },
+    {
+     "fecha": "2025-04-01",
+     "simbolo": "EUNL",
+     "lado": "VENTA",
+     "cantidad": 6.0,
+     "precio": 98.2868,
+     "comision": 1.25
+    },
+    {
+     "fecha": "2025-04-01",
+     "simbolo": "VWCE",
+     "lado": "COMPRA",
+     "cantidad": 2.0,
+     "precio": 127.5838,
+     "comision": 1.25
+    },
+    {
+     "fecha": "2025-05-02",
+     "simbolo": "VWCE",
+     "lado": "VENTA",
+     "cantidad": 2.0,
+     "precio": 124.0779,
+     "comision": 1.25
+    },
+    {
+     "fecha": "2025-05-02",
+     "simbolo": "EUNL",
+     "lado": "COMPRA",
+     "cantidad": 3.0,
+     "precio": 95.6958,
+     "comision": 1.25
+    },
+    {
+     "fecha": "2025-07-01",
+     "simbolo": "EUNL",
+     "lado": "VENTA",
+     "cantidad": 3.0,
+     "precio": 99.916,
+     "comision": 1.25
+    },
+    {
+     "fecha": "2025-07-01",
+     "simbolo": "VWCE",
+     "lado": "COMPRA",
+     "cantidad": 2.0,
+     "precio": 129.6448,
+     "comision": 1.25
+    },
+    {
+     "fecha": "2025-08-01",
+     "simbolo": "VWCE",
+     "lado": "VENTA",
+     "cantidad": 2.0,
+     "precio": 131.974,
+     "comision": 1.25
+    },
+    {
+     "fecha": "2025-08-01",
+     "simbolo": "EUNL",
+     "lado": "COMPRA",
+     "cantidad": 6.0,
+     "precio": 101.8759,
+     "comision": 1.25
+    },
+    {
+     "fecha": "2025-09-01",
+     "simbolo": "EUNL",
+     "lado": "VENTA",
+     "cantidad": 6.0,
+     "precio": 104.7976,
+     "comision": 1.25
+    },
+    {
+     "fecha": "2025-09-01",
+     "simbolo": "VWCE",
+     "lado": "COMPRA",
+     "cantidad": 4.0,
+     "precio": 135.9479,
+     "comision": 1.25
+    }
+   ],
+   "motivos_bloqueo": [
+    "la comisión (1.25 €) sería el 6.4% de la orden (máx. 3.5%)",
+    "la comisión (1.25 €) sería el 6.5% de la orden (máx. 3.5%)",
+    "la comisión (1.25 €) sería el 6.9% de la orden (máx. 3.5%)"
+   ]
+  },
+  "sin_comisiones_100k": {
+   "bot": {
+    "inicio": "2009-09-25",
+    "fin": "2026-10-23",
+    "anios": 17.08,
+    "valor_inicial": 100000.0,
+    "valor_final": 498528.23,
+    "rentabilidad_total_pct": 398.53,
+    "cagr_pct": 9.86,
+    "volatilidad_pct": 12.01,
+    "sharpe": 0.84,
+    "sortino": 0.75,
+    "caida_maxima_pct": -22.93,
+    "calmar": 0.43,
+    "ulcer": 6.17,
+    "var95_diario_pct": -1.23,
+    "peor_anio_pct": -12.01,
+    "mejor_anio_pct": 30.02,
+    "caida_mas_larga_dias": 736,
+    "por_anio_pct": {
+     "2009": 0.0,
+     "2010": 9.08,
+     "2011": -2.96,
+     "2012": 10.84,
+     "2013": 21.29,
+     "2014": 19.92,
+     "2015": 6.11,
+     "2016": 10.16,
+     "2017": 6.07,
+     "2018": -7.14,
+     "2019": 23.8,
+     "2020": 2.12,
+     "2021": 30.02,
+     "2022": -12.01,
+     "2023": 13.66,
+     "2024": 25.17,
+     "2025": 6.33,
+     "2026": 15.96
+    }
+   },
+   "comprar_y_mantener": {
+    "inicio": "2009-09-25",
+    "fin": "2026-10-23",
+    "anios": 17.08,
+    "valor_inicial": 100000.0,
+    "valor_final": 754445.11,
+    "rentabilidad_total_pct": 654.45,
+    "cagr_pct": 12.56,
+    "volatilidad_pct": 15.25,
+    "sharpe": 0.85,
+    "sortino": 0.77,
+    "caida_maxima_pct": -33.63,
+    "calmar": 0.37,
+    "ulcer": 6.21,
+    "var95_diario_pct": -1.47,
+    "peor_anio_pct": -13.59,
+    "mejor_anio_pct": 32.71,
+    "caida_mas_larga_dias": 616,
+    "por_anio_pct": {
+     "2009": 4.65,
+     "2010": 19.38,
+     "2011": -3.26,
+     "2012": 12.45,
+     "2013": 21.89,
+     "2014": 20.38,
+     "2015": 10.81,
+     "2016": 10.91,
+     "2017": 7.71,
+     "2018": -5.13,
+     "2019": 31.34,
+     "2020": 5.48,
+     "2021": 32.71,
+     "2022": -13.59,
+     "2023": 20.13,
+     "2024": 25.93,
+     "2025": 7.9,
+     "2026": 16.16
+    }
+   },
+   "operaciones": 39
+  },
+  "intervalo_confianza_bot": {
+   "cagr_p5_pct": 3.7,
+   "cagr_mediana_pct": 8.65,
+   "cagr_p95_pct": 13.05,
+   "prob_perder_pct": 0.1
+  },
+  "intervalo_confianza_referencia": {
+   "cagr_p5_pct": 5.63,
+   "cagr_mediana_pct": 12.5,
+   "cagr_p95_pct": 18.84,
+   "prob_perder_pct": 0.1
+  },
+  "rejilla": null,
+  "aviso_rejilla": null,
+  "veredicto": [
+   "Con tu capital, el bot rinde MENOS que comprar y no tocar (8.43% frente a 12.29% al año).",
+   "Peor caída: bot -20.44% frente a -33.17% de comprar y no tocar.",
+   "Sin comisiones (con 100.000 €) el bot daría 9.86% al año (peor caída -22.93%) y comprar y no tocar 12.56% (peor caída -33.63%).",
+   "Sin comisiones la estrategia gana menos pero cae menos: cambia rentabilidad por tranquilidad.",
+   "Las comisiones con tu capital restan unos 1.43 puntos de rentabilidad al año."
+  ],
+  "curva": [
+   {
+    "f": "2009-09-25",
+    "bot": 200.0,
+    "ref": 198.66
+   },
+   {
+    "f": "2009-11-10",
+    "bot": 200.0,
+    "ref": 197.01
+   },
+   {
+    "f": "2009-12-02",
+    "bot": 200.0,
+    "ref": 199.04
+   },
+   {
+    "f": "2009-12-28",
+    "bot": 200.0,
+    "ref": 208.34
+   },
+   {
+    "f": "2010-01-21",
+    "bot": 200.0,
+    "ref": 210.98
+   },
+   {
+    "f": "2010-02-12",
+    "bot": 200.0,
+    "ref": 206.25
+   },
+   {
+    "f": "2010-03-08",
+    "bot": 200.0,
+    "ref": 218.9
+   },
+   {
+    "f": "2010-03-30",
+    "bot": 200.0,
+    "ref": 226.82
+   },
+   {
+    "f": "2010-04-23",
+    "bot": 200.0,
+    "ref": 231.66
+   },
+   {
+    "f": "2010-05-17",
+    "bot": 200.0,
+    "ref": 229.35
+   },
+   {
+    "f": "2010-06-08",
+    "bot": 200.0,
+    "ref": 221.76
+   },
+   {
+    "f": "2010-06-30",
+    "bot": 200.0,
+    "ref": 218.57
+   },
+   {
+    "f": "2010-07-22",
+    "bot": 200.0,
+    "ref": 220.66
+   },
+   {
+    "f": "2010-08-13",
+    "bot": 200.0,
+    "ref": 221.43
+   },
+   {
+    "f": "2010-09-06",
+    "bot": 200.0,
+    "ref": 225.94
+   },
+   {
+    "f": "2010-09-28",
+    "bot": 200.0,
+    "ref": 224.4
+   },
+   {
+    "f": "2010-10-20",
+    "bot": 200.0,
+    "ref": 225.39
+   },
+   {
+    "f": "2010-11-11",
+    "bot": 204.42,
+    "ref": 232.65
+   },
+   {
+    "f": "2010-12-03",
+    "bot": 208.29,
+    "ref": 237.38
+   },
+   {
+    "f": "2010-12-28",
+    "bot": 216.39,
+    "ref": 247.28
+   },
+   {
+    "f": "2011-01-20",
+    "bot": 215.22,
+    "ref": 245.85
+   },
+   {
+    "f": "2011-02-11",
+    "bot": 219.63,
+    "ref": 251.24
+   },
+   {
+    "f": "2011-03-07",
+    "bot": 214.41,
+    "ref": 244.86
+   },
+   {
+    "f": "2011-03-29",
+    "bot": 210.99,
+    "ref": 240.68
+   },
+   {
+    "f": "2011-04-20",
+    "bot": 209.82,
+    "ref": 239.25
+   },
+   {
+    "f": "2011-05-16",
+    "bot": 213.33,
+    "ref": 243.54
+   },
+   {
+    "f": "2011-06-07",
+    "bot": 204.51,
+    "ref": 232.76
+   },
+   {
+    "f": "2011-06-29",
+    "bot": 207.03,
+    "ref": 235.84
+   },
+   {
+    "f": "2011-07-21",
+    "bot": 209.39,
+    "ref": 241.78
+   },
+   {
+    "f": "2011-08-12",
+    "bot": 199.91,
+    "ref": 215.71
+   },
+   {
+    "f": "2011-09-05",
+    "bot": 198.07,
+    "ref": 210.65
+   },
+   {
+    "f": "2011-09-27",
+    "bot": 201.55,
+    "ref": 220.22
+   },
+   {
+    "f": "2011-10-20",
+    "bot": 201.99,
+    "ref": 221.43
+   },
+   {
+    "f": "2011-11-11",
+    "bot": 204.63,
+    "ref": 228.69
+   },
+   {
+    "f": "2011-12-05",
+    "bot": 206.19,
+    "ref": 232.98
+   },
+   {
+    "f": "2011-12-28",
+    "bot": 207.03,
+    "ref": 235.29
+   },
+   {
+    "f": "2012-01-19",
+    "bot": 213.1,
+    "ref": 248.82
+   },
+   {
+    "f": "2012-02-10",
+    "bot": 214.9,
+    "ref": 251.02
+   },
+   {
+    "f": "2012-03-05",
+    "bot": 217.6,
+    "ref": 254.32
+   },
+   {
+    "f": "2012-03-27",
+    "bot": 222.1,
+    "ref": 259.82
+   },
+   {
+    "f": "2012-04-20",
+    "bot": 218.23,
+    "ref": 255.09
+   },
+   {
+    "f": "2012-05-15",
+    "bot": 214.72,
+    "ref": 250.8
+   },
+   {
+    "f": "2012-06-06",
+    "bot": 212.92,
+    "ref": 248.6
+   },
+   {
+    "f": "2012-06-28",
+    "bot": 216.07,
+    "ref": 252.45
+   },
+   {
+    "f": "2012-07-20",
+    "bot": 226.96,
+    "ref": 265.76
+   },
+   {
+    "f": "2012-08-13",
+    "bot": 231.37,
+    "ref": 271.15
+   },
+   {
+    "f": "2012-09-04",
+    "bot": 227.41,
+    "ref": 266.31
+   },
+   {
+    "f": "2012-09-26",
+    "bot": 229.39,
+    "ref": 268.73
+   },
+   {
+    "f": "2012-11-12",
+    "bot": 226.24,
+    "ref": 264.88
+   },
+   {
+    "f": "2012-12-04",
+    "bot": 226.78,
+    "ref": 265.54
+   },
+   {
+    "f": "2013-01-02",
+    "bot": 233.53,
+    "ref": 273.79
+   },
+   {
+    "f": "2013-01-24",
+    "bot": 236.32,
+    "ref": 277.2
+   },
+   {
+    "f": "2013-02-15",
+    "bot": 238.3,
+    "ref": 279.62
+   },
+   {
+    "f": "2013-03-11",
+    "bot": 248.02,
+    "ref": 291.5
+   },
+   {
+    "f": "2013-04-04",
+    "bot": 250.09,
+    "ref": 294.03
+   },
+   {
+    "f": "2013-04-26",
+    "bot": 252.43,
+    "ref": 296.89
+   },
+   {
+    "f": "2013-05-21",
+    "bot": 266.38,
+    "ref": 313.94
+   },
+   {
+    "f": "2013-06-12",
+    "bot": 249.37,
+    "ref": 293.15
+   },
+   {
+    "f": "2013-07-04",
+    "bot": 255.58,
+    "ref": 300.74
+   },
+   {
+    "f": "2013-07-26",
+    "bot": 257.74,
+    "ref": 303.38
+   },
+   {
+    "f": "2013-08-19",
+    "bot": 256.48,
+    "ref": 301.84
+   },
+   {
+    "f": "2013-09-10",
+    "bot": 262.33,
+    "ref": 308.99
+   },
+   {
+    "f": "2013-10-02",
+    "bot": 259.36,
+    "ref": 305.36
+   },
+   {
+    "f": "2013-10-25",
+    "bot": 265.3,
+    "ref": 312.62
+   },
+   {
+    "f": "2013-11-18",
+    "bot": 273.67,
+    "ref": 322.85
+   },
+   {
+    "f": "2013-12-10",
+    "bot": 267.01,
+    "ref": 314.71
+   },
+   {
+    "f": "2014-01-08",
+    "bot": 276.1,
+    "ref": 325.82
+   },
+   {
+    "f": "2014-01-30",
+    "bot": 270.43,
+    "ref": 318.89
+   },
+   {
+    "f": "2014-02-21",
+    "bot": 276.19,
+    "ref": 325.93
+   },
+   {
+    "f": "2014-03-17",
+    "bot": 271.78,
+    "ref": 320.54
+   },
+   {
+    "f": "2014-04-08",
+    "bot": 275.29,
+    "ref": 324.83
+   },
+   {
+    "f": "2014-05-05",
+    "bot": 278.62,
+    "ref": 328.9
+   },
+   {
+    "f": "2014-05-27",
+    "bot": 287.17,
+    "ref": 339.35
+   },
+   {
+    "f": "2014-06-18",
+    "bot": 292.3,
+    "ref": 345.62
+   },
+   {
+    "f": "2014-08-01",
+    "bot": 291.13,
+    "ref": 344.19
+   },
+   {
+    "f": "2014-08-25",
+    "bot": 304.09,
+    "ref": 360.03
+   },
+   {
+    "f": "2014-09-16",
+    "bot": 306.61,
+    "ref": 363.11
+   },
+   {
+    "f": "2014-10-09",
+    "bot": 301.84,
+    "ref": 357.28
+   },
+   {
+    "f": "2014-10-31",
+    "bot": 313.72,
+    "ref": 371.8
+   },
+   {
+    "f": "2014-11-24",
+    "bot": 321.55,
+    "ref": 381.37
+   },
+   {
+    "f": "2014-12-16",
+    "bot": 309.58,
+    "ref": 366.74
+   },
+   {
+    "f": "2015-01-14",
+    "bot": 322.99,
+    "ref": 383.13
+   },
+   {
+    "f": "2015-02-05",
+    "bot": 347.11,
+    "ref": 412.61
+   },
+   {
+    "f": "2015-02-27",
+    "bot": 363.13,
+    "ref": 432.19
+   },
+   {
+    "f": "2015-03-23",
+    "bot": 373.39,
+    "ref": 444.73
+   },
+   {
+    "f": "2015-04-16",
+    "bot": 382.03,
+    "ref": 455.29
+   },
+   {
+    "f": "2015-05-11",
+    "bot": 370.15,
+    "ref": 440.77
+   },
+   {
+    "f": "2015-06-03",
+    "bot": 367.54,
+    "ref": 437.58
+   },
+   {
+    "f": "2015-06-25",
+    "bot": 368.89,
+    "ref": 439.23
+   },
+   {
+    "f": "2015-07-17",
+    "bot": 378.7,
+    "ref": 451.22
+   },
+   {
+    "f": "2015-08-10",
+    "bot": 371.77,
+    "ref": 442.75
+   },
+   {
+    "f": "2015-09-01",
+    "bot": 331.55,
+    "ref": 395.23
+   },
+   {
+    "f": "2015-09-23",
+    "bot": 331.59,
+    "ref": 395.34
+   },
+   {
+    "f": "2015-10-15",
+    "bot": 334.95,
+    "ref": 404.58
+   },
+   {
+    "f": "2015-11-06",
+    "bot": 349.3,
+    "ref": 438.68
+   },
+   {
+    "f": "2015-11-30",
+    "bot": 354.34,
+    "ref": 445.61
+   },
+   {
+    "f": "2015-12-22",
+    "bot": 333.38,
+    "ref": 416.79
+   },
+   {
+    "f": "2016-01-18",
+    "bot": 321.18,
+    "ref": 386.98
+   },
+   {
+    "f": "2016-02-09",
+    "bot": 313.7,
+    "ref": 366.41
+   },
+   {
+    "f": "2016-03-02",
+    "bot": 328.78,
+    "ref": 407.88
+   },
+   {
+    "f": "2016-03-24",
+    "bot": 327.34,
+    "ref": 403.92
+   },
+   {
+    "f": "2016-04-19",
+    "bot": 332.18,
+    "ref": 417.23
+   },
+   {
+    "f": "2016-05-11",
+    "bot": 328.66,
+    "ref": 407.55
+   },
+   {
+    "f": "2016-06-03",
+    "bot": 328.09,
+    "ref": 414.81
+   },
+   {
+    "f": "2016-06-27",
+    "bot": 318.65,
+    "ref": 401.83
+   },
+   {
+    "f": "2016-07-19",
+    "bot": 342.01,
+    "ref": 433.95
+   },
+   {
+    "f": "2016-08-10",
+    "bot": 343.05,
+    "ref": 435.38
+   },
+   {
+    "f": "2016-09-01",
+    "bot": 341.53,
+    "ref": 433.29
+   },
+   {
+    "f": "2016-09-23",
+    "bot": 343.77,
+    "ref": 436.37
+   },
+   {
+    "f": "2016-10-18",
+    "bot": 345.29,
+    "ref": 438.46
+   },
+   {
+    "f": "2016-11-09",
+    "bot": 346.81,
+    "ref": 440.55
+   },
+   {
+    "f": "2016-12-01",
+    "bot": 358.57,
+    "ref": 456.72
+   },
+   {
+    "f": "2016-12-23",
+    "bot": 372.81,
+    "ref": 476.3
+   },
+   {
+    "f": "2017-01-17",
+    "bot": 369.93,
+    "ref": 472.34
+   },
+   {
+    "f": "2017-02-08",
+    "bot": 373.53,
+    "ref": 477.29
+   },
+   {
+    "f": "2017-03-02",
+    "bot": 389.37,
+    "ref": 499.07
+   },
+   {
+    "f": "2017-03-24",
+    "bot": 380.25,
+    "ref": 486.53
+   },
+   {
+    "f": "2017-04-19",
+    "bot": 382.33,
+    "ref": 489.39
+   },
+   {
+    "f": "2017-05-12",
+    "bot": 386.17,
+    "ref": 494.67
+   },
+   {
+    "f": "2017-06-05",
+    "bot": 382.81,
+    "ref": 490.05
+   },
+   {
+    "f": "2017-06-27",
+    "bot": 381.69,
+    "ref": 488.51
+   },
+   {
+    "f": "2017-07-19",
+    "bot": 380.41,
+    "ref": 486.75
+   },
+   {
+    "f": "2017-08-10",
+    "bot": 371.8,
+    "ref": 475.2
+   },
+   {
+    "f": "2017-09-01",
+    "bot": 372.0,
+    "ref": 475.75
+   },
+   {
+    "f": "2017-09-25",
+    "bot": 374.2,
+    "ref": 481.8
+   },
+   {
+    "f": "2017-10-17",
+    "bot": 379.82,
+    "ref": 496.1
+   },
+   {
+    "f": "2017-11-08",
+    "bot": 388.7,
+    "ref": 508.31
+   },
+   {
+    "f": "2017-11-30",
+    "bot": 384.22,
+    "ref": 502.15
+   },
+   {
+    "f": "2017-12-22",
+    "bot": 390.62,
+    "ref": 510.95
+   },
+   {
+    "f": "2018-01-18",
+    "bot": 395.75,
+    "ref": 518.0
+   },
+   {
+    "f": "2018-02-09",
+    "bot": 368.64,
+    "ref": 480.72
+   },
+   {
+    "f": "2018-03-05",
+    "bot": 377.72,
+    "ref": 493.2
+   },
+   {
+    "f": "2018-03-27",
+    "bot": 372.41,
+    "ref": 485.91
+   },
+   {
+    "f": "2018-04-20",
+    "bot": 374.04,
+    "ref": 497.22
+   },
+   {
+    "f": "2018-05-15",
+    "bot": 386.08,
+    "ref": 520.0
+   },
+   {
+    "f": "2018-06-06",
+    "bot": 391.83,
+    "ref": 527.91
+   },
+   {
+    "f": "2018-06-28",
+    "bot": 388.14,
+    "ref": 522.84
+   },
+   {
+    "f": "2018-07-20",
+    "bot": 396.23,
+    "ref": 533.96
+   },
+   {
+    "f": "2018-08-13",
+    "bot": 405.03,
+    "ref": 546.06
+   },
+   {
+    "f": "2018-09-04",
+    "bot": 405.02,
+    "ref": 546.05
+   },
+   {
+    "f": "2018-09-26",
+    "bot": 406.45,
+    "ref": 548.02
+   },
+   {
+    "f": "2018-10-19",
+    "bot": 391.68,
+    "ref": 527.71
+   },
+   {
+    "f": "2018-11-12",
+    "bot": 393.28,
+    "ref": 529.91
+   },
+   {
+    "f": "2018-12-04",
+    "bot": 393.44,
+    "ref": 530.13
+   },
+   {
+    "f": "2019-01-02",
+    "bot": 360.56,
+    "ref": 486.76
+   },
+   {
+    "f": "2019-01-24",
+    "bot": 370.46,
+    "ref": 513.96
+   },
+   {
+    "f": "2019-02-15",
+    "bot": 379.9,
+    "ref": 539.92
+   },
+   {
+    "f": "2019-03-11",
+    "bot": 380.93,
+    "ref": 544.39
+   },
+   {
+    "f": "2019-04-02",
+    "bot": 392.4,
+    "ref": 562.4
+   },
+   {
+    "f": "2019-04-26",
+    "bot": 400.6,
+    "ref": 575.3
+   },
+   {
+    "f": "2019-05-21",
+    "bot": 392.37,
+    "ref": 562.36
+   },
+   {
+    "f": "2019-06-13",
+    "bot": 392.41,
+    "ref": 562.43
+   },
+   {
+    "f": "2019-07-05",
+    "bot": 405.5,
+    "ref": 583.0
+   },
+   {
+    "f": "2019-07-29",
+    "bot": 410.45,
+    "ref": 590.76
+   },
+   {
+    "f": "2019-08-20",
+    "bot": 398.06,
+    "ref": 571.29
+   },
+   {
+    "f": "2019-09-11",
+    "bot": 412.24,
+    "ref": 593.58
+   },
+   {
+    "f": "2019-10-04",
+    "bot": 406.39,
+    "ref": 584.38
+   },
+   {
+    "f": "2019-10-28",
+    "bot": 417.05,
+    "ref": 601.15
+   },
+   {
+    "f": "2019-11-19",
+    "bot": 426.64,
+    "ref": 616.22
+   },
+   {
+    "f": "2019-12-11",
+    "bot": 428.17,
+    "ref": 618.61
+   },
+   {
+    "f": "2020-01-09",
+    "bot": 442.93,
+    "ref": 641.8
+   },
+   {
+    "f": "2020-01-31",
+    "bot": 437.72,
+    "ref": 633.62
+   },
+   {
+    "f": "2020-02-24",
+    "bot": 442.98,
+    "ref": 641.89
+   },
+   {
+    "f": "2020-03-17",
+    "bot": 377.94,
+    "ref": 482.68
+   },
+   {
+    "f": "2020-04-08",
+    "bot": 394.09,
+    "ref": 533.92
+   },
+   {
+    "f": "2020-05-05",
+    "bot": 405.32,
+    "ref": 564.8
+   },
+   {
+    "f": "2020-05-27",
+    "bot": 411.46,
+    "ref": 581.7
+   },
+   {
+    "f": "2020-06-19",
+    "bot": 418.41,
+    "ref": 600.82
+   },
+   {
+    "f": "2020-07-13",
+    "bot": 422.03,
+    "ref": 610.76
+   },
+   {
+    "f": "2020-08-04",
+    "bot": 418.28,
+    "ref": 600.44
+   },
+   {
+    "f": "2020-08-26",
+    "bot": 426.92,
+    "ref": 624.22
+   },
+   {
+    "f": "2020-09-17",
+    "bot": 417.86,
+    "ref": 611.84
+   },
+   {
+    "f": "2020-10-09",
+    "bot": 427.78,
+    "ref": 627.44
+   },
+   {
+    "f": "2020-11-02",
+    "bot": 411.48,
+    "ref": 606.34
+   },
+   {
+    "f": "2020-11-24",
+    "bot": 445.13,
+    "ref": 661.65
+   },
+   {
+    "f": "2020-12-16",
+    "bot": 445.88,
+    "ref": 662.88
+   },
+   {
+    "f": "2021-01-13",
+    "bot": 458.53,
+    "ref": 685.19
+   },
+   {
+    "f": "2021-02-04",
+    "bot": 464.03,
+    "ref": 698.87
+   },
+   {
+    "f": "2021-02-26",
+    "bot": 456.93,
+    "ref": 690.11
+   },
+   {
+    "f": "2021-03-22",
+    "bot": 473.48,
+    "ref": 717.81
+   },
+   {
+    "f": "2021-04-15",
+    "bot": 489.98,
+    "ref": 749.16
+   },
+   {
+    "f": "2021-05-07",
+    "bot": 490.23,
+    "ref": 749.76
+   },
+   {
+    "f": "2021-06-01",
+    "bot": 488.93,
+    "ref": 746.02
+   },
+   {
+    "f": "2021-06-23",
+    "bot": 500.58,
+    "ref": 767.8
+   },
+   {
+    "f": "2021-07-15",
+    "bot": 509.66,
+    "ref": 789.4
+   },
+   {
+    "f": "2021-08-06",
+    "bot": 518.65,
+    "ref": 805.88
+   },
+   {
+    "f": "2021-08-30",
+    "bot": 525.33,
+    "ref": 818.13
+   },
+   {
+    "f": "2021-09-21",
+    "bot": 516.19,
+    "ref": 801.37
+   },
+   {
+    "f": "2021-10-13",
+    "bot": 517.12,
+    "ref": 803.08
+   },
+   {
+    "f": "2021-11-04",
+    "bot": 545.83,
+    "ref": 855.71
+   },
+   {
+    "f": "2021-11-26",
+    "bot": 541.96,
+    "ref": 848.62
+   },
+   {
+    "f": "2021-12-20",
+    "bot": 536.95,
+    "ref": 839.43
+   },
+   {
+    "f": "2022-01-13",
+    "bot": 549.61,
+    "ref": 862.64
+   },
+   {
+    "f": "2022-02-04",
+    "bot": 526.69,
+    "ref": 820.62
+   },
+   {
+    "f": "2022-02-28",
+    "bot": 526.09,
+    "ref": 819.52
+   },
+   {
+    "f": "2022-03-22",
+    "bot": 543.43,
+    "ref": 851.31
+   },
+   {
+    "f": "2022-04-13",
+    "bot": 541.61,
+    "ref": 847.99
+   },
+   {
+    "f": "2022-05-09",
+    "bot": 509.09,
+    "ref": 788.37
+   },
+   {
+    "f": "2022-05-31",
+    "bot": 519.13,
+    "ref": 806.76
+   },
+   {
+    "f": "2022-06-22",
+    "bot": 501.85,
+    "ref": 749.6
+   },
+   {
+    "f": "2022-07-14",
+    "bot": 509.28,
+    "ref": 776.84
+   },
+   {
+    "f": "2022-08-05",
+    "bot": 525.6,
+    "ref": 837.93
+   },
+   {
+    "f": "2022-08-29",
+    "bot": 522.35,
+    "ref": 831.97
+   },
+   {
+    "f": "2022-09-20",
+    "bot": 505.81,
+    "ref": 796.9
+   },
+   {
+    "f": "2022-10-12",
+    "bot": 496.93,
+    "ref": 764.32
+   },
+   {
+    "f": "2022-11-03",
+    "bot": 504.57,
+    "ref": 792.35
+   },
+   {
+    "f": "2022-11-25",
+    "bot": 510.4,
+    "ref": 813.73
+   },
+   {
+    "f": "2022-12-19",
+    "bot": 497.09,
+    "ref": 764.91
+   },
+   {
+    "f": "2023-01-11",
+    "bot": 502.01,
+    "ref": 782.95
+   },
+   {
+    "f": "2023-02-02",
+    "bot": 515.14,
+    "ref": 817.36
+   },
+   {
+    "f": "2023-02-24",
+    "bot": 507.06,
+    "ref": 802.56
+   },
+   {
+    "f": "2023-03-20",
+    "bot": 496.59,
+    "ref": 783.35
+   },
+   {
+    "f": "2023-04-13",
+    "bot": 507.09,
+    "ref": 802.6
+   },
+   {
+    "f": "2023-05-08",
+    "bot": 510.23,
+    "ref": 808.36
+   },
+   {
+    "f": "2023-05-30",
+    "bot": 523.02,
+    "ref": 831.82
+   },
+   {
+    "f": "2023-06-21",
+    "bot": 530.46,
+    "ref": 845.46
+   },
+   {
+    "f": "2023-07-13",
+    "bot": 533.51,
+    "ref": 851.04
+   },
+   {
+    "f": "2023-08-04",
+    "bot": 540.02,
+    "ref": 862.97
+   },
+   {
+    "f": "2023-08-28",
+    "bot": 538.35,
+    "ref": 859.91
+   },
+   {
+    "f": "2023-09-19",
+    "bot": 545.68,
+    "ref": 873.35
+   },
+   {
+    "f": "2023-10-11",
+    "bot": 540.46,
+    "ref": 863.78
+   },
+   {
+    "f": "2023-11-02",
+    "bot": 529.29,
+    "ref": 852.01
+   },
+   {
+    "f": "2023-11-24",
+    "bot": 536.0,
+    "ref": 876.59
+   },
+   {
+    "f": "2023-12-18",
+    "bot": 550.64,
+    "ref": 911.32
+   },
+   {
+    "f": "2024-01-12",
+    "bot": 554.76,
+    "ref": 918.87
+   },
+   {
+    "f": "2024-02-05",
+    "bot": 575.62,
+    "ref": 957.13
+   },
+   {
+    "f": "2024-02-27",
+    "bot": 586.21,
+    "ref": 976.53
+   },
+   {
+    "f": "2024-03-20",
+    "bot": 597.03,
+    "ref": 996.38
+   },
+   {
+    "f": "2024-04-15",
+    "bot": 602.68,
+    "ref": 1006.74
+   },
+   {
+    "f": "2024-05-08",
+    "bot": 604.26,
+    "ref": 1009.62
+   },
+   {
+    "f": "2024-05-30",
+    "bot": 606.13,
+    "ref": 1013.05
+   },
+   {
+    "f": "2024-06-21",
+    "bot": 627.37,
+    "ref": 1051.99
+   },
+   {
+    "f": "2024-07-15",
+    "bot": 636.81,
+    "ref": 1069.31
+   },
+   {
+    "f": "2024-08-06",
+    "bot": 594.62,
+    "ref": 991.95
+   },
+   {
+    "f": "2024-08-28",
+    "bot": 624.87,
+    "ref": 1047.42
+   },
+   {
+    "f": "2024-09-19",
+    "bot": 634.63,
+    "ref": 1065.3
+   },
+   {
+    "f": "2024-10-11",
+    "bot": 651.57,
+    "ref": 1096.37
+   },
+   {
+    "f": "2024-11-04",
+    "bot": 643.53,
+    "ref": 1081.63
+   },
+   {
+    "f": "2024-11-26",
+    "bot": 687.51,
+    "ref": 1162.26
+   },
+   {
+    "f": "2024-12-18",
+    "bot": 692.76,
+    "ref": 1171.88
+   },
+   {
+    "f": "2025-01-16",
+    "bot": 693.39,
+    "ref": 1173.04
+   },
+   {
+    "f": "2025-02-07",
+    "bot": 705.9,
+    "ref": 1195.97
+   },
+   {
+    "f": "2025-03-03",
+    "bot": 693.24,
+    "ref": 1172.76
+   },
+   {
+    "f": "2025-03-25",
+    "bot": 663.84,
+    "ref": 1118.86
+   },
+   {
+    "f": "2025-04-16",
+    "bot": 624.5,
+    "ref": 1000.95
+   },
+   {
+    "f": "2025-05-13",
+    "bot": 649.54,
+    "ref": 1110.34
+   },
+   {
+    "f": "2025-06-26",
+    "bot": 647.89,
+    "ref": 1104.29
+   },
+   {
+    "f": "2025-07-18",
+    "bot": 652.39,
+    "ref": 1133.66
+   },
+   {
+    "f": "2025-08-11",
+    "bot": 662.53,
+    "ref": 1155.38
+   },
+   {
+    "f": "2025-09-02",
+    "bot": 657.52,
+    "ref": 1149.33
+   },
+   {
+    "f": "2025-09-24",
+    "bot": 677.28,
+    "ref": 1187.5
+   },
+   {
+    "f": "2025-10-16",
+    "bot": 686.88,
+    "ref": 1206.15
+   },
+   {
+    "f": "2025-11-07",
+    "bot": 686.08,
+    "ref": 1205.05
+   },
+   {
+    "f": "2025-12-01",
+    "bot": 697.12,
+    "ref": 1230.46
+   },
+   {
+    "f": "2025-12-23",
+    "bot": 698.72,
+    "ref": 1234.91
+   },
+   {
+    "f": "2026-01-21",
+    "bot": 707.92,
+    "ref": 1244.04
+   },
+   {
+    "f": "2026-02-12",
+    "bot": 711.28,
+    "ref": 1245.64
+   },
+   {
+    "f": "2026-03-06",
+    "bot": 713.28,
+    "ref": 1255.7
+   },
+   {
+    "f": "2026-03-30",
+    "bot": 687.52,
+    "ref": 1199.6
+   },
+   {
+    "f": "2026-04-23",
+    "bot": 735.04,
+    "ref": 1295.91
+   },
+   {
+    "f": "2026-05-18",
+    "bot": 753.68,
+    "ref": 1333.86
+   },
+   {
+    "f": "2026-06-09",
+    "bot": 757.92,
+    "ref": 1339.52
+   },
+   {
+    "f": "2026-07-01",
+    "bot": 783.68,
+    "ref": 1394.03
+   },
+   {
+    "f": "2026-07-23",
+    "bot": 773.36,
+    "ref": 1378.3
+   },
+   {
+    "f": "2026-08-14",
+    "bot": 795.44,
+    "ref": 1426.86
+   },
+   {
+    "f": "2026-09-07",
+    "bot": 791.04,
+    "ref": 1409.98
+   },
+   {
+    "f": "2026-09-29",
+    "bot": 797.52,
+    "ref": 1425.1
+   },
+   {
+    "f": "2026-10-21",
+    "bot": 805.2,
+    "ref": 1452.82
+   },
+   {
+    "f": "2026-10-23",
+    "bot": 797.12,
+    "ref": 1437.59
+   }
+  ]
+ },
+ "informativo": {
+  "actualizado": "2026-10-25T18:54:50",
+  "copycat": [
+   {
+    "inversor": "Berkshire Hathaway (Buffett)",
+    "presentado": "2026-08-14",
+    "trimestre": "2026-06-30",
+    "posiciones": [
+     {
+      "empresa": "APPLE INC",
+      "peso_pct": 22.04,
+      "cambio": "+14% valor"
+     },
+     {
+      "empresa": "AMERICAN EXPRESS CO",
+      "peso_pct": 17.14,
+      "cambio": "+12% valor"
+     },
+     {
+      "empresa": "COCA COLA CO",
+      "peso_pct": 10.86,
+      "cambio": "+7% valor"
+     },
+     {
+      "empresa": "ALPHABET INC",
+      "peso_pct": 9.41,
+      "cambio": "+80% valor"
+     },
+     {
+      "empresa": "BANK OF AMER CORP",
+      "peso_pct": 9.2,
+      "cambio": "+10% valor"
+     },
+     {
+      "empresa": "CHEVRON CORPORATION",
+      "peso_pct": 4.67,
+      "cambio": "-20% valor"
+     },
+     {
+      "empresa": "OCCIDENTAL PETE CORP",
+      "peso_pct": 4.3,
+      "cambio": "-25% valor"
+     },
+     {
+      "empresa": "CHUBB LIMITED",
+      "peso_pct": 3.9,
+      "cambio": "+5% valor"
+     },
+     {
+      "empresa": "MOODYS CORP",
+      "peso_pct": 3.73,
+      "cambio": "+4% valor"
+     },
+     {
+      "empresa": "ALPHABET INC",
+      "peso_pct": 3.21,
+      "cambio": "+834% valor"
+     }
+    ],
+    "vendidas": [
+     "CONSTELLATION BRANDS INC"
+    ],
+    "aviso": "Datos con hasta 45 días de retraso: lo que tenían, no lo que tienen hoy."
+   }
+  ],
+  "congreso": [
+   {
+    "fecha": "2026-10-22",
+    "miembro": "Cleo Fields",
+    "distrito": "LA06",
+    "pdf": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035669.pdf"
+   },
+   {
+    "fecha": "2026-10-22",
+    "miembro": "Darrell E. Issa",
+    "distrito": "CA48",
+    "pdf": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035700.pdf"
+   },
+   {
+    "fecha": "2026-10-20",
+    "miembro": "James A. Himes",
+    "distrito": "CT04",
+    "pdf": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035687.pdf"
+   },
+   {
+    "fecha": "2026-10-20",
+    "miembro": "Rudy C. Yakym",
+    "distrito": "IN02",
+    "pdf": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035691.pdf"
+   },
+   {
+    "fecha": "2026-10-19",
+    "miembro": "Jonathan Jackson",
+    "distrito": "IL01",
+    "pdf": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035551.pdf"
+   },
+   {
+    "fecha": "2026-10-19",
+    "miembro": "Michael Rulli",
+    "distrito": "OH06",
+    "pdf": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035671.pdf"
+   },
+   {
+    "fecha": "2026-10-16",
+    "miembro": "Laurel Lee",
+    "distrito": "FL15",
+    "pdf": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035490.pdf"
+   },
+   {
+    "fecha": "2026-10-15",
+    "miembro": "Scott H. Peters",
+    "distrito": "CA50",
+    "pdf": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035637.pdf"
+   },
+   {
+    "fecha": "2026-10-15",
+    "miembro": "David J. Taylor",
+    "distrito": "OH02",
+    "pdf": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035660.pdf"
+   },
+   {
+    "fecha": "2026-10-14",
+    "miembro": "Richard W. Allen",
+    "distrito": "GA12",
+    "pdf": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035648.pdf"
+   },
+   {
+    "fecha": "2026-10-14",
+    "miembro": "Suzan K. DelBene",
+    "distrito": "WA01",
+    "pdf": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035627.pdf"
+   },
+   {
+    "fecha": "2026-10-14",
+    "miembro": "Mike Kelly",
+    "distrito": "PA16",
+    "pdf": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035652.pdf"
+   },
+   {
+    "fecha": "2026-10-14",
+    "miembro": "Michael T. McCaul",
+    "distrito": "TX10",
+    "pdf": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/9116378.pdf"
+   },
+   {
+    "fecha": "2026-10-14",
+    "miembro": "Richard Dean Dr McCormick",
+    "distrito": "GA06",
+    "pdf": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035651.pdf"
+   },
+   {
+    "fecha": "2026-10-14",
+    "miembro": "Daniel Meuser",
+    "distrito": "PA09",
+    "pdf": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035487.pdf"
+   },
+   {
+    "fecha": "2026-10-13",
+    "miembro": "Kevin Hern",
+    "distrito": "OK01",
+    "pdf": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035588.pdf"
+   },
+   {
+    "fecha": "2026-10-12",
+    "miembro": "Gilbert Cisneros",
+    "distrito": "CA31",
+    "pdf": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035622.pdf"
+   },
+   {
+    "fecha": "2026-10-12",
+    "miembro": "Rick Larsen",
+    "distrito": "WA02",
+    "pdf": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035635.pdf"
+   },
+   {
+    "fecha": "2026-10-12",
+    "miembro": "Lisa McClain",
+    "distrito": "MI09",
+    "pdf": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035585.pdf"
+   },
+   {
+    "fecha": "2026-10-07",
+    "miembro": "Josh Gottheimer",
+    "distrito": "NJ05",
+    "pdf": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035590.pdf"
+   },
+   {
+    "fecha": "2026-10-07",
+    "miembro": "Rohit Khanna",
+    "distrito": "CA17",
+    "pdf": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/9116376.pdf"
+   },
+   {
+    "fecha": "2026-10-07",
+    "miembro": "Maria Elvira Salazar",
+    "distrito": "FL27",
+    "pdf": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035562.pdf"
+   },
+   {
+    "fecha": "2026-10-05",
+    "miembro": "Lloyd Doggett",
+    "distrito": "TX37",
+    "pdf": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035580.pdf"
+   },
+   {
+    "fecha": "2026-10-05",
+    "miembro": "Vince Fong",
+    "distrito": "CA20",
+    "pdf": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035539.pdf"
+   },
+   {
+    "fecha": "2026-10-02",
+    "miembro": "Nancy Pelosi",
+    "distrito": "CA11",
+    "pdf": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035553.pdf"
+   }
+  ],
+  "noticias": [
+   {
+    "titulo": "‘Nonanswers’ aren’t working. This is what investors really need from the Fed.",
+    "enlace": "https://www.marketwatch.com/story/non-answers-arent-working-this-is-what-investors-really-need-from-the-fed-673a9dce?mod=mw_rss_topstories",
+    "fecha": "2026-10-25T12:44:00+00:00",
+    "fuente": "feeds.content.dowjones.io"
+   },
+   {
+    "titulo": "CRÓNICA DE BOLSA",
+    "enlace": "https://www.expansion.com/mercados/cronica-bolsa/2026/10/23/6adaf7cc468aebbd528b458e.html",
+    "fecha": "2026-10-23T17:49:07+02:00",
+    "fuente": "www.expansion.com"
+   }
+  ]
+ },
+ "laboratorio": {
+  "activo": true,
+  "vigente": {
+   "id": "base",
+   "nombre": "Estrategia base",
+   "origen": "config",
+   "descripcion": "La de config.json: tendencia de un ETF mundial, revisada cada mes."
+  },
+  "incubando": [],
+  "en_espera": [],
+  "recientes": [
+   {
+    "nombre": "Tendencia SXR8 media 250 (mensual) · refugio XEON",
+    "origen": "plantilla",
+    "estado": "rechazada",
+    "motivo": "frágil: con parámetros parecidos solo gana en el 0% de los casos (probablemente casualidad)",
+    "fecha": "2026-10-25T19:28:04"
+   },
+   {
+    "nombre": "Tendencia IS3N media 150 (mensual)",
+    "origen": "plantilla",
+    "estado": "rechazada",
+    "motivo": "fuera de muestra no mejora a la vigente (4.78% frente a 7.69% al año)",
+    "fecha": "2026-10-25T19:28:04"
+   },
+   {
+    "nombre": "Cruce 50/200 en EUNL",
+    "origen": "plantilla",
+    "estado": "rechazada",
+    "motivo": "solo funciona en el tramo final: en el primer tramo rinde menos que la vigente",
+    "fecha": "2026-10-25T19:28:04"
+   },
+   {
+    "nombre": "Tendencia EUNL media 250 (semanal) · refugio XEON",
+    "origen": "plantilla",
+    "estado": "rechazada",
+    "motivo": "fuera de muestra no mejora a la vigente (0.68% frente a 10.79% al año)",
+    "fecha": "2026-10-25T19:28:04"
+   },
+   {
+    "nombre": "Tendencia EUNL media 250 (semanal) · refugio EUNH",
+    "origen": "plantilla",
+    "estado": "rechazada",
+    "motivo": "fuera de muestra no mejora a la vigente (2.53% frente a 10.79% al año)",
+    "fecha": "2026-10-25T19:28:04"
+   },
+   {
+    "nombre": "Tendencia SXRV media 100 (mensual)",
+    "origen": "plantilla",
+    "estado": "rechazada",
+    "motivo": "fuera de muestra no mejora a la vigente (-1.07% frente a 10.67% al año)",
+    "fecha": "2026-10-25T19:28:04"
+   },
+   {
+    "nombre": "Tendencia IUSN media 150 (semanal) · refugio EUNH",
+    "origen": "plantilla",
+    "estado": "rechazada",
+    "motivo": "fuera de muestra no mejora a la vigente (6.89% frente a 14.31% al año)",
+    "fecha": "2026-10-25T19:28:04"
+   },
+   {
+    "nombre": "Cruce 30/150 en EUNK · refugio 4GLD",
+    "origen": "plantilla",
+    "estado": "rechazada",
+    "motivo": "solo funciona en el tramo final: en el primer tramo rinde menos que la vigente",
+    "fecha": "2026-10-25T19:28:04"
+   },
+   {
+    "nombre": "Tendencia IUSN media 150 (mensual) · refugio 4GLD",
+    "origen": "plantilla",
+    "estado": "rechazada",
+    "motivo": "fuera de muestra no mejora a la vigente (9.49% frente a 14.31% al año)",
+    "fecha": "2026-10-25T19:28:04"
+   },
+   {
+    "nombre": "Mercado tranquilo VWCE · refugio 4GLD",
+    "origen": "plantilla",
+    "estado": "rechazada",
+    "motivo": "fuera de muestra no mejora a la vigente (-1.29% frente a 6.96% al año)",
+    "fecha": "2026-10-25T19:28:04"
+   }
+  ],
+  "contadores": {
+   "rechazada": 80
+  },
+  "pruebas": 80,
+  "eventos": [
+   {
+    "id": 4,
+    "fecha": "2026-10-25T19:28:51",
+    "tipo": "EXAMEN",
+    "mensaje": "[cripto · ficticio] Examinadas 40 estrategias (0 de Hermes); aprobadas: 0"
+   },
+   {
+    "id": 3,
+    "fecha": "2026-10-25T19:28:35",
+    "tipo": "EXAMEN",
+    "mensaje": "[acciones · ficticio] Examinadas 40 estrategias (0 de Hermes); aprobadas: 0"
+   },
+   {
+    "id": 2,
+    "fecha": "2026-10-25T19:28:04",
+    "tipo": "EXAMEN",
+    "mensaje": "Examinadas 40 estrategias (0 de Hermes); aprobadas: 0"
+   },
+   {
+    "id": 1,
+    "fecha": "2026-10-25T18:23:46",
+    "tipo": "EXAMEN",
+    "mensaje": "Examinadas 40 estrategias (0 de Hermes); aprobadas: 0"
+   }
+  ],
+  "automatico": true
+ },
+ "ficticio": {
+  "bolsa_ficticia": 3000.0,
+  "mercados": {
+   "acciones": {
+    "nombre": "Acciones",
+    "dinero": "ficticio",
+    "capital": 1500.0,
+    "referencia": "EUNL",
+    "datos_hasta": "2026-10-23",
+    "valores": 762,
+    "actualizado": "2026-10-25T19:27:17",
+    "bolsa": {
+     "valor": 1498.04,
+     "rendimiento_pct": -0.13,
+     "efectivo": 69.8,
+     "posiciones": {
+      "EUNL": 11.0
+     },
+     "desde": "2026-10-25",
+     "curva": [
+      {
+       "f": "2026-10-25",
+       "a": 1498.0359,
+       "b": 1498.0359
+      }
+     ],
+     "operaciones": [
+      {
+       "fecha": "2026-10-25",
+       "simbolo": "EUNL",
+       "lado": "COMPRA",
+       "cantidad": 11.0,
+       "precio": 129.9049,
+       "comision": 1.25,
+       "motivo": "Comprar y no tocar: quiere un 100 % en EUNL"
+      }
+     ]
+    },
+    "lider": {
+     "id": "base_acciones",
+     "nombre": "Comprar y no tocar",
+     "descripcion": "Comprar y no tocar EUNL: la referencia que hay que batir",
+     "desde": null
+    },
+    "incubando": [],
+    "en_espera": [],
+    "recientes": [
+     {
+      "nombre": "Rotación eeuu 126 días top 2 si EUNL sube",
+      "estado": "rechazada",
+      "motivo": "cae demasiado (-53.0% frente a -33.18%)",
+      "fecha": "2026-10-25T19:28:35"
+     },
+     {
+      "nombre": "Mercado tranquilo PAH3.DE",
+      "estado": "rechazada",
+      "motivo": "muy pocas operaciones en el pasado (0) para saber si funciona",
+      "fecha": "2026-10-25T19:28:35"
+     },
+     {
+      "nombre": "Compra en recortes BRO (RSI<40)",
+      "estado": "rechazada",
+      "motivo": "muy pocas operaciones en el pasado (0) para saber si funciona",
+      "fecha": "2026-10-25T19:28:35"
+     },
+     {
+      "nombre": "Cerca de máximos todos top 4",
+      "estado": "rechazada",
+      "motivo": "fuera de muestra no mejora a la vigente (0.46% frente a 14.81% al año)",
+      "fecha": "2026-10-25T19:28:35"
+     },
+     {
+      "nombre": "Cruce 20/100 en CHRW",
+      "estado": "rechazada",
+      "motivo": "muy pocas operaciones en el pasado (0) para saber si funciona",
+      "fecha": "2026-10-25T19:28:35"
+     },
+     {
+      "nombre": "Baja volatilidad europa top 4",
+      "estado": "rechazada",
+      "motivo": "fuera de muestra no mejora a la vigente (2.66% frente a 14.94% al año)",
+      "fecha": "2026-10-25T19:28:35"
+     },
+     {
+      "nombre": "Tendencia ADS.DE media 200 (semanal)",
+      "estado": "rechazada",
+      "motivo": "fuera de muestra no mejora a la vigente (-2.15% frente a 15.03% al año)",
+      "fecha": "2026-10-25T19:28:35"
+     },
+     {
+      "nombre": "Rotación europa 252 días top 4",
+      "estado": "rechazada",
+      "motivo": "opera demasiado (33.9 veces al año): las comisiones se lo comen",
+      "fecha": "2026-10-25T19:28:35"
+     },
+     {
+      "nombre": "Mercado tranquilo REN.AS",
+      "estado": "rechazada",
+      "motivo": "muy pocas operaciones en el pasado (4) para saber si funciona",
+      "fecha": "2026-10-25T19:28:35"
+     },
+     {
+      "nombre": "Compra en recortes LITE (RSI<30)",
+      "estado": "rechazada",
+      "motivo": "muy pocas operaciones en el pasado (0) para saber si funciona",
+      "fecha": "2026-10-25T19:28:35"
+     },
+     {
+      "nombre": "Cerca de máximos eeuu top 2",
+      "estado": "rechazada",
+      "motivo": "muy pocas operaciones en el pasado (0) para saber si funciona",
+      "fecha": "2026-10-25T19:28:35"
+     },
+     {
+      "nombre": "Cruce 20/100 en FIS",
+      "estado": "rechazada",
+      "motivo": "muy pocas operaciones en el pasado (0) para saber si funciona",
+      "fecha": "2026-10-25T19:28:35"
+     },
+     {
+      "nombre": "Baja volatilidad eeuu top 4",
+      "estado": "rechazada",
+      "motivo": "muy pocas operaciones en el pasado (0) para saber si funciona",
+      "fecha": "2026-10-25T19:28:35"
+     },
+     {
+      "nombre": "Tendencia PWR media 250 (semanal)",
+      "estado": "rechazada",
+      "motivo": "muy pocas operaciones en el pasado (0) para saber si funciona",
+      "fecha": "2026-10-25T19:28:35"
+     },
+     {
+      "nombre": "Rotación europa 63 días top 3",
+      "estado": "rechazada",
+      "motivo": "opera demasiado (40.3 veces al año): las comisiones se lo comen",
+      "fecha": "2026-10-25T19:28:35"
+     }
+    ],
+    "contadores": {
+     "rechazada": 40
+    },
+    "pruebas": 40
+   },
+   "cripto": {
+    "nombre": "Cripto",
+    "dinero": "ficticio",
+    "capital": 1500.0,
+    "referencia": "BTC-EUR",
+    "datos_hasta": "2026-10-24",
+    "valores": 100,
+    "actualizado": "2026-10-25T19:27:17",
+    "bolsa": {
+     "valor": 1492.07,
+     "rendimiento_pct": -0.53,
+     "efectivo": 49.89,
+     "posiciones": {
+      "BTC-EUR": 0.02
+     },
+     "desde": "2026-10-25",
+     "curva": [
+      {
+       "f": "2026-10-25",
+       "a": 1492.0689,
+       "b": 1492.0689
+      }
+     ],
+     "operaciones": [
+      {
+       "fecha": "2026-10-25",
+       "simbolo": "BTC-EUR",
+       "lado": "COMPRA",
+       "cantidad": 0.02,
+       "precio": 72144.9451,
+       "comision": 7.21,
+       "motivo": "Comprar y no tocar: quiere un 100 % en BTC-EUR"
+      }
+     ]
+    },
+    "lider": {
+     "id": "base_cripto",
+     "nombre": "Comprar y no tocar",
+     "descripcion": "Comprar y no tocar BTC-EUR: la referencia que hay que batir",
+     "desde": null
+    },
+    "incubando": [],
+    "en_espera": [],
+    "recientes": [
+     {
+      "nombre": "Cerca de máximos top20 top 4",
+      "estado": "rechazada",
+      "motivo": "su mejora no supera el listón estadístico tras 36 pruebas (confianza 1%, hace falta 90%)",
+      "fecha": "2026-10-25T19:28:51"
+     },
+     {
+      "nombre": "Mercado tranquilo VET-EUR",
+      "estado": "rechazada",
+      "motivo": "fuera de muestra no mejora a la vigente (8.44% frente a 32.33% al año)",
+      "fecha": "2026-10-25T19:28:51"
+     },
+     {
+      "nombre": "Baja volatilidad todos top 4",
+      "estado": "rechazada",
+      "motivo": "opera demasiado (37.8 veces al año): las comisiones se lo comen",
+      "fecha": "2026-10-25T19:28:51"
+     },
+     {
+      "nombre": "Rotación resto 180 días top 2",
+      "estado": "rechazada",
+      "motivo": "opera demasiado (28.0 veces al año): las comisiones se lo comen",
+      "fecha": "2026-10-25T19:28:51"
+     },
+     {
+      "nombre": "Compra en recortes BONK-USD (RSI<40)",
+      "estado": "rechazada",
+      "motivo": "solo funciona en el tramo final: en el primer tramo rinde menos que la vigente",
+      "fecha": "2026-10-25T19:28:51"
+     },
+     {
+      "nombre": "Cruce 50/200 en FET-EUR",
+      "estado": "rechazada",
+      "motivo": "fuera de muestra no mejora a la vigente (-26.32% frente a 24.87% al año)",
+      "fecha": "2026-10-25T19:28:51"
+     },
+     {
+      "nombre": "Tendencia BONK-USD media 200 (semanal)",
+      "estado": "rechazada",
+      "motivo": "fuera de muestra no mejora a la vigente (-28.56% frente a -24.02% al año)",
+      "fecha": "2026-10-25T19:28:51"
+     },
+     {
+      "nombre": "Cerca de máximos top20 top 2",
+      "estado": "rechazada",
+      "motivo": "su mejora no supera el listón estadístico tras 36 pruebas (confianza 0%, hace falta 90%)",
+      "fecha": "2026-10-25T19:28:50"
+     },
+     {
+      "nombre": "Mercado tranquilo QNT-EUR",
+      "estado": "rechazada",
+      "motivo": "fuera de muestra no mejora a la vigente (-21.75% frente a 30.14% al año)",
+      "fecha": "2026-10-25T19:28:50"
+     },
+     {
+      "nombre": "Baja volatilidad top20 top 2",
+      "estado": "rechazada",
+      "motivo": "solo funciona en el tramo final: en el primer tramo rinde menos que la vigente",
+      "fecha": "2026-10-25T19:28:50"
+     },
+     {
+      "nombre": "Rotación top20 90 días top 4 si BTC-EUR sube",
+      "estado": "rechazada",
+      "motivo": "opera demasiado (27.1 veces al año): las comisiones se lo comen",
+      "fecha": "2026-10-25T19:28:50"
+     },
+     {
+      "nombre": "Compra en recortes STRK-USD (RSI<40)",
+      "estado": "rechazada",
+      "motivo": "solo funciona en el tramo final: en el primer tramo rinde menos que la vigente",
+      "fecha": "2026-10-25T19:28:50"
+     },
+     {
+      "nombre": "Cruce 20/100 en ICP-EUR",
+      "estado": "rechazada",
+      "motivo": "fuera de muestra no mejora a la vigente (-44.93% frente a -11.49% al año)",
+      "fecha": "2026-10-25T19:28:50"
+     },
+     {
+      "nombre": "Tendencia BNB-EUR media 200 (mensual)",
+      "estado": "rechazada",
+      "motivo": "fuera de muestra no mejora a la vigente (27.36% frente a 33.8% al año)",
+      "fecha": "2026-10-25T19:28:50"
+     },
+     {
+      "nombre": "Cerca de máximos todos top 2",
+      "estado": "rechazada",
+      "motivo": "su mejora no supera el listón estadístico tras 36 pruebas (confianza 8%, hace falta 90%)",
+      "fecha": "2026-10-25T19:28:48"
+     }
+    ],
+    "contadores": {
+     "rechazada": 40
+    },
+    "pruebas": 36
+   }
+  },
+  "valor_total": 2990.1,
+  "rendimiento_total_pct": -0.33
+ },
+ "ultimo_ciclo": "2026-10-25T18:54:50 (ok)"
+}
