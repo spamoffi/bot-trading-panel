@@ -1,5 +1,5 @@
 {
- "generado": "2026-10-25T20:32:14",
+ "generado": "2026-10-26T17:15:22",
  "modo": "PRÁCTICA",
  "broker": "simulado",
  "estrategia": {
@@ -13,24 +13,85 @@
   "exposicion_minima_pct": 50
  },
  "resumen": {
-  "valor": 200.0,
+  "valor": 198.66,
   "inicial": 200.0,
   "maximo": 200.0,
-  "rentabilidad_pct": 0.0,
-  "caida_desde_maximo_pct": 0.0,
-  "comisiones": 0,
-  "num_operaciones": 0
+  "rentabilidad_pct": -0.67,
+  "caida_desde_maximo_pct": -0.67,
+  "comisiones": 1.25,
+  "num_operaciones": 1
  },
- "posiciones": {},
+ "posiciones": {
+  "VWCE": 1.0
+ },
  "curva": [
   {
    "f": "2026-10-25",
    "v": 200.0
+  },
+  {
+   "f": "2026-10-26",
+   "v": 198.66
   }
  ],
- "operaciones": [],
+ "operaciones": [
+  {
+   "fecha": "2026-10-26T17:15:20",
+   "simbolo": "VWCE",
+   "lado": "COMPRA",
+   "cantidad": 1.0,
+   "precio": 170.125,
+   "comision": 1.25,
+   "motivo": "Base: tendencia 200 días (50 % siempre invertido): objetivo {'VWCE': 100.0}"
+  }
+ ],
  "bloqueadas": [],
  "decisiones": [
+  {
+   "fecha": "2026-10-26",
+   "estrategia": "tendencia",
+   "activos": [
+    {
+     "simbolo": "EUNL",
+     "precio": 130.5,
+     "rol": "riesgo",
+     "media": 121.0753,
+     "distancia_media_pct": 7.78,
+     "momentum_pct": 17.18
+    },
+    {
+     "simbolo": "VWCE",
+     "precio": 170.04,
+     "rol": "riesgo",
+     "media": 159.191,
+     "distancia_media_pct": 6.82,
+     "momentum_pct": 17.24
+    }
+   ],
+   "estrategia_vigente": {
+    "id": "base",
+    "nombre": "Base: tendencia 200 días (50 % siempre invertido)",
+    "origen": "config",
+    "descripcion": "La estrategia configurada en config.json",
+    "activos": [
+     "EUNL",
+     "VWCE"
+    ]
+   },
+   "objetivo": {
+    "VWCE": 100.0
+   },
+   "rebalanceo": [
+    {
+     "simbolo": "VWCE",
+     "objetivo_pct": 100.0,
+     "actual_pct": 0.0,
+     "desviacion_pct": -100.0,
+     "mover": true
+    }
+   ],
+   "protecciones": []
+  },
   {
    "fecha": "2026-10-23",
    "estrategia": "tendencia",
@@ -1837,7 +1898,7 @@
   ]
  },
  "informativo": {
-  "actualizado": "2026-10-25T18:54:50",
+  "actualizado": "2026-10-26T17:15:21",
   "copycat": [
    {
     "inversor": "Berkshire Hathaway (Buffett)",
@@ -2055,15 +2116,9 @@
   ],
   "noticias": [
    {
-    "titulo": "‘Nonanswers’ aren’t working. This is what investors really need from the Fed.",
-    "enlace": "https://www.marketwatch.com/story/non-answers-arent-working-this-is-what-investors-really-need-from-the-fed-673a9dce?mod=mw_rss_topstories",
-    "fecha": "2026-10-25T12:44:00+00:00",
-    "fuente": "feeds.content.dowjones.io"
-   },
-   {
     "titulo": "CRÓNICA DE BOLSA",
-    "enlace": "https://www.expansion.com/mercados/cronica-bolsa/2026/10/23/6adaf7cc468aebbd528b458e.html",
-    "fecha": "2026-10-23T17:49:07+02:00",
+    "enlace": "https://www.expansion.com/mercados/cronica-bolsa/2026/10/26/6adef961e5fdeacc278b4574.html",
+    "fecha": "2026-10-26T16:13:50+01:00",
     "fuente": "www.expansion.com"
    }
   ]
@@ -2469,5 +2524,5 @@
   "valor_total": 2990.1,
   "rendimiento_total_pct": -0.33
  },
- "ultimo_ciclo": "2026-10-25T20:16:45 (ok)"
+ "ultimo_ciclo": "2026-10-26T17:15:21 (ok)"
 }
