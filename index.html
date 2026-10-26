@@ -123,7 +123,7 @@ svg.ico { width: 18px; height: 18px; flex: none; fill: none; stroke: currentColo
   }
   .nav a { flex: 1; flex-direction: column; justify-content: center; gap: 3px; font-size: 12px; min-height: var(--nav-h); padding: 6px 2px; border-radius: 0; }
   .nav a:hover { background: transparent; }
-  .nav a[aria-current="page"] { background: transparent; box-shadow: none; color: var(--accent); }
+  .nav a[aria-current="page"] { background: transparent; border-color: transparent; color: var(--accent); }
   .boton .txt { display: none; }
   #recargar { width: 44px; height: 44px; padding: 0; }
   body { padding-bottom: calc(var(--nav-h) + env(safe-area-inset-bottom)); }
@@ -151,6 +151,11 @@ main { max-width: 1200px; margin: 0 auto; padding: 24px 24px 72px; }
 .rejilla { display: grid; gap: 24px; grid-template-columns: minmax(0, 1fr); align-items: start; }
 @media (min-width: 1000px) { .rejilla.principal { grid-template-columns: minmax(0, 2fr) minmax(300px, 1fr); } .rejilla.mitad { grid-template-columns: 1fr 1fr; } .rejilla.dos-uno { grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); } }
 .columna { display: grid; gap: 24px; min-width: 0; }
+/* en pantallas estrechas, lo que hará el bot va justo después del total (los avisos, al final) */
+@media (max-width: 999px) {
+  .rejilla.principal > .columna { display: contents; }
+  .o-total { order: 1; } .o-agenda { order: 2; } .o-salud { order: 3; } .o-avisos { order: 4; }
+}
 section.bloque { margin-top: 40px; }
 section.bloque > h2 { font-size: 20px; letter-spacing: -.015em; }
 section.bloque > .explica { color: var(--muted); margin: 6px 0 16px; max-width: 68ch; font-size: 15px; }
@@ -212,7 +217,8 @@ section.bloque > .explica { color: var(--muted); margin: 6px 0 16px; max-width: 
 .salud .bien svg { color: var(--positive); } .salud .mal { color: var(--negative); } .salud .neutro svg { color: var(--muted); }
 
 /* ---------- cifras de detalle ---------- */
-.datos { margin: 0; display: grid; grid-template-columns: 1fr auto; column-gap: 16px; }
+.datos { margin: 0; display: grid; grid-template-columns: 1fr auto; column-gap: 0; }
+.datos dd { padding-left: 16px; }
 .datos dt, .datos dd { padding: 10px 0; border-top: 1px solid var(--rule); margin: 0; }
 .datos dt:first-of-type, .datos dt:first-of-type + dd { border-top: 0; padding-top: 0; }
 .datos dt { color: var(--muted); font-size: 14.5px; }
@@ -337,7 +343,7 @@ footer { max-width: 1200px; margin: 0 auto; padding: 0 24px 36px; color: var(--m
 
   <div id="fallo" role="alert" hidden>
     <div class="tarjeta">
-      <h1 style="font-size:22px">No he podido leer los datos del bot</h1>
+      <h2 style="font-size:22px">No he podido leer los datos del bot</h2>
       <p class="frase" id="fallo-texto">Puede que no haya conexión o que el bot aún no haya subido su primer informe.</p>
       <p style="margin-top:16px"><button class="boton" type="button" id="reintentar"><svg class="ico" aria-hidden="true"><use href="#i-actualizar"/></svg>Volver a intentarlo</button></p>
     </div>
@@ -491,7 +497,7 @@ footer { max-width: 1200px; margin: 0 auto; padding: 0 24px 36px; color: var(--m
     const inicial = cs.reduce((s, c) => s + (Number(c.inicial) || 0), 0);
     const delta = Math.round((total - inicial) * 100) / 100, deltaPct = inicial ? delta / inicial * 100 : 0;
     const tarjetaCartera = (c) => `<li><a class="cartera" data-c="${c.id}" href="#${c.id}">
-        <span class="fila1">${esc(c.nombre)} ${c.id === "etf" ? pillEtf(din) : pillFict()}</span>
+        <span class="fila1">${esc(c.nombre)} ${c.id === "etf" ? (din.real ? pillEtf(din) : `<span class="pill practica">${ico("escudo-sim")}Práctica</span>`) : pillFict()}</span>
         <span class="valor">${eurosGrande(c.valor)}</span>
         <span class="cambio ${clase(c.cambio)}">${pct(c.cambio)}</span>
         <span class="que">${esc(c.que)}</span>
@@ -512,25 +518,25 @@ footer { max-width: 1200px; margin: 0 auto; padding: 0 24px 36px; color: var(--m
       <div class="cabeza"><h1>Resumen</h1>${avisoSimulado(d, F)}</div>
       <div class="rejilla principal">
         <div class="columna">
-          <section class="tarjeta" aria-labelledby="t-total">
+          <section class="tarjeta o-total" aria-labelledby="t-total">
             <h2 id="t-total" class="etiqueta" style="font-weight:500;font-size:14px;margin:0">Total de las 3 carteras${din.real ? "" : " · todo simulado"}</h2>
             <p class="total">${eurosGrande(total)}</p>
             <p class="variacion"><strong class="${clase(delta)}">${eurosDelta(delta)} (${pct(deltaPct)})</strong> desde que empezaron con ${euros(inicial)}</p>
             <ul class="carteras">${cs.map(tarjetaCartera).join("")}</ul>
             ${din.real ? "" : `<p class="nota">El bot practica con ${euros(d.resumen?.inicial)} de mentira en ETF y prueba ideas con ${euros(F.bolsa_ficticia)} ficticios en acciones y cripto. Solo podría usar dinero real si tú lo activas a mano.</p>`}
           </section>
-          <section class="tarjeta" aria-labelledby="t-avisos">
+          <section class="tarjeta o-avisos" aria-labelledby="t-avisos">
             <h2 id="t-avisos">Últimos avisos</h2>
             ${avisos.length ? `<ul class="lista">${avisos.map(e => `<li><span>${esc(String(e.mensaje).split("\n")[0])}</span><span class="meta">${esc(fechaHora(e.fecha))}</span></li>`).join("")}</ul>` : vacio("Sin avisos por ahora.")}
           </section>
         </div>
         <div class="columna">
-          <section class="tarjeta" aria-labelledby="t-agenda">
+          <section class="tarjeta o-agenda" aria-labelledby="t-agenda">
             <h2 id="t-agenda">Lo próximo que hará el bot</h2>
             <ul class="lista agenda">${proximos().map(([[dia, hora], t]) => `<li><span class="cuando">${dia}<span>${esc(hora)}</span></span><span class="que">${t}</span></li>`).join("")}</ul>
             <p class="nota">Horas de España. Lo lanza el portátil si está encendido y con la sesión iniciada.</p>
           </section>
-          <section class="tarjeta" aria-labelledby="t-salud">
+          <section class="tarjeta o-salud" aria-labelledby="t-salud">
             <h2 id="t-salud">Cómo está el bot</h2>
             <div class="salud">${salud.join("")}</div>
           </section>
