@@ -6,260 +6,289 @@
 <title>Panel del bot</title>
 <meta name="description" content="Panel de solo lectura del bot de David: cartera de práctica en ETF y laboratorio de acciones y cripto con dinero ficticio. Cada operación, con su motivo.">
 <meta name="robots" content="noindex">
-<meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#0f1115" media="(prefers-color-scheme: dark)">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%232f55d4'/%3E%3Cpath d='M7 21l6-6 4 4 8-9' fill='none' stroke='white' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<meta name="theme-color" content="#f3f5f7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0f1011" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%231d5fd6'/%3E%3Cpath d='M7 21l6-6 4 4 8-9' fill='none' stroke='white' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
+/* Estilo «Pastel por cartera» (design-taste-frontend, app/pastel-consumer):
+   cada cartera tiene un tinte pálido con la tinta oscura de su propio tono; un solo radio grande
+   (20 en tarjetas, 12 dentro, 999 en etiquetas); bordes de 1 px y sin sombras en reposo. */
 :root {
-  --bg: #f5f6f8; --surface: #ffffff; --surface-2: #eef0f3; --line: #e2e5ea; --line-2: #eceef2;
-  --ink: #15181d; --ink-2: #474f5b; --ink-3: #626a77;
-  --accent: #2f55d4; --accent-ink: #ffffff; --accent-soft: #e8edfc;
-  --up: #157a4a; --up-soft: #e3f3ea; --down: #be3329; --down-soft: #fbe9e7;
-  --sim: #835600; --sim-soft: #fbf0d9; --ref: #8c93a0;
-  --shadow: 0 1px 2px rgba(21, 30, 45, .05), 0 14px 32px -18px rgba(21, 30, 45, .18);
-  --r-lg: 18px; --r-md: 12px; --r-sm: 7px;
-  --font: "Geist", ui-sans-serif, system-ui, sans-serif; --mono: "Geist Mono", ui-monospace, monospace;
+  --ground: #f3f5f7; --surface: #ffffff; --raised: #f7f9fb; --border: #e6e6e6; --rule: #f0f1f3; --control: #d6d9dd;
+  --text: #1b1d1f; --muted: #5c6064; --faint: #6b6f74;
+  --accent: #1d5fd6; --accent-ink: #ffffff;
+  --positive: #2f7a45; --negative: #c41c29;
+  --pill-neutral-bg: #eef1f4; --pill-neutral-ink: #3a3d40;
+  --pill-neg-bg: #ffedea; --pill-neg-ink: #831c1e;
+  --inverse-bg: #1b1d1f; --inverse-ink: #ffffff; --inverse-muted: #c9ccd0;
+  /* tono de cada cartera: fondo pálido, tinta oscura del mismo tono, línea de datos */
+  --etf-bg: #dcf1ff; --etf-ink: #0a3a80; --etf-line: #1d5fd6;
+  --acc-bg: #d9f1f2; --acc-ink: #0b4a51; --acc-line: #2a8798;
+  --cri-bg: #fcefdc; --cri-ink: #6f3405; --cri-line: #b45309;
+  --ref: #8d9197; --grid: #eceef1;
+  --r-card: 20px; --r-in: 12px; --r-sm: 8px;
+  --font: "Manrope", system-ui, sans-serif;
   --nav-h: 64px; --ease: cubic-bezier(.16, 1, .3, 1);
   color-scheme: light;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #0f1115; --surface: #171a20; --surface-2: #1f232b; --line: #2b3039; --line-2: #22262e;
-    --ink: #e9ecf1; --ink-2: #b6bdc9; --ink-3: #939bab;
-    --accent: #8fa7ff; --accent-ink: #0f1115; --accent-soft: #1f2843;
-    --up: #56c78f; --up-soft: #15291f; --down: #f28c82; --down-soft: #34191a;
-    --sim: #ebbd5f; --sim-soft: #31260f; --ref: #7d8594;
-    --shadow: 0 1px 2px rgba(0, 0, 0, .35), 0 14px 32px -18px rgba(0, 0, 0, .7);
+    --ground: #0f1011; --surface: #17181a; --raised: #1d1e21; --border: #2a2b2e; --rule: #222326; --control: #3a3b3f;
+    --text: #f1f2f3; --muted: #b0b4ba; --faint: #9a9ea4;
+    --accent: #8ab4ff; --accent-ink: #0f1011;
+    --positive: #5cc489; --negative: #f2847b;
+    --pill-neutral-bg: #26272b; --pill-neutral-ink: #d4d6da;
+    --pill-neg-bg: #3a1d1d; --pill-neg-ink: #f2847b;
+    --inverse-bg: #f1f2f3; --inverse-ink: #0f1011; --inverse-muted: #45484c;
+    --etf-bg: #15243a; --etf-ink: #a9cbff; --etf-line: #6ea2ff;
+    --acc-bg: #12292b; --acc-ink: #8fd8d5; --acc-line: #4fb8b3;
+    --cri-bg: #2e2112; --cri-ink: #f2bd78; --cri-line: #e0954a;
+    --ref: #868a91; --grid: #26272b;
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
-  --bg: #0f1115; --surface: #171a20; --surface-2: #1f232b; --line: #2b3039; --line-2: #22262e;
-  --ink: #e9ecf1; --ink-2: #b6bdc9; --ink-3: #939bab;
-  --accent: #8fa7ff; --accent-ink: #0f1115; --accent-soft: #1f2843;
-  --up: #56c78f; --up-soft: #15291f; --down: #f28c82; --down-soft: #34191a;
-  --sim: #ebbd5f; --sim-soft: #31260f; --ref: #7d8594;
-  --shadow: 0 1px 2px rgba(0, 0, 0, .35), 0 14px 32px -18px rgba(0, 0, 0, .7);
+  --ground: #0f1011; --surface: #17181a; --raised: #1d1e21; --border: #2a2b2e; --rule: #222326; --control: #3a3b3f;
+  --text: #f1f2f3; --muted: #b0b4ba; --faint: #9a9ea4;
+  --accent: #8ab4ff; --accent-ink: #0f1011;
+  --positive: #5cc489; --negative: #f2847b;
+  --pill-neutral-bg: #26272b; --pill-neutral-ink: #d4d6da;
+  --pill-neg-bg: #3a1d1d; --pill-neg-ink: #f2847b;
+  --inverse-bg: #f1f2f3; --inverse-ink: #0f1011; --inverse-muted: #45484c;
+  --etf-bg: #15243a; --etf-ink: #a9cbff; --etf-line: #6ea2ff;
+  --acc-bg: #12292b; --acc-ink: #8fd8d5; --acc-line: #4fb8b3;
+  --cri-bg: #2e2112; --cri-ink: #f2bd78; --cri-line: #e0954a;
+  --ref: #868a91; --grid: #26272b;
   color-scheme: dark;
 }
+[data-c="etf"] { --h-bg: var(--etf-bg); --h-ink: var(--etf-ink); --h-line: var(--etf-line); }
+[data-c="acciones"] { --h-bg: var(--acc-bg); --h-ink: var(--acc-ink); --h-line: var(--acc-line); }
+[data-c="cripto"] { --h-bg: var(--cri-bg); --h-ink: var(--cri-ink); --h-line: var(--cri-line); }
 
 * { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; scroll-padding-top: 80px; }
+html { -webkit-text-size-adjust: 100%; scroll-padding-top: 84px; }
 body {
-  margin: 0; background: var(--bg); color: var(--ink); font: 400 16px/1.55 var(--font);
-  -webkit-font-smoothing: antialiased; min-height: 100dvh; caret-color: var(--accent);
+  margin: 0; background: var(--ground); color: var(--text); font: 400 16px/1.5 var(--font);
+  font-variant-numeric: tabular-nums; -webkit-font-smoothing: antialiased; min-height: 100dvh;
+  caret-color: var(--accent); -webkit-tap-highlight-color: transparent;
 }
-::selection { background: var(--accent); color: var(--accent-ink); }
+::selection { background: var(--etf-bg); color: var(--etf-ink); }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
-* { scrollbar-color: var(--line) transparent; scrollbar-width: thin; }
+* { scrollbar-color: var(--control) transparent; scrollbar-width: thin; }
 a { color: var(--accent); text-underline-offset: 3px; text-decoration-thickness: 1px; }
-h1, h2, h3 { margin: 0; text-wrap: balance; }
+h1, h2, h3 { margin: 0; text-wrap: balance; font-weight: 600; }
 p { margin: 0; text-wrap: pretty; }
-.num { font-family: var(--mono); font-variant-numeric: tabular-nums; letter-spacing: -.015em; }
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-.salto { position: absolute; left: -999px; top: 8px; z-index: 100; background: var(--surface); color: var(--ink); padding: 10px 14px; border-radius: 10px; }
+.salto { position: absolute; left: -999px; top: 8px; z-index: 100; background: var(--surface); color: var(--text); padding: 10px 14px; border-radius: 10px; border: 1px solid var(--border); }
 .salto:focus { left: 12px; }
-svg.ico { width: 20px; height: 20px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
+svg.ico { width: 18px; height: 18px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.dec { font-size: .62em; color: var(--muted); font-weight: 500; }
+.sube { color: var(--positive); } .baja { color: var(--negative); } .cero { color: var(--muted); }
 
-/* ---------- cabecera ---------- */
-.cabecera { position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--bg) 86%, transparent); backdrop-filter: blur(12px) saturate(1.3); border-bottom: 1px solid var(--line-2); }
-.cab-in { max-width: 1160px; margin: 0 auto; padding: 10px 16px; display: flex; align-items: center; gap: 14px; min-height: 60px; }
-.marca { display: flex; align-items: center; gap: 10px; font-weight: 600; letter-spacing: -.02em; white-space: nowrap; }
-.marca .logo { width: 30px; height: 30px; border-radius: 9px; background: var(--accent); color: var(--accent-ink); display: grid; place-items: center; }
+/* ---------- barra superior (una sola, opaca) ---------- */
+.barra { position: sticky; top: 0; z-index: 20; background: var(--ground); border-bottom: 1px solid var(--border); }
+.barra-in { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; gap: 20px; min-height: 64px; }
+.marca { display: flex; align-items: center; gap: 10px; font-weight: 600; letter-spacing: -.01em; white-space: nowrap; color: var(--text); text-decoration: none; }
+.marca .logo { width: 30px; height: 30px; border-radius: 9px; background: var(--accent); color: #fff; display: grid; place-items: center; }
 .marca .logo svg { width: 18px; height: 18px; stroke-width: 2.4; }
-.frescura { color: var(--ink-3); font-size: 13.5px; margin-left: auto; white-space: nowrap; }
-.boton {
-  font: 500 14px var(--font); color: var(--ink); background: var(--surface); border: 1px solid var(--line);
-  border-radius: 10px; min-height: 44px; padding: 0 14px; display: inline-flex; align-items: center; gap: 8px;
-  cursor: pointer; touch-action: manipulation; transition: background .2s, transform .15s var(--ease);
+:root[data-theme="dark"] .marca .logo { color: var(--accent-ink); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .marca .logo { color: var(--accent-ink); } }
+.nav { display: flex; gap: 2px; }
+.nav a {
+  display: inline-flex; align-items: center; gap: 8px; color: var(--muted); text-decoration: none; font-weight: 500; font-size: 15px;
+  min-height: 40px; padding: 0 12px; border-radius: 999px; touch-action: manipulation; transition: color .15s, background-color .15s;
 }
-.boton:hover { background: var(--surface-2); }
-.boton:active { transform: translateY(1px) scale(.98); }
+.nav a:hover { color: var(--text); background: var(--pill-neutral-bg); }
+.nav a { border: 1px solid transparent; }
+.nav a[aria-current="page"] { color: var(--text); background: var(--surface); border-color: var(--border); }
+.fresco { margin-left: auto; display: flex; align-items: center; gap: 10px; }
+.fresco .estampa { color: var(--muted); font-size: 14px; white-space: nowrap; }
+.boton {
+  font: 500 14px var(--font); color: var(--text); background: var(--surface); border: 1px solid var(--control);
+  border-radius: 999px; min-height: 40px; padding: 0 14px; display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  cursor: pointer; touch-action: manipulation; transition: background-color .15s, transform .15s var(--ease);
+}
+.boton:hover { background: var(--pill-neutral-bg); }
+.boton:active { transform: scale(.97); }
 .boton[aria-busy="true"] svg { animation: girar 1s linear infinite; }
 @keyframes girar { to { transform: rotate(360deg); } }
-
-/* ---------- navegación: arriba en escritorio, abajo en móvil ---------- */
-.nav { background: var(--surface); }
-.nav-in { max-width: 1160px; margin: 0 auto; display: flex; gap: 4px; padding: 0 12px; }
-.nav a {
-  display: inline-flex; align-items: center; gap: 8px; color: var(--ink-2); text-decoration: none; font-weight: 500; font-size: 14.5px;
-  min-height: 48px; padding: 0 12px; border-bottom: 2px solid transparent; transition: color .2s, border-color .2s;
-}
-.nav a:hover { color: var(--ink); }
-.nav a[aria-current="page"] { color: var(--ink); border-bottom-color: var(--accent); }
-.nav a[aria-current="page"] svg { color: var(--accent); }
-@media (min-width: 761px) { .nav { position: sticky; top: 61px; z-index: 19; border-bottom: 1px solid var(--line); } }
-@media (max-width: 760px) {
-  .frescura { display: none; }
+@media (max-width: 860px) {
+  .barra-in { padding: 0 16px; gap: 12px; min-height: 56px; }
+  .nav {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; gap: 0; padding: 0 8px env(safe-area-inset-bottom);
+    background: var(--surface); border-top: 1px solid var(--border);
+  }
+  .nav a { flex: 1; flex-direction: column; justify-content: center; gap: 3px; font-size: 12px; min-height: var(--nav-h); padding: 6px 2px; border-radius: 0; }
+  .nav a:hover { background: transparent; }
+  .nav a[aria-current="page"] { background: transparent; box-shadow: none; color: var(--accent); }
   .boton .txt { display: none; }
-  #recargar { margin-left: auto; width: 44px; justify-content: center; padding: 0; }
-  .nav { position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; border-top: 1px solid var(--line); padding-bottom: env(safe-area-inset-bottom); box-shadow: 0 -8px 24px -18px rgba(0,0,0,.25); }
-  .nav-in { padding: 0; gap: 0; }
-  .nav a { flex: 1; flex-direction: column; gap: 3px; justify-content: center; font-size: 11.5px; min-height: var(--nav-h); padding: 6px 2px; border-bottom: 0; border-top: 2px solid transparent; }
-  .nav a[aria-current="page"] { border-top-color: var(--accent); }
+  #recargar { width: 44px; height: 44px; padding: 0; }
   body { padding-bottom: calc(var(--nav-h) + env(safe-area-inset-bottom)); }
 }
+@media (max-width: 380px) { .fresco .estampa { font-size: 13px; } }
 
-/* ---------- vistas ---------- */
-main { max-width: 1160px; margin: 0 auto; padding: 28px 16px 72px; }
-.vista[hidden] { display: none; }
-@media (prefers-reduced-motion: no-preference) {
-  .vista { animation: entrar .32s var(--ease); }
-  @keyframes entrar { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+/* ---------- lienzo ---------- */
+main { max-width: 1200px; margin: 0 auto; padding: 24px 24px 72px; }
+@media (max-width: 860px) { main { padding: 18px 16px 40px; } }
+.vista[hidden], #fallo[hidden], #carga[hidden], #app[hidden] { display: none; }
+
+.cabeza { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; margin-bottom: 18px; }
+.cabeza h1 { font-size: 24px; letter-spacing: -.02em; line-height: 1.2; }
+.simulado {
+  display: inline-flex; align-items: center; gap: 8px; background: var(--inverse-bg); color: var(--inverse-ink);
+  font-size: 14px; font-weight: 500; padding: 7px 14px 7px 11px; border-radius: 999px; line-height: 1.3;
 }
-.apertura { display: grid; gap: 22px; padding: 6px 0 30px; }
-@media (min-width: 900px) { .apertura.con-lado { grid-template-columns: minmax(0, 1fr) 340px; align-items: end; gap: 40px; } }
-.titular { font-size: clamp(28px, 4.6vw, 44px); line-height: 1.08; letter-spacing: -.035em; font-weight: 600; max-width: 20ch; }
-.entradilla { color: var(--ink-2); font-size: 17px; max-width: 62ch; margin-top: 14px; }
-.etiquetas { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
-.etq { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 500; padding: 4px 9px; border-radius: var(--r-sm); background: var(--surface-2); color: var(--ink-2); }
-.etq svg.ico { width: 15px; height: 15px; }
-.etq.sim { background: var(--sim-soft); color: var(--sim); }
-.etq.ok { background: var(--up-soft); color: var(--up); }
-.etq.mal { background: var(--down-soft); color: var(--down); }
-.etq.acento { background: var(--accent-soft); color: var(--accent); }
+.simulado strong { font-weight: 600; }
+.simulado svg.ico { width: 17px; height: 17px; }
+.simulado.real { background: var(--pill-neg-bg); color: var(--pill-neg-ink); }
 
-section.bloque { margin-top: 36px; }
-section.bloque > h2 { font-size: 21px; letter-spacing: -.025em; font-weight: 600; }
-section.bloque > .explica { color: var(--ink-2); margin: 6px 0 16px; max-width: 66ch; font-size: 15.5px; }
-.superficie { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg); box-shadow: var(--shadow); min-width: 0; }
-.relleno { padding: 20px; }
-@media (max-width: 520px) { .relleno { padding: 16px; } }
-.superficie h3 { font-size: 15.5px; font-weight: 600; letter-spacing: -.01em; margin-bottom: 12px; }
-.dos { display: grid; gap: 16px; grid-template-columns: minmax(0, 1fr); }
-@media (min-width: 900px) { .dos { grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); } .dos.mitad { grid-template-columns: 1fr 1fr; } }
+.tarjeta { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-card); padding: 24px; min-width: 0; }
+@media (max-width: 520px) { .tarjeta { padding: 18px; } }
+.tarjeta > h2, .tarjeta > h3, .titulo-tarjeta { font-size: 16px; letter-spacing: -.01em; margin-bottom: 14px; }
+.rejilla { display: grid; gap: 24px; grid-template-columns: minmax(0, 1fr); align-items: start; }
+@media (min-width: 1000px) { .rejilla.principal { grid-template-columns: minmax(0, 2fr) minmax(300px, 1fr); } .rejilla.mitad { grid-template-columns: 1fr 1fr; } .rejilla.dos-uno { grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); } }
+.columna { display: grid; gap: 24px; min-width: 0; }
+section.bloque { margin-top: 40px; }
+section.bloque > h2 { font-size: 20px; letter-spacing: -.015em; }
+section.bloque > .explica { color: var(--muted); margin: 6px 0 16px; max-width: 68ch; font-size: 15px; }
 
-/* datos clave al lado del titular */
-.datos { margin: 0; display: grid; grid-template-columns: 1fr auto; column-gap: 16px; row-gap: 0; }
-.datos dt, .datos dd { padding: 11px 0; border-bottom: 1px solid var(--line-2); margin: 0; }
-.datos dt { color: var(--ink-2); font-size: 14.5px; }
-.datos dd { text-align: right; font-size: 15px; }
-.datos > :nth-last-child(-n+2) { border-bottom: 0; }
-
-/* filas de carteras en el resumen */
-.carteras { list-style: none; margin: 0; padding: 0; }
-.carteras li + li { border-top: 1px solid var(--line-2); }
+/* ---------- total y carteras ---------- */
+.etiqueta { color: var(--muted); font-size: 14px; }
+.total { font-size: 36px; font-weight: 600; letter-spacing: -.02em; line-height: 1.15; margin: 4px 0 6px; }
+.variacion { font-size: 15px; color: var(--muted); }
+.variacion strong { font-weight: 600; }
+.carteras { list-style: none; margin: 22px 0 0; padding: 0; display: grid; gap: 12px; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (max-width: 760px) { .carteras { grid-template-columns: minmax(0, 1fr); gap: 10px; } }
 .cartera {
-  display: grid; grid-template-columns: 40px minmax(0, 1fr) auto 20px; gap: 14px; align-items: center;
-  padding: 18px 20px; color: inherit; text-decoration: none; transition: background .2s;
+  display: grid; gap: 4px; align-content: start; height: 100%; padding: 16px; border-radius: var(--r-in);
+  background: var(--h-bg); color: var(--h-ink); text-decoration: none; position: relative;
+  transition: transform .15s var(--ease), filter .15s; touch-action: manipulation;
 }
-.cartera:hover { background: var(--surface-2); }
-.cartera:active { background: var(--line-2); }
-.cartera .icono { width: 40px; height: 40px; border-radius: 11px; display: grid; place-items: center; background: var(--surface-2); color: var(--ink-2); }
-.cartera .nombre { font-weight: 600; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
-.cartera .que { color: var(--ink-2); font-size: 14.5px; margin-top: 2px; }
-.cartera .cifra { text-align: right; }
-.cartera .cifra .v { font-size: 16px; font-weight: 500; }
-.cartera .cifra .c { font-size: 13.5px; }
-.cartera > svg.ico { color: var(--ink-3); }
-@media (max-width: 520px) {
-  .cartera { grid-template-columns: 36px minmax(0, 1fr) 16px; padding: 16px; gap: 12px; }
-  .cartera .icono { width: 36px; height: 36px; }
-  .cartera .cifra { grid-column: 2; text-align: left; display: flex; gap: 10px; align-items: baseline; }
-  .cartera > svg.ico { grid-row: 1; grid-column: 3; }
+.cartera:hover { filter: brightness(.97) saturate(1.05); }
+.cartera:active { transform: scale(.985); }
+.cartera .fila1 { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; font-weight: 600; font-size: 15px; padding-right: 26px; }
+.cartera .valor { font-size: 24px; font-weight: 600; letter-spacing: -.015em; line-height: 1.2; margin-top: 6px; color: var(--h-ink); }
+.cartera .valor .dec { color: inherit; opacity: .72; }
+.cartera .cambio { font-size: 14px; font-weight: 500; }
+.cartera .cambio.cero { color: var(--h-ink); opacity: .8; }
+.cartera .que { font-size: 13.5px; color: var(--h-ink); opacity: .86; margin-top: 4px; }
+.cartera > svg.ico { position: absolute; top: 16px; right: 14px; }
+@media (max-width: 760px) {
+  .cartera { grid-template-columns: minmax(0, 1fr) auto; column-gap: 12px; padding: 14px 16px; }
+  .cartera .fila1, .cartera .que { grid-column: 1 / -1; }
+  .cartera .valor { margin-top: 2px; font-size: 22px; }
+  .cartera .cambio { align-self: end; justify-self: end; padding-bottom: 3px; }
 }
 
-/* calendario */
-.agenda { list-style: none; margin: 0; padding: 0; }
-.agenda li { display: grid; grid-template-columns: 116px minmax(0, 1fr); gap: 14px; padding: 13px 0; border-top: 1px solid var(--line-2); }
-.agenda li:first-child { border-top: 0; padding-top: 0; }
-.agenda .cuando { font-size: 14px; color: var(--ink); font-weight: 500; }
-.agenda .cuando span { display: block; color: var(--ink-3); font-weight: 400; font-size: 13px; }
-.agenda .que { font-size: 15px; color: var(--ink-2); }
-.agenda .que strong { color: var(--ink); font-weight: 600; }
+/* etiquetas: cada una dice una cosa distinta, con su propio color e icono */
+.pill { display: inline-flex; align-items: center; gap: 5px; flex: none; white-space: nowrap; font-size: 12px; font-weight: 600; line-height: 1; padding: 5px 9px; border-radius: 999px; }
+.pill svg.ico { width: 13px; height: 13px; stroke-width: 2; }
+.pill.practica { background: var(--surface); color: var(--etf-ink); box-shadow: inset 0 0 0 1px currentColor; }
+.pill.ficticio { background: var(--surface); color: var(--text); box-shadow: inset 0 0 0 1px var(--control); }
+.pill.real { background: var(--pill-neg-bg); color: var(--pill-neg-ink); }
+.pill.neutro { background: var(--pill-neutral-bg); color: var(--pill-neutral-ink); }
+.pill.ok { background: #dcfae5; color: #04250e; }
+:root[data-theme="dark"] .pill.ok { background: #16281d; color: #7fdba2; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .pill.ok { background: #16281d; color: #7fdba2; } }
+.cartera .pill.practica, .cartera .pill.ficticio { background: var(--surface); }
 
+/* ---------- listas, agenda, estado ---------- */
 .lista { list-style: none; margin: 0; padding: 0; }
-.lista li { padding: 12px 0; border-top: 1px solid var(--line-2); display: grid; gap: 3px; }
+.lista li { padding: 12px 0; border-top: 1px solid var(--rule); display: grid; gap: 3px; }
 .lista li:first-child { border-top: 0; padding-top: 0; }
-.lista .meta { color: var(--ink-3); font-size: 13px; }
-.lista a { overflow-wrap: anywhere; }
+.lista li:last-child { padding-bottom: 0; }
+.meta { color: var(--muted); font-size: 13px; }
+.agenda li { grid-template-columns: 96px minmax(0, 1fr); gap: 12px; }
+.agenda .cuando { font-size: 14px; font-weight: 600; }
+.agenda .cuando span { display: block; color: var(--muted); font-weight: 400; font-size: 13px; }
+.agenda .que { font-size: 14.5px; color: var(--muted); }
+.agenda .que strong { color: var(--text); font-weight: 600; }
 .salud { display: grid; gap: 12px; }
-.salud p { display: flex; gap: 10px; align-items: flex-start; font-size: 15px; }
-.salud svg.ico { margin-top: 2px; }
-.salud .bien { color: var(--up); } .salud .mal { color: var(--down); } .salud .neutro { color: var(--ink-3); }
+.salud p { display: flex; gap: 10px; align-items: flex-start; font-size: 14.5px; }
+.salud svg.ico { margin-top: 1px; }
+.salud .bien svg { color: var(--positive); } .salud .mal { color: var(--negative); } .salud .neutro svg { color: var(--muted); }
+
+/* ---------- cifras de detalle ---------- */
+.datos { margin: 0; display: grid; grid-template-columns: 1fr auto; column-gap: 16px; }
+.datos dt, .datos dd { padding: 10px 0; border-top: 1px solid var(--rule); margin: 0; }
+.datos dt:first-of-type, .datos dt:first-of-type + dd { border-top: 0; padding-top: 0; }
+.datos dt { color: var(--muted); font-size: 14.5px; }
+.datos dd { text-align: right; font-size: 15px; font-weight: 500; white-space: nowrap; }
+.resumen-cartera { display: grid; gap: 22px; grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 1000px) { .resumen-cartera { grid-template-columns: minmax(0, 1fr) 320px; align-items: start; gap: 40px; } }
+.frase { font-size: 15.5px; color: var(--muted); max-width: 62ch; margin-top: 8px; }
+.frase strong { color: var(--text); font-weight: 600; }
 
 /* señal de la estrategia */
-.senal { display: grid; gap: 0; }
-.senal .fila { display: grid; grid-template-columns: 76px minmax(0, 1fr) auto; gap: 12px; align-items: center; padding: 12px 0; border-top: 1px solid var(--line-2); }
+.senal .fila { display: grid; grid-template-columns: 64px minmax(0, 1fr) auto; gap: 12px; align-items: center; padding: 12px 0; border-top: 1px solid var(--rule); }
 .senal .fila:first-child { border-top: 0; padding-top: 0; }
-.senal .regla { font-size: 14.5px; color: var(--ink-2); }
-.senal .fila > span:nth-child(2) { display: grid; }
-.medidor { display: block; height: 8px; border-radius: 99px; background: var(--surface-2); position: relative; margin-top: 6px; }
-.medidor span { position: absolute; top: 0; bottom: 0; left: 50%; border-radius: 99px; }
-.medidor i { position: absolute; left: 50%; top: -3px; bottom: -3px; width: 2px; background: var(--ink-3); }
+.senal .regla { display: grid; gap: 6px; font-size: 14px; color: var(--muted); }
+.medidor { display: block; height: 8px; border-radius: 99px; background: var(--raised); box-shadow: inset 0 0 0 1px var(--rule); position: relative; }
+.medidor span { position: absolute; top: 0; bottom: 0; border-radius: 99px; }
+.medidor i { position: absolute; left: 50%; top: -3px; bottom: -3px; width: 2px; background: var(--faint); border-radius: 2px; }
+.ticker { font-weight: 600; }
 
-.peso { display: grid; grid-template-columns: 76px minmax(0, 1fr) 64px; gap: 12px; align-items: center; padding: 8px 0; font-size: 14.5px; }
-.peso .barra { height: 8px; border-radius: 99px; background: var(--surface-2); position: relative; overflow: hidden; }
-.peso .barra span { position: absolute; inset: 0 auto 0 0; background: var(--accent); border-radius: 99px; }
-.peso .barra em { position: absolute; top: 0; bottom: 0; width: 2px; background: var(--ink); }
-
-/* gráfico */
+/* gráfico (el color de la línea es el de la cartera) */
 .grafico { position: relative; }
 .grafico svg.g { display: block; width: 100%; height: auto; overflow: visible; }
-.grafico .eje { stroke: var(--line-2); stroke-width: 1; }
-.grafico .etiq { fill: var(--ink-3); font: 11px var(--mono); }
-.grafico .linea { fill: none; stroke: var(--accent); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+.grafico .eje { stroke: var(--grid); stroke-width: 1; }
+.grafico .etiq { fill: var(--muted); font: 500 11.5px var(--font); }
+.grafico .linea { fill: none; stroke: var(--h-line, var(--accent)); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
 .grafico .linea.ref { stroke: var(--ref); stroke-width: 1.5; stroke-dasharray: 4 4; }
-.grafico .area { fill: var(--accent); opacity: .08; }
-.grafico .guia { stroke: var(--ink-3); stroke-width: 1; }
-.grafico .punto { fill: var(--surface); stroke: var(--accent); stroke-width: 2; }
-@media (prefers-reduced-motion: no-preference) {
-  .grafico .linea.dibujar { stroke-dasharray: var(--l); stroke-dashoffset: var(--l); animation: trazo 1.2s var(--ease) forwards; }
-  @keyframes trazo { to { stroke-dashoffset: 0; } }
-}
-.bocadillo { position: absolute; pointer-events: none; background: var(--ink); color: var(--bg); font-size: 12.5px; padding: 6px 9px; border-radius: 8px; white-space: nowrap; transform: translate(-50%, -115%); opacity: 0; transition: opacity .12s; }
+.grafico .area { fill: var(--h-line, var(--accent)); opacity: .08; }
+.grafico .guia { stroke: var(--faint); stroke-width: 1; }
+.grafico .punto { fill: var(--surface); stroke: var(--h-line, var(--accent)); stroke-width: 2; }
+.bocadillo { position: absolute; pointer-events: none; background: var(--inverse-bg); color: var(--inverse-ink); font-size: 12.5px; font-weight: 500; padding: 6px 9px; border-radius: 8px; white-space: nowrap; transform: translate(-50%, -118%); opacity: 0; transition: opacity .12s; box-shadow: 0 4px 12px rgba(0,0,0,.12); }
 .bocadillo.on { opacity: 1; }
-.leyenda { display: flex; gap: 18px; flex-wrap: wrap; font-size: 13.5px; color: var(--ink-2); margin-top: 12px; }
-.leyenda i { display: inline-block; width: 18px; border-top: 2px solid var(--accent); vertical-align: middle; margin-right: 7px; }
+.leyenda { display: flex; gap: 18px; flex-wrap: wrap; font-size: 13.5px; color: var(--muted); margin-bottom: 10px; }
+.leyenda i { display: inline-block; width: 18px; border-top: 2px solid var(--h-line, var(--accent)); vertical-align: middle; margin-right: 7px; }
 .leyenda i.ref { border-top: 2px dashed var(--ref); }
 
 /* tablas */
-.tabla { overflow-x: auto; margin: 0 -4px; }
+.tabla { overflow-x: auto; margin: 0 -4px; overscroll-behavior-x: contain; }
 table { width: 100%; border-collapse: collapse; font-size: 14px; }
-th { text-align: left; font-weight: 500; color: var(--ink-3); font-size: 13px; padding: 9px 6px; border-bottom: 1px solid var(--line); white-space: nowrap; }
-td { padding: 11px 6px; border-bottom: 1px solid var(--line-2); vertical-align: top; }
+th { text-align: left; font-weight: 500; color: var(--muted); font-size: 13px; padding: 8px 6px; border-bottom: 1px solid var(--border); white-space: nowrap; }
+td { padding: 11px 6px; border-bottom: 1px solid var(--rule); vertical-align: top; }
 tr:last-child td { border-bottom: 0; }
 td:first-child { white-space: nowrap; }
-.der { text-align: right; }
-td.motivo { color: var(--ink-2); font-size: 13.5px; min-width: 220px; max-width: 380px; }
-.compra { color: var(--up); font-weight: 500; } .venta { color: var(--down); font-weight: 500; }
-.sube { color: var(--up); } .baja { color: var(--down); }
+.der { text-align: right; white-space: nowrap; }
+td.motivo { color: var(--muted); font-size: 13.5px; min-width: 220px; max-width: 380px; }
+.compra { color: var(--positive); font-weight: 600; } .venta { color: var(--text); font-weight: 600; }
 
-.vacio { color: var(--ink-3); font-size: 15px; display: flex; gap: 10px; align-items: flex-start; }
-.vacio svg.ico { margin-top: 2px; }
-.nota { font-size: 13.5px; color: var(--ink-3); margin-top: 12px; max-width: 72ch; }
-.aviso { background: var(--sim-soft); color: var(--sim); border-radius: var(--r-md); padding: 12px 14px; font-size: 14.5px; display: flex; gap: 10px; }
-.error { background: var(--down-soft); color: var(--down); border-radius: var(--r-md); padding: 12px 14px; font-size: 14.5px; display: flex; gap: 10px; }
-.cifras-lab { display: flex; flex-wrap: wrap; gap: 6px 20px; font-size: 14.5px; color: var(--ink-2); margin-bottom: 16px; }
-.cifras-lab strong { color: var(--ink); font-weight: 600; }
-.progreso { height: 6px; border-radius: 99px; background: var(--surface-2); overflow: hidden; margin: 8px 0 4px; }
-.progreso span { display: block; height: 100%; background: var(--accent); border-radius: 99px; }
-.inc { padding: 14px 0; border-top: 1px solid var(--line-2); display: grid; gap: 4px; }
+.vacio { color: var(--muted); font-size: 14.5px; display: flex; gap: 10px; align-items: flex-start; border: 1px dashed var(--control); border-radius: var(--r-sm); padding: 12px 14px; }
+.vacio svg.ico { margin-top: 1px; }
+.nota { font-size: 13.5px; color: var(--muted); margin-top: 12px; max-width: 72ch; }
+.aviso { background: #fffbeb; color: #92400e; border: 1px solid #fde68a; border-radius: var(--r-sm); padding: 11px 14px; font-size: 14.5px; display: flex; gap: 10px; }
+.error { background: var(--pill-neg-bg); color: var(--pill-neg-ink); border-radius: var(--r-sm); padding: 11px 14px; font-size: 14.5px; display: flex; gap: 10px; align-items: flex-start; }
+.cifras-lab { display: flex; flex-wrap: wrap; gap: 6px 22px; font-size: 14.5px; color: var(--muted); margin-bottom: 16px; }
+.cifras-lab strong { color: var(--text); font-weight: 600; }
+.progreso { height: 6px; border-radius: 99px; background: var(--raised); box-shadow: inset 0 0 0 1px var(--rule); overflow: hidden; margin: 8px 0 4px; }
+.progreso span { display: block; height: 100%; background: var(--h-line, var(--accent)); border-radius: 99px; }
+.inc { padding: 14px 0; border-top: 1px solid var(--rule); display: grid; gap: 4px; }
 .inc:first-of-type { border-top: 0; padding-top: 0; }
-.inc .fila { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-size: 14px; color: var(--ink-2); }
+.inc .fila { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-size: 14px; color: var(--muted); }
 
-details.plegable { border-top: 1px solid var(--line-2); }
+details.plegable { border-top: 1px solid var(--rule); }
 details.plegable > summary { cursor: pointer; padding: 12px 0; font-weight: 500; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 10px; min-height: 44px; }
 details.plegable > summary::-webkit-details-marker { display: none; }
-details.plegable > summary svg.ico { color: var(--ink-3); transition: transform .25s var(--ease); }
+details.plegable > summary svg.ico { color: var(--muted); transition: transform .2s var(--ease); }
 details.plegable[open] > summary svg.ico { transform: rotate(180deg); }
 details.plegable > div { padding-bottom: 12px; }
 
-.glosario { margin: 0; display: grid; gap: 0; }
-.glosario div { padding: 14px 0; border-top: 1px solid var(--line-2); display: grid; gap: 4px; }
+.glosario { margin: 0; }
+.glosario div { padding: 14px 0; border-top: 1px solid var(--rule); display: grid; gap: 4px; }
 .glosario div:first-child { border-top: 0; padding-top: 0; }
 .glosario dt { font-weight: 600; }
-.glosario dd { margin: 0; color: var(--ink-2); max-width: 70ch; }
+.glosario dd { margin: 0; color: var(--muted); max-width: 70ch; }
 
-/* esqueleto y error de carga */
-.esq { background: linear-gradient(90deg, var(--line-2) 0%, var(--line) 50%, var(--line-2) 100%); background-size: 200% 100%; border-radius: 10px; }
-@media (prefers-reduced-motion: no-preference) { .esq { animation: brillo 1.4s ease-in-out infinite; } @keyframes brillo { to { background-position: -200% 0; } } }
-#carga .esq { margin-bottom: 14px; }
-#fallo[hidden], #carga[hidden], #app[hidden] { display: none; }
-footer { max-width: 1160px; margin: 0 auto; padding: 0 16px 36px; color: var(--ink-3); font-size: 13.5px; }
+/* carga: la misma composición con barras grises planas */
+.esq { background: var(--border); border-radius: 8px; }
+@media (prefers-reduced-motion: no-preference) { .esq { animation: latir 1.4s ease-in-out infinite alternate; } @keyframes latir { from { opacity: .55; } to { opacity: 1; } } }
+footer { max-width: 1200px; margin: 0 auto; padding: 0 24px 36px; color: var(--muted); font-size: 13.5px; }
+@media (max-width: 860px) { footer { padding: 0 16px 24px; } }
 </style>
 </head>
 <body>
@@ -278,48 +307,47 @@ footer { max-width: 1160px; margin: 0 auto; padding: 0 16px 36px; color: var(--i
   <symbol id="i-alerta" viewBox="0 0 24 24"><path d="M12 4 3.5 19h17z"/><path d="M12 10v4M12 16.8v.2"/></symbol>
   <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 11v5M12 8v.2"/></symbol>
   <symbol id="i-escudo" viewBox="0 0 24 24"><path d="M12 3.5 5 6v5.5c0 4.2 3 7.4 7 9 4-1.6 7-4.8 7-9V6z"/><path d="m9 12 2 2 4-4"/></symbol>
-  <symbol id="i-reloj" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></symbol>
   <symbol id="i-matraz" viewBox="0 0 24 24"><path d="M10 3.5h4M10.5 3.5v5L5.5 18a1.6 1.6 0 0 0 1.4 2.4h10.2a1.6 1.6 0 0 0 1.4-2.4l-5-9.5v-5"/><path d="M7.8 14.5h8.4"/></symbol>
-  <symbol id="i-hucha" viewBox="0 0 24 24"><path d="M5 11.5a6 6 0 0 1 6-5h3a6 6 0 0 1 5.5 3.5H21v4h-1.6a6 6 0 0 1-2.4 2.6V19h-3v-1.5h-3V19H8v-2.4a6 6 0 0 1-3-5.1z"/><path d="M15.5 10.5v.2"/></symbol>
+  <symbol id="i-escudo-sim" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M8 12h8"/></symbol>
 </svg>
 
-<header class="cabecera">
-  <div class="cab-in">
-    <div class="marca"><span class="logo"><svg class="ico" viewBox="0 0 24 24"><path d="M5 16l5-5 3 3 6-7"/></svg></span>Panel del bot</div>
-    <span class="frescura" id="frescura" aria-live="polite"></span>
-    <button class="boton" id="recargar" type="button"><svg class="ico" aria-hidden="true"><use href="#i-actualizar"/></svg><span class="txt">Actualizar</span><span class="sr">datos</span></button>
+<header class="barra">
+  <div class="barra-in">
+    <a class="marca" href="#resumen"><span class="logo"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 16l5-5 3 3 6-7"/></svg></span>Panel del bot</a>
+    <nav class="nav" aria-label="Secciones">
+      <a href="#resumen" data-v="resumen"><svg class="ico" aria-hidden="true"><use href="#i-inicio"/></svg>Resumen</a>
+      <a href="#etf" data-v="etf"><svg class="ico" aria-hidden="true"><use href="#i-etf"/></svg>ETF</a>
+      <a href="#acciones" data-v="acciones"><svg class="ico" aria-hidden="true"><use href="#i-acciones"/></svg>Acciones</a>
+      <a href="#cripto" data-v="cripto"><svg class="ico" aria-hidden="true"><use href="#i-cripto"/></svg>Cripto</a>
+      <a href="#mas" data-v="mas"><svg class="ico" aria-hidden="true"><use href="#i-mas"/></svg>Más</a>
+    </nav>
+    <div class="fresco">
+      <span class="estampa" id="frescura" aria-live="polite"></span>
+      <button class="boton" id="recargar" type="button" aria-label="Actualizar los datos"><svg class="ico" aria-hidden="true"><use href="#i-actualizar"/></svg><span class="txt">Actualizar</span></button>
+    </div>
   </div>
 </header>
 
-<nav class="nav" aria-label="Secciones">
-  <div class="nav-in">
-    <a href="#resumen" data-v="resumen"><svg class="ico" aria-hidden="true"><use href="#i-inicio"/></svg>Resumen</a>
-    <a href="#etf" data-v="etf"><svg class="ico" aria-hidden="true"><use href="#i-etf"/></svg>ETF</a>
-    <a href="#acciones" data-v="acciones"><svg class="ico" aria-hidden="true"><use href="#i-acciones"/></svg>Acciones</a>
-    <a href="#cripto" data-v="cripto"><svg class="ico" aria-hidden="true"><use href="#i-cripto"/></svg>Cripto</a>
-    <a href="#mas" data-v="mas"><svg class="ico" aria-hidden="true"><use href="#i-mas"/></svg>Más</a>
-  </div>
-</nav>
-
 <main id="contenido" tabindex="-1">
   <div id="carga" aria-busy="true">
-    <span class="sr" role="status">Cargando los datos del bot</span>
-    <div class="esq" style="height:44px;width:min(560px,92%)"></div>
-    <div class="esq" style="height:20px;width:min(420px,75%)"></div>
-    <div class="esq" style="height:260px;width:100%;margin-top:30px;border-radius:18px"></div>
+    <span class="sr" role="status">Cargando los datos del bot…</span>
+    <div class="esq" style="height:30px;width:min(420px,80%);border-radius:999px;margin-bottom:18px"></div>
+    <div class="esq" style="height:230px;width:100%;border-radius:20px"></div>
   </div>
 
   <div id="fallo" role="alert" hidden>
-    <h1 class="titular" style="font-size:30px">No he podido leer los datos del bot.</h1>
-    <p class="entradilla" id="fallo-texto">Puede que no haya conexión o que el bot aún no haya subido su primer informe.</p>
-    <p style="margin-top:20px"><button class="boton" type="button" id="reintentar"><svg class="ico" aria-hidden="true"><use href="#i-actualizar"/></svg>Volver a intentarlo</button></p>
+    <div class="tarjeta">
+      <h1 style="font-size:22px">No he podido leer los datos del bot</h1>
+      <p class="frase" id="fallo-texto">Puede que no haya conexión o que el bot aún no haya subido su primer informe.</p>
+      <p style="margin-top:16px"><button class="boton" type="button" id="reintentar"><svg class="ico" aria-hidden="true"><use href="#i-actualizar"/></svg>Volver a intentarlo</button></p>
+    </div>
   </div>
 
   <div id="app" hidden>
     <div class="vista" id="v-resumen" hidden></div>
-    <div class="vista" id="v-etf" hidden></div>
-    <div class="vista" id="v-acciones" hidden></div>
-    <div class="vista" id="v-cripto" hidden></div>
+    <div class="vista" id="v-etf" data-c="etf" hidden></div>
+    <div class="vista" id="v-acciones" data-c="acciones" hidden></div>
+    <div class="vista" id="v-cripto" data-c="cripto" hidden></div>
     <div class="vista" id="v-mas" hidden></div>
   </div>
 </main>
@@ -330,18 +358,26 @@ footer { max-width: 1160px; margin: 0 auto; padding: 0 16px 36px; color: var(--i
   "use strict";
   const URL_DATOS = "datos.json";
   const VISTAS = ["resumen", "etf", "acciones", "cripto", "mas"];
-  const eur = new Intl.NumberFormat("es-ES", { style: "currency", currency: "EUR" });
-  const nf = (d) => new Intl.NumberFormat("es-ES", { maximumFractionDigits: d });
-  const num = (v, d = 2) => (v == null || isNaN(v)) ? "—" : nf(d).format(v);
-  const pct = (v, signo = true) => (v == null || isNaN(v)) ? "—" : (signo && v > 0 ? "+" : "") + nf(2).format(v) + " %";
-  const euros = (v) => (v == null || isNaN(v)) ? "—" : eur.format(v);
-  const clase = (v) => v > 0 ? "sube" : v < 0 ? "baja" : "";
+  const NBSP = " ", MENOS = "−";
+
+  /* ---------------- formato español: 1.498,04 € · −0,13 % ---------------- */
+  const grupos = (ent) => ent.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  const fijo = (v, d) => { const [e, f] = Math.abs(v).toFixed(d).split("."); return grupos(e) + (d ? "," + f : ""); };
+  const vacioNum = (v) => v == null || isNaN(v);
+  const signo = (v) => v < 0 && Math.abs(v) >= 5e-3 ? MENOS : "";
+  const euros = (v) => vacioNum(v) ? "—" : signo(v) + fijo(v, 2) + NBSP + "€";
+  const eurosDelta = (v) => vacioNum(v) ? "—" : (v >= 5e-3 ? "+" : signo(v)) + fijo(v, 2) + NBSP + "€";
+  const pct = (v, conSigno = true) => vacioNum(v) ? "—" : (conSigno && v >= 5e-3 ? "+" : signo(v)) + fijo(v, 2) + NBSP + "%";
+  const num = (v, d = 2) => { if (vacioNum(v)) return "—"; let s = fijo(v, d); if (d && s.includes(",")) s = s.replace(/,?0+$/, ""); return signo(v) + s; };
+  const eurosGrande = (v) => { if (vacioNum(v)) return "—"; const [e, f] = fijo(v, 2).split(","); return `${signo(v)}${e}<span class="dec">,${f}${NBSP}€</span>`; };
+  const clase = (v) => vacioNum(v) || Math.abs(v) < 5e-3 ? "cero" : v > 0 ? "sube" : "baja";
   const esc = (t) => String(t ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const tk = (s) => `<span translate="no" class="ticker">${esc(s)}</span>`;
   const enlace = (u) => /^https?:\/\//i.test(u || "") ? esc(u) : "#";
   const $ = (id) => document.getElementById(id);
-  const ico = (n, extra = "") => `<svg class="ico" ${extra} aria-hidden="true"><use href="#i-${n}"/></svg>`;
+  const ico = (n) => `<svg class="ico" aria-hidden="true"><use href="#i-${n}"/></svg>`;
   const vacio = (t) => `<p class="vacio">${ico("info")}<span>${esc(t)}</span></p>`;
-  const aFecha = (s) => { if (!s) return null; const d = new Date(String(s).split(" ")[0].length <= 10 ? String(s) + "T12:00:00" : String(s).split(" ")[0]); return isNaN(d) ? null : d; };
+  const aFecha = (s) => { if (!s) return null; const t = String(s).split(" ")[0]; const d = new Date(t.length <= 10 ? t + "T12:00:00" : t); return isNaN(d) ? null : d; };
   const fecha = (s) => { const d = aFecha(s); return d ? d.toLocaleDateString("es-ES", { day: "numeric", month: "short", year: "numeric" }) : "—"; };
   const fechaHora = (s) => { const d = aFecha(s); return d ? d.toLocaleString("es-ES", { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" }) : "—"; };
   const hace = (s) => {
@@ -352,7 +388,6 @@ footer { max-width: 1160px; margin: 0 auto; padding: 0 16px 36px; color: var(--i
     const dias = Math.round(h / 24); return `hace ${dias} día${dias > 1 ? "s" : ""}`;
   };
   const NOMBRES_DIA = ["domingo", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado"];
-
   let datos = null;
 
   /* ---------------- carga ---------------- */
@@ -367,8 +402,8 @@ footer { max-width: 1160px; margin: 0 auto; padding: 0 16px 36px; color: var(--i
       mostrar(vistaDeHash(), false);
     } catch (e) {
       $("carga").hidden = true;
-      if ($("app").hidden) { $("fallo").hidden = false; $("fallo-texto").textContent = `Puede que no haya conexión o que el bot aún no haya subido su primer informe (${e.message}).`; }
-      else $("frescura").textContent = "No se pudo actualizar. Inténtalo de nuevo.";
+      if ($("app").hidden) { $("fallo").hidden = false; $("fallo-texto").textContent = `Puede que no haya conexión o que el bot aún no haya subido su primer informe (${e.message}). Prueba de nuevo en un momento.`; }
+      else $("frescura").textContent = "No se pudo actualizar";
     } finally { b.removeAttribute("aria-busy"); b.disabled = false; }
   }
   $("recargar").addEventListener("click", cargar);
@@ -384,16 +419,23 @@ footer { max-width: 1160px; margin: 0 auto; padding: 0 16px 36px; color: var(--i
   }
   window.addEventListener("hashchange", () => mostrar(vistaDeHash()));
 
-  /* ---------------- textos sobre el dinero ---------------- */
+  /* ---------------- el dinero, siempre dicho con claridad ---------------- */
   function dinero(d) {
-    if (d.modo === "REAL") return { real: true, etq: "Dinero real", corto: "real", frase: "con dinero real" };
-    if (d.broker === "ibkr") return { real: false, etq: "Práctica de IBKR", corto: "simulado", frase: "con dinero simulado de la cuenta de práctica de Interactive Brokers" };
-    return { real: false, etq: "Dinero simulado", corto: "simulado", frase: "con dinero simulado (el bróker de práctica del propio bot)" };
+    if (d.modo === "REAL") return { real: true, etq: "Dinero real", frase: "con dinero real" };
+    if (d.broker === "ibkr") return { real: false, etq: "Práctica · simulado", frase: "con dinero simulado de la cuenta de práctica de Interactive Brokers" };
+    return { real: false, etq: "Práctica · simulado", frase: "con dinero simulado (el bróker de práctica del propio bot)" };
+  }
+  const pillEtf = (din) => din.real ? `<span class="pill real">${ico("alerta")}Dinero real</span>` : `<span class="pill practica">${ico("escudo-sim")}Práctica · simulado</span>`;
+  const pillFict = () => `<span class="pill ficticio">${ico("matraz")}Ficticio</span>`;
+  function avisoSimulado(d, F) {
+    const din = dinero(d);
+    if (din.real) return `<p class="simulado real" role="note">${ico("alerta")}<span><strong>Dinero real en ETF.</strong> Acciones y cripto siguen siendo ficticios.</span></p>`;
+    return `<p class="simulado" role="note">${ico("escudo-sim")}<span><strong>Todo es simulado:</strong> ningún euro tuyo está invertido.</span></p>`;
   }
 
   function pintar(d) {
-    $("frescura").textContent = "Datos " + hace(d.generado);
-    $("frescura").title = "Generados el " + fechaHora(d.generado);
+    $("frescura").textContent = "Actualizado " + hace(d.generado);
+    $("frescura").title = "Datos generados el " + fechaHora(d.generado);
     resumen(d);
     vistaEtf(d);
     ["acciones", "cripto"].forEach(m => vistaFicticia(m, d));
@@ -417,86 +459,83 @@ footer { max-width: 1160px; margin: 0 auto; padding: 0 16px 36px; color: var(--i
       return [dia, c.toLocaleTimeString("es-ES", { hour: "2-digit", minute: "2-digit" }) + " · " + c.toLocaleDateString("es-ES", { day: "numeric", month: "short" })];
     };
     return [
-      [siguiente([1, 2, 3, 4, 5], 17, 15), "<strong>Ciclo de ETF.</strong> Mira los precios y, si la estrategia lo pide, compra o vende. Si la bolsa alemana está cerrada (festivo), no hace nada."],
+      [siguiente([1, 2, 3, 4, 5], 17, 15), "<strong>Ciclo de ETF.</strong> Mira los precios y, si la estrategia lo pide, compra o vende. Si la bolsa alemana está cerrada por festivo, no hace nada."],
       [siguiente([2, 3, 4, 5, 6], 7, 30), "<strong>Día de acciones y cripto.</strong> Avanza la bolsa ficticia y las estrategias en prueba con los precios de la víspera."],
       [siguiente([6], 10, 0), "<strong>Examen semanal.</strong> Inventa unas 40 ideas por mercado y las pone a prueba con datos del pasado."],
     ].filter(([c]) => c).sort((a, b) => a[0] - b[0]).map(([c, t]) => [fmt(c), t]);
   }
 
-  function resumen(d) {
-    const r = d.resumen || {}, din = dinero(d), F = d.ficticio || {}, M = F.mercados || {};
-    const dec = (d.decisiones || [])[0];
-    const objetivo = Object.entries(dec?.objetivo || {});
-    const queEtf = (d.protecciones || []).length ? "Tiene una protección activa: solo puede vender."
-      : Object.keys(d.posiciones || {}).length ? "Invertido y vigilando la tendencia."
-      : objetivo.length && !objetivo.some(([s]) => s === "liquidez") ? `La estrategia quiere comprar ${objetivo.map(([s]) => s).join(" y ")} en el próximo ciclo.` : "En liquidez, esperando señal.";
-    const filaFict = (m, nombre, icono) => {
-      const x = M[m]; if (!x) return "";
+  function carteras(d) {
+    const r = d.resumen || {}, M = (d.ficticio || {}).mercados || {};
+    const lista = [{ id: "etf", nombre: "ETF", valor: r.valor, inicial: r.inicial, cambio: r.rentabilidad_pct, que: queEtf(d) }];
+    [["acciones", "Acciones"], ["cripto", "Cripto"]].forEach(([m, nombre]) => {
+      const x = M[m]; if (!x) return;
       const b = x.bolsa || {}, empezo = (b.curva || []).length > 0;
-      return `<li><a class="cartera" href="#${m}">
-        <span class="icono">${ico(icono)}</span>
-        <span><span class="nombre">${nombre} <span class="etq sim">Ficticio</span></span>
-          <span class="que">${empezo ? `Sigue a: ${esc(x.lider?.nombre || "Comprar y no tocar")}` : "Empieza en el próximo día de mercado."}</span></span>
-        <span class="cifra"><span class="v num">${euros(b.valor ?? x.capital)}</span> <span class="c num ${clase(b.rendimiento_pct)}">${pct(b.rendimiento_pct)}</span></span>
-        ${ico("flecha")}</a></li>`;
-    };
+      lista.push({ id: m, nombre, valor: b.valor ?? x.capital, inicial: x.capital, cambio: empezo ? b.rendimiento_pct : 0,
+        que: empezo ? `Sigue a: ${x.lider?.nombre || "Comprar y no tocar"}` : "Empieza el próximo día de mercado." });
+    });
+    return lista;
+  }
+  function queEtf(d) {
+    const dec = (d.decisiones || [])[0], objetivo = Object.keys(dec?.objetivo || {});
+    if ((d.protecciones || []).length) return "Protección activa: solo puede vender.";
+    if (Object.keys(d.posiciones || {}).length) return "Invertido y vigilando la tendencia.";
+    if (objetivo.length && !objetivo.includes("liquidez")) return `Quiere comprar ${objetivo.join(" y ")} en el próximo ciclo.`;
+    return "En liquidez, esperando señal.";
+  }
+
+  function resumen(d) {
+    const din = dinero(d), F = d.ficticio || {};
+    const cs = carteras(d);
+    const total = cs.reduce((s, c) => s + (Number(c.valor) || 0), 0);
+    const inicial = cs.reduce((s, c) => s + (Number(c.inicial) || 0), 0);
+    const delta = Math.round((total - inicial) * 100) / 100, deltaPct = inicial ? delta / inicial * 100 : 0;
+    const tarjetaCartera = (c) => `<li><a class="cartera" data-c="${c.id}" href="#${c.id}">
+        <span class="fila1">${esc(c.nombre)} ${c.id === "etf" ? pillEtf(din) : pillFict()}</span>
+        <span class="valor">${eurosGrande(c.valor)}</span>
+        <span class="cambio ${clase(c.cambio)}">${pct(c.cambio)}</span>
+        <span class="que">${esc(c.que)}</span>
+        ${ico("flecha")}<span class="sr">Ver ${esc(c.nombre)}</span></a></li>`;
+
     const salud = [];
     const ciclo = d.ultimo_ciclo || "";
     salud.push(ciclo ? (ciclo.includes("error") ? `<p class="mal">${ico("alerta")}<span>El último ciclo (${esc(fechaHora(ciclo))}) terminó con un error. Mira los avisos.</span></p>`
       : `<p class="bien">${ico("bien")}<span>Último ciclo: ${esc(fechaHora(ciclo))}, sin errores.</span></p>`) : `<p class="neutro">${ico("info")}<span>Todavía no ha hecho ningún ciclo.</span></p>`);
     const ig = d.integridad || {};
-    salud.push(ig.ok ? `<p class="bien">${ico("escudo")}<span>Registro de operaciones intacto: nadie ha tocado operaciones antiguas.</span></p>`
-      : `<p class="mal">${ico("alerta")}<span>${esc(ig.mensaje || "Revisa el registro de operaciones.")}</span></p>`);
+    salud.push(ig.ok ? `<p class="bien">${ico("escudo")}<span>Registro de operaciones intacto.</span></p>` : `<p class="mal">${ico("alerta")}<span>${esc(ig.mensaje || "Revisa el registro de operaciones.")}</span></p>`);
     const prot = d.protecciones || [];
-    salud.push(prot.length ? `<p class="mal">${ico("alerta")}<span>${prot.length} protección${prot.length > 1 ? "es activas" : " activa"}: el bot solo puede vender o quedarse en liquidez.</span></p>`
-      : `<p class="bien">${ico("bien")}<span>Ninguna protección activa.</span></p>`);
+    salud.push(prot.length ? `<p class="mal">${ico("alerta")}<span>${prot.length} protección${prot.length > 1 ? "es activas" : " activa"}: solo puede vender o quedarse en liquidez.</span></p>` : `<p class="bien">${ico("bien")}<span>Ninguna protección activa.</span></p>`);
     const avisos = [...(d.eventos || []), ...((d.laboratorio || {}).eventos || [])].filter(e => e && e.mensaje)
-      .sort((a, b) => String(b.fecha).localeCompare(String(a.fecha))).slice(0, 6);
+      .sort((a, b) => String(b.fecha).localeCompare(String(a.fecha))).slice(0, 5);
 
     $("v-resumen").innerHTML = `
-      <div class="apertura">
-        <div>
-          <h1 class="titular">${din.real ? "El bot opera con dinero real en ETF." : "Ningún euro tuyo está invertido."}</h1>
-          <p class="entradilla">${din.real
-            ? "La cartera de ETF usa dinero real dentro de los límites que fijaste. Acciones y cripto siguen siendo solo una prueba con dinero ficticio."
-            : `Todo lo que ves aquí es una simulación. El bot practica con ${euros(r.inicial)} de mentira en ETF y prueba ideas con ${euros(F.bolsa_ficticia)} ficticios en acciones y cripto. Solo podría usar dinero real si tú lo activas a mano.`}</p>
-          <div class="etiquetas"><span class="etq ${din.real ? "mal" : "sim"}">${ico("hucha")}${esc(din.etq)} en ETF</span><span class="etq sim">${ico("matraz")}Acciones y cripto: ficticio</span></div>
+      <div class="cabeza"><h1>Resumen</h1>${avisoSimulado(d, F)}</div>
+      <div class="rejilla principal">
+        <div class="columna">
+          <section class="tarjeta" aria-labelledby="t-total">
+            <h2 id="t-total" class="etiqueta" style="font-weight:500;font-size:14px;margin:0">Total de las 3 carteras${din.real ? "" : " · todo simulado"}</h2>
+            <p class="total">${eurosGrande(total)}</p>
+            <p class="variacion"><strong class="${clase(delta)}">${eurosDelta(delta)} (${pct(deltaPct)})</strong> desde que empezaron con ${euros(inicial)}</p>
+            <ul class="carteras">${cs.map(tarjetaCartera).join("")}</ul>
+            ${din.real ? "" : `<p class="nota">El bot practica con ${euros(d.resumen?.inicial)} de mentira en ETF y prueba ideas con ${euros(F.bolsa_ficticia)} ficticios en acciones y cripto. Solo podría usar dinero real si tú lo activas a mano.</p>`}
+          </section>
+          <section class="tarjeta" aria-labelledby="t-avisos">
+            <h2 id="t-avisos">Últimos avisos</h2>
+            ${avisos.length ? `<ul class="lista">${avisos.map(e => `<li><span>${esc(String(e.mensaje).split("\n")[0])}</span><span class="meta">${esc(fechaHora(e.fecha))}</span></li>`).join("")}</ul>` : vacio("Sin avisos por ahora.")}
+          </section>
         </div>
-      </div>
-
-      <section class="bloque" aria-labelledby="t-carteras">
-        <h2 id="t-carteras">Tus carteras de prueba</h2>
-        <p class="explica">Toca una para ver qué tiene, qué ha hecho y por qué.</p>
-        <ul class="carteras superficie">
-          <li><a class="cartera" href="#etf">
-            <span class="icono">${ico("etf")}</span>
-            <span><span class="nombre">ETF <span class="etq ${din.real ? "mal" : "sim"}">${esc(din.real ? "Real" : "Práctica")}</span></span><span class="que">${esc(queEtf)}</span></span>
-            <span class="cifra"><span class="v num">${euros(r.valor)}</span> <span class="c num ${clase(r.rentabilidad_pct)}">${pct(r.rentabilidad_pct)}</span></span>
-            ${ico("flecha")}</a></li>
-          ${filaFict("acciones", "Acciones", "acciones")}
-          ${filaFict("cripto", "Cripto", "cripto")}
-        </ul>
-      </section>
-
-      <div class="dos mitad" style="margin-top:36px">
-        <section class="superficie relleno" aria-labelledby="t-agenda">
-          <h3 id="t-agenda">Lo próximo que hará el bot</h3>
-          <ul class="agenda">${proximos().map(([[dia, hora], t]) => `<li><span class="cuando">${dia}<span>${esc(hora)}</span></span><span class="que">${t}</span></li>`).join("")}</ul>
-          <p class="nota">Horas de España. Las lanza solo el portátil si está encendido y con la sesión iniciada.</p>
-        </section>
-        <section class="superficie relleno" aria-labelledby="t-salud">
-          <h3 id="t-salud">Cómo está el bot</h3>
-          <div class="salud">${salud.join("")}</div>
-        </section>
-      </div>
-
-      <section class="bloque" aria-labelledby="t-avisos">
-        <h2 id="t-avisos">Últimos avisos</h2>
-        <div class="superficie relleno" style="margin-top:14px">
-          ${avisos.length ? `<ul class="lista">${avisos.map(e => `<li><span>${esc(String(e.mensaje).split("\n")[0])}</span><span class="meta">${esc(fechaHora(e.fecha))}</span></li>`).join("")}</ul>`
-            : vacio("Sin avisos por ahora.")}
+        <div class="columna">
+          <section class="tarjeta" aria-labelledby="t-agenda">
+            <h2 id="t-agenda">Lo próximo que hará el bot</h2>
+            <ul class="lista agenda">${proximos().map(([[dia, hora], t]) => `<li><span class="cuando">${dia}<span>${esc(hora)}</span></span><span class="que">${t}</span></li>`).join("")}</ul>
+            <p class="nota">Horas de España. Lo lanza el portátil si está encendido y con la sesión iniciada.</p>
+          </section>
+          <section class="tarjeta" aria-labelledby="t-salud">
+            <h2 id="t-salud">Cómo está el bot</h2>
+            <div class="salud">${salud.join("")}</div>
+          </section>
         </div>
-      </section>`;
+      </div>`;
   }
 
   /* ---------------- ETF ---------------- */
@@ -509,42 +548,42 @@ footer { max-width: 1160px; margin: 0 auto; padding: 0 16px 36px; color: var(--i
       ? `Siempre tiene el ${num(fija, 0)} % invertido en un ETF mundial. El otro ${num(100 - fija, 0)} % solo entra cuando el precio está por encima de su media de ${num(media, 0)} días (señal de que el mercado sube) y sale a liquidez cuando cae por debajo.`
       : `Invierte en un ETF mundial cuando su precio está por encima de su media de ${num(media, 0)} días (señal de que el mercado sube) y pasa a liquidez cuando cae por debajo.`;
     const objetivo = Object.entries(dec?.objetivo || {});
-    const pide = objetivo.length ? objetivo.map(([s, w]) => `${num(w, 0)} % en ${esc(s)}`).join(" y ") : "todo en liquidez";
+    const pide = objetivo.length ? objetivo.map(([s, w]) => `${num(w, 0)}${NBSP}% en ${tk(s)}`).join(" y ") : "todo en liquidez";
     const compraria = (dec?.rebalanceo || []).filter(t => t.mover);
     const senales = (dec?.activos || []).filter(a => a.rol === "riesgo" && a.distancia_media_pct != null).map(a => {
       const v = a.distancia_media_pct, ancho = Math.min(50, Math.abs(v) * 2.5);
-      return `<div class="fila"><span class="num">${esc(a.simbolo)}</span>
-        <span><span class="regla">${v >= 0 ? "Por encima" : "Por debajo"} de su media de ${num(media, 0)} días</span>
-          <span class="medidor" role="img" aria-label="${esc(a.simbolo)}: ${pct(v)} respecto a la media"><span style="${v >= 0 ? `left:50%;width:${ancho}%;background:var(--up)` : `left:${50 - ancho}%;width:${ancho}%;background:var(--down)`}"></span><i></i></span></span>
-        <span class="num ${clase(v)}">${pct(v)}</span></div>`;
+      return `<div class="fila"><span>${tk(a.simbolo)}</span>
+        <span class="regla">${v >= 0 ? "Por encima" : "Por debajo"} de su media de ${num(media, 0)} días
+          <span class="medidor" role="img" aria-label="${esc(a.simbolo)}: ${pct(v)} respecto a la media"><span style="${v >= 0 ? `left:50%;width:${ancho}%;background:var(--positive)` : `left:${50 - ancho}%;width:${ancho}%;background:var(--negative)`}"></span><i></i></span></span>
+        <span class="${clase(v)}" style="font-weight:600">${pct(v)}</span></div>`;
     }).join("");
-    const lab = d.laboratorio || {};
 
     $("v-etf").innerHTML = `
-      <div class="apertura con-lado">
+      <div class="cabeza"><h1>ETF</h1>${pillEtf(din)}</div>
+      <section class="tarjeta resumen-cartera" aria-label="Valor de la cartera de ETF">
         <div>
-          <h1 class="titular">La cartera de práctica tiene <span class="num">${euros(r.valor)}</span> ${din.real ? "" : "simulados"}</h1>
-          <p class="entradilla">Empezó con ${euros(r.inicial)} ${esc(din.frase)}. ${pos.length ? "Ahora tiene " + pos.map(([s, q]) => `${num(q, 4)} participación${q === 1 ? "" : "es"} de ${esc(s)}`).join(" y ") + "." : "Ahora mismo no tiene nada comprado: todo está en liquidez."} ${din.real ? "" : "Tú no has puesto dinero."}</p>
-          <div class="etiquetas"><span class="etq ${din.real ? "mal" : "sim"}">${ico("hucha")}${esc(din.etq)}</span><span class="etq">${d.broker === "ibkr" ? "Interactive Brokers" : "Bróker de práctica"}</span></div>
+          <p class="etiqueta">Cartera de práctica${din.real ? "" : " · dinero simulado"}</p>
+          <p class="total">${eurosGrande(r.valor)}</p>
+          <p class="variacion"><strong class="${clase(r.rentabilidad_pct)}">${pct(r.rentabilidad_pct)}</strong> desde que empezó con ${euros(r.inicial)}</p>
+          <p class="frase">La cartera de práctica tiene <strong>${euros(r.valor)}${din.real ? "" : " simulados"}</strong>. Empezó con ${euros(r.inicial)} ${esc(din.frase)}. ${pos.length ? "Ahora tiene " + pos.map(([s, q]) => `${num(q, 4)} participación${q === 1 ? "" : "es"} de ${tk(s)}`).join(" y ") + "." : "Ahora mismo no tiene nada comprado: todo está en liquidez."} ${din.real ? "" : "Tú no has puesto dinero."}</p>
         </div>
         <dl class="datos">
-          <dt>Ganancia o pérdida</dt><dd class="num ${clase(r.rentabilidad_pct)}">${pct(r.rentabilidad_pct)}</dd>
-          <dt>Máximo alcanzado</dt><dd class="num">${euros(r.maximo)}</dd>
-          <dt>Caída desde el máximo</dt><dd class="num ${clase(r.caida_desde_maximo_pct)}">${pct(r.caida_desde_maximo_pct)}</dd>
-          <dt>Operaciones</dt><dd class="num">${num(r.num_operaciones, 0)}</dd>
-          <dt>Comisiones pagadas</dt><dd class="num">${euros(r.comisiones)}</dd>
+          <dt>Máximo alcanzado</dt><dd>${euros(r.maximo)}</dd>
+          <dt>Caída desde el máximo</dt><dd class="${clase(r.caida_desde_maximo_pct)}">${pct(r.caida_desde_maximo_pct)}</dd>
+          <dt>Operaciones</dt><dd>${num(r.num_operaciones, 0)}</dd>
+          <dt>Comisiones pagadas</dt><dd>${euros(r.comisiones)}</dd>
         </dl>
-      </div>
+      </section>
 
-      <div class="dos">
-        <section class="superficie relleno" aria-labelledby="t-senal">
-          <h3 id="t-senal">Qué quiere hacer la estrategia</h3>
-          ${dec ? `<p style="margin-bottom:14px">Con los precios del ${esc(fecha(dec.fecha))} pide <strong>${pide}</strong>.${compraria.length ? ` Como ahora no lo tiene, en el próximo ciclo ${compraria.map(t => `${t.objetivo_pct > t.actual_pct ? "comprará" : "venderá"} ${esc(t.simbolo)}`).join(" y ")}${din.real ? "" : " con dinero simulado"}.` : " La cartera ya está como pide, así que no hace falta operar."}</p>
+      <div class="rejilla dos-uno" style="margin-top:24px">
+        <section class="tarjeta" aria-labelledby="t-senal">
+          <h2 id="t-senal">Qué quiere hacer la estrategia</h2>
+          ${dec ? `<p style="margin-bottom:14px">Con los precios del ${esc(fecha(dec.fecha))} pide <strong>${pide}</strong>.${compraria.length ? ` Como ahora no lo tiene, en el próximo ciclo ${compraria.map(t => `${t.objetivo_pct > t.actual_pct ? "comprará" : "venderá"} ${tk(t.simbolo)}`).join(" y ")}${din.real ? "" : " con dinero simulado"}.` : " La cartera ya está como pide, así que no hace falta operar."}</p>
             <div class="senal">${senales}</div>` : vacio("El bot aún no ha tomado ninguna decisión. Aparecerá tras su primer ciclo.")}
           <p class="nota">${esc(regla)} Solo cambia de opinión el último día hábil de cada mes, para operar poco y pagar pocas comisiones.</p>
         </section>
-        <section class="superficie relleno" aria-labelledby="t-valor">
-          <h3 id="t-valor">Evolución del valor</h3>
+        <section class="tarjeta" aria-labelledby="t-valor">
+          <h2 id="t-valor">Evolución del valor</h2>
           <div class="grafico" id="g-etf"></div>
         </section>
       </div>
@@ -552,58 +591,59 @@ footer { max-width: 1160px; margin: 0 auto; padding: 0 16px 36px; color: var(--i
       <section class="bloque" aria-labelledby="t-etf-ops">
         <h2 id="t-etf-ops">Operaciones</h2>
         <p class="explica">Todo lo que ha comprado y vendido${din.real ? "" : " con el dinero simulado"}, con su comisión y el motivo.</p>
-        <div class="superficie relleno">${tablaOps(d.operaciones || [], "Todavía no ha hecho ninguna operación. La primera será en un ciclo de lunes a viernes a las 17:15.")}</div>
+        <div class="tarjeta">${tablaOps(d.operaciones || [], "Todavía no ha hecho ninguna operación. La primera será en un ciclo de lunes a viernes a las 17:15.")}</div>
       </section>
 
       <section class="bloque" aria-labelledby="t-guardian">
         <h2 id="t-guardian">El guardián</h2>
-        <p class="explica">Son las reglas fijas que revisan cada orden antes de enviarla. Bloquean, por ejemplo, las compras con comisiones de más del 3,5 % o las que llegan tras una caída del 15 %. Vender para ponerse a salvo nunca se bloquea.</p>
-        <div class="dos mitad">
-          <div class="superficie relleno"><h3>Protecciones</h3>
-            ${(d.protecciones || []).length ? d.protecciones.map(t => `<p class="aviso" style="margin-bottom:8px">${ico("alerta")}<span>${esc(t)}</span></p>`).join("") : `<p class="vacio">${ico("bien")}<span>Ninguna activa: puede comprar y vender con normalidad.</span></p>`}
+        <p class="explica">Son las reglas fijas que revisan cada orden antes de enviarla. Bloquean, por ejemplo, las compras con comisiones de más del 3,5${NBSP}% o las que llegan tras una caída del 15${NBSP}%. Vender para ponerse a salvo nunca se bloquea.</p>
+        <div class="rejilla mitad">
+          <div class="tarjeta"><h3>Protecciones</h3>
+            ${(d.protecciones || []).length ? d.protecciones.map(t => `<p class="aviso" style="margin-bottom:8px">${ico("alerta")}<span>${esc(t)}</span></p>`).join("") : `<p class="salud"><span class="bien" style="display:flex;gap:10px">${ico("bien")}<span>Ninguna activa: puede comprar y vender con normalidad.</span></span></p>`}
           </div>
-          <div class="superficie relleno"><h3>Órdenes bloqueadas</h3>
-            ${(d.bloqueadas || []).length ? `<ul class="lista">${d.bloqueadas.map(o => `<li><span><strong class="${o.lado === "COMPRA" ? "compra" : "venta"}">${o.lado === "COMPRA" ? "Compra" : "Venta"}</strong> de ${num(o.cantidad, 4)} ${esc(o.simbolo)} <span class="num">(${euros(o.importe)})</span></span><span>${esc(o.motivo)}</span><span class="meta">${esc(fechaHora(o.fecha))}</span></li>`).join("")}</ul>` : vacio("Ninguna hasta ahora.")}
+          <div class="tarjeta"><h3>Órdenes bloqueadas</h3>
+            ${(d.bloqueadas || []).length ? `<ul class="lista">${d.bloqueadas.map(o => `<li><span><strong class="${o.lado === "COMPRA" ? "compra" : "venta"}">${o.lado === "COMPRA" ? "Compra" : "Venta"}</strong> de ${num(o.cantidad, 4)} ${tk(o.simbolo)} (${euros(o.importe)})</span><span>${esc(o.motivo)}</span><span class="meta">${esc(fechaHora(o.fecha))}</span></li>`).join("")}</ul>` : vacio("Ninguna hasta ahora.")}
           </div>
         </div>
       </section>
 
-      ${laboratorioEtf(lab)}`;
+      ${laboratorioEtf(d.laboratorio || {})}`;
     grafico($("g-etf"), (d.curva || []).map(p => ({ f: p.f, a: p.v })), { vacio: "La línea aparecerá cuando el bot lleve al menos dos días registrados." });
-    (lab.incubando || []).forEach((e, i) => grafico($("g-inc-" + i), e.curva, { vacio: "La curva aparecerá tras unos días.", etqB: "la que manda" }));
+    ((d.laboratorio || {}).incubando || []).forEach((e, i) => grafico($("g-inc-" + i), e.curva, { vacio: "La curva aparecerá tras unos días.", etqB: "la que manda" }));
+    const v = (d.laboratorio || {}).vigente || {};
+    if (v.curva && v.curva.length >= 2) grafico($("g-lab-vig"), v.curva, { vacio: "Sin datos aún.", etqB: "base" });
   }
 
-  const ESTADOS = { rechazada: ["Rechazada", ""], en_espera: ["Aprobada · en espera", "ok"], incubando: ["En prueba", "acento"],
-    descartada: ["Descartada tras la prueba", "sim"], campeona: ["Manda ahora", "ok"], retirada: ["Retirada", "sim"] };
-  const ORIGEN = { hermes: "propuesta por Hermes", plantilla: "inventada por el bot", config: "la de config.json" };
+  const ESTADOS = { rechazada: ["Rechazada", "neutro"], en_espera: ["Aprobada · en espera", "ok"], incubando: ["En prueba", "practica"],
+    descartada: ["Descartada tras la prueba", "neutro"], campeona: ["Manda ahora", "ok"], retirada: ["Retirada", "neutro"] };
 
   function laboratorioEtf(L) {
-    if (!L || !L.activo) return "";
-    if (L.error) return `<section class="bloque"><h2>Laboratorio de ETF</h2><p class="error" style="margin-top:14px">${ico("alerta")}<span>No se pudo leer: ${esc(L.error)}</span></p></section>`;
+    if (!L.activo) return "";
+    if (L.error) return `<section class="bloque"><h2>Laboratorio de ETF</h2><p class="error" style="margin-top:14px">${ico("alerta")}<span>No se pudo leer el laboratorio: ${esc(L.error)}. Se volverá a intentar en el próximo ciclo.</span></p></section>`;
     const c = L.contadores || {}, v = L.vigente || {}, inc = L.incubando || [];
     return `
       <section class="bloque" aria-labelledby="t-lab-etf">
         <h2 id="t-lab-etf">Laboratorio de ETF</h2>
         <p class="explica">Cada sábado el bot inventa estrategias nuevas y las examina con datos del pasado. Las pocas que aprueban pasan 6 meses en prueba con dinero ficticio; solo pasan a mandar si ganan a la actual.</p>
         ${cifrasLab(L.pruebas, c)}
-        <div class="dos">
-          <div class="superficie relleno">
+        <div class="rejilla dos-uno">
+          <div class="tarjeta">
             <h3>Manda ahora: ${esc(v.id === "base" ? "la estrategia base" : v.nombre)}</h3>
             <p>${esc(v.id === "base" ? "La de config.json: la tendencia de un ETF mundial descrita arriba." : v.descripcion)}</p>
-            ${v.curva && v.curva.length >= 2 ? `<p style="margin:10px 0">Desde que manda: <strong class="num ${clase(v.rendimiento_pct)}">${pct(v.rendimiento_pct)}</strong> frente a <span class="num">${pct(v.rendimiento_base_pct)}</span> de la base.</p><div class="grafico" id="g-lab-vig"></div>` : ""}
+            ${v.curva && v.curva.length >= 2 ? `<p style="margin:10px 0">Desde que manda: <strong class="${clase(v.rendimiento_pct)}">${pct(v.rendimiento_pct)}</strong> frente a ${pct(v.rendimiento_base_pct)} de la base.</p><div class="grafico" id="g-lab-vig"></div>` : ""}
             ${v.id && v.id !== "base" ? `<p class="nota">Para volver a la estrategia base, escribe /volver al bot de Telegram. Si rinde 3 puntos peor que la base, se retira sola.</p>` : `<p class="nota">Ninguna estrategia del laboratorio ha ganado todavía a la base. ${L.automatico ? "Si alguna lo consigue en su prueba de 6 meses, pasará a mandar sola y te avisará por Telegram." : ""}</p>`}
           </div>
-          <div class="superficie relleno">
+          <div class="tarjeta">
             <h3>En prueba con dinero ficticio</h3>
             ${inc.length ? inc.map((e, i) => `
               <div class="inc">
                 <strong>${esc(e.nombre)}</strong>
                 <div class="progreso" role="progressbar" aria-valuemin="0" aria-valuemax="${e.dias_objetivo}" aria-valuenow="${Math.min(e.dias, e.dias_objetivo)}" aria-label="Días de prueba"><span style="width:${Math.min(100, e.dias / e.dias_objetivo * 100)}%"></span></div>
-                <div class="fila"><span>Día ${num(e.dias, 0)} de ${num(e.dias_objetivo, 0)}</span><span>Rinde <strong class="num ${clase(e.rendimiento_pct)}">${pct(e.rendimiento_pct)}</strong> · la que manda <span class="num">${pct(e.rendimiento_vigente_pct)}</span></span></div>
+                <div class="fila"><span>Día ${num(e.dias, 0)} de ${num(e.dias_objetivo, 0)}</span><span>Rinde <strong class="${clase(e.rendimiento_pct)}">${pct(e.rendimiento_pct)}</strong> · la que manda ${pct(e.rendimiento_vigente_pct)}</span></div>
                 <details class="plegable"><summary>Qué hace y sus operaciones ${ico("abajo")}</summary><div>
                   <p style="margin-bottom:8px">${esc(e.descripcion)}</p>
                   <div class="grafico" id="g-inc-${i}"></div>
-                  ${tablaOps(e.lista_operaciones || [], "Aún no ha hecho ninguna operación.", true)}
+                  ${tablaOps(e.lista_operaciones || [], "Aún no ha hecho ninguna operación.")}
                 </div></details>
               </div>`).join("") : vacio("Ninguna ahora mismo. El examen es cada sábado.")}
           </div>
@@ -614,70 +654,72 @@ footer { max-width: 1160px; margin: 0 auto; padding: 0 16px 36px; color: var(--i
 
   function cifrasLab(pruebas, c) {
     return `<p class="cifras-lab">${[["Examinadas", pruebas || 0], ["Rechazadas", c.rechazada || 0], ["En prueba", c.incubando || 0], ["Esperando hueco", c.en_espera || 0], ["Han llegado a mandar", (c.campeona || 0) + (c.retirada || 0)]]
-      .map(([k, n]) => `<span>${k}: <strong class="num">${num(n, 0)}</strong></span>`).join("")}</p>`;
+      .map(([k, n]) => `<span>${k}: <strong>${num(n, 0)}</strong></span>`).join("")}</p>`;
   }
   function recientes(lista, lider = false) {
     lista = lista || [];
-    return `<details class="plegable" style="margin-top:16px"><summary>Últimas ideas examinadas y por qué se rechazaron (${lista.length}) ${ico("abajo")}</summary><div>
-      ${lista.length ? `<ul class="lista">${lista.map(r => { const [et, cl] = ESTADOS[r.estado] || [r.estado, ""];
-        return `<li><span><strong>${esc(r.nombre)}</strong> <span class="etq ${cl}">${esc(lider && et === "Manda ahora" ? "Lidera" : et)}</span></span><span>${esc(r.motivo || "")}</span><span class="meta">${esc(fechaHora(r.fecha))}</span></li>`; }).join("")}</ul>`
+    return `<div class="tarjeta" style="margin-top:24px"><details class="plegable" style="border-top:0"><summary style="padding-top:0">Últimas ideas examinadas y por qué se rechazaron (${lista.length}) ${ico("abajo")}</summary><div>
+      ${lista.length ? `<ul class="lista">${lista.map(r => { const [et, cl] = ESTADOS[r.estado] || [r.estado, "neutro"];
+        return `<li><span style="display:flex;gap:8px;flex-wrap:wrap;align-items:center"><strong>${esc(r.nombre)}</strong> <span class="pill ${cl}">${esc(lider && et === "Manda ahora" ? "Lidera" : et)}</span></span><span>${esc(r.motivo || "")}</span><span class="meta">${esc(fechaHora(r.fecha))}</span></li>`; }).join("")}</ul>`
         : vacio("Todavía no se ha examinado ninguna. El primer examen es el sábado a las 10:00.")}
       <p class="nota">Que casi todas se rechacen es lo normal: el examen está hecho para no dejar pasar ideas que solo parecen buenas por casualidad.</p>
-    </div></details>`;
+    </div></details></div>`;
   }
 
-  function tablaOps(ops, textoVacio, mini = false) {
+  function tablaOps(ops, textoVacio) {
     if (!ops.length) return vacio(textoVacio);
-    return `<div class="tabla"${mini ? ' style="font-size:13px"' : ""}><table>
+    return `<div class="tabla"><table>
       <thead><tr><th scope="col">Fecha</th><th scope="col">Tipo</th><th scope="col">Valor</th><th scope="col" class="der">Cantidad</th><th scope="col" class="der">Precio</th><th scope="col" class="der">Importe</th><th scope="col" class="der">Comisión</th><th scope="col">Motivo</th></tr></thead>
       <tbody>${ops.map(o => `<tr><td>${esc(fecha(o.fecha))}</td><td class="${o.lado === "COMPRA" ? "compra" : "venta"}">${o.lado === "COMPRA" ? "Compra" : "Venta"}</td>
-        <td class="num">${esc(o.simbolo)}</td><td class="der num">${num(o.cantidad, 6)}</td><td class="der num">${num(o.precio, o.precio < 1 ? 6 : 2)}</td>
-        <td class="der num">${euros((o.cantidad || 0) * (o.precio || 0))}</td><td class="der num">${euros(o.comision || 0)}</td>
+        <td>${tk(o.simbolo)}</td><td class="der">${num(o.cantidad, 6)}</td><td class="der">${o.precio < 1 ? num(o.precio, 6) + NBSP + "€" : euros(o.precio)}</td>
+        <td class="der">${euros((o.cantidad || 0) * (o.precio || 0))}</td><td class="der">${euros(o.comision || 0)}</td>
         <td class="motivo">${esc(o.motivo || "—")}</td></tr>`).join("")}</tbody></table></div>`;
   }
 
   /* ---------------- ACCIONES Y CRIPTO ---------------- */
   function vistaFicticia(m, d) {
     const F = d.ficticio || {}, M = (F.mercados || {})[m], cont = $("v-" + m);
-    const nombre = m === "acciones" ? "acciones" : "cripto";
-    if (F.error) { cont.innerHTML = `<p class="error">${ico("alerta")}<span>No se pudo leer el laboratorio de ${nombre}: ${esc(F.error)}</span></p>`; return; }
-    if (!M) { cont.innerHTML = `<h1 class="titular">El laboratorio de ${nombre} está apagado.</h1><p class="entradilla">Se enciende en config.json, en el apartado mercados_ficticios.</p>`; return; }
+    const Nombre = m === "acciones" ? "Acciones" : "Cripto", nombre = m === "acciones" ? "acciones" : "cripto";
+    if (F.error) { cont.innerHTML = `<div class="cabeza"><h1>${Nombre}</h1>${pillFict()}</div><p class="error">${ico("alerta")}<span>No se pudo leer el laboratorio de ${nombre}: ${esc(F.error)}. Se volverá a intentar en el próximo día de mercado.</span></p>`; return; }
+    if (!M) { cont.innerHTML = `<div class="cabeza"><h1>${Nombre}</h1></div><div class="tarjeta">${vacio(`El laboratorio de ${nombre} está apagado. Se enciende en config.json, en el apartado mercados_ficticios.`)}</div>`; return; }
     const b = M.bolsa || {}, L = M.lider || {}, inc = M.incubando || [], empezo = (b.curva || []).length > 0;
     const pos = Object.entries(b.posiciones || {});
     const comis = (b.operaciones || []).reduce((s, o) => s + (o.comision || 0), 0);
-    const ref = esc(M.referencia);
+    const ref = M.referencia;
     const queEs = m === "acciones"
       ? `Vigila ${num(M.valores, 0)} empresas grandes de EE. UU. y Europa. Para que una idea valga, tiene que ganar a comprar el ETF mundial (${ref}) y no tocarlo.`
       : `Vigila las ${num(M.valores, 0)} criptomonedas más grandes. Para que una idea valga, tiene que ganar a comprar bitcoin y no tocarlo.`;
 
     cont.innerHTML = `
-      <div class="apertura con-lado">
+      <div class="cabeza"><h1>${Nombre}</h1>${pillFict()}</div>
+      <section class="tarjeta resumen-cartera" aria-label="Valor de la bolsa ficticia de ${nombre}">
         <div>
-          <h1 class="titular">${empezo ? `La bolsa ficticia de ${nombre} tiene <span class="num">${euros(b.valor)}</span>` : `La bolsa ficticia de ${nombre} aún no ha empezado`}</h1>
-          <p class="entradilla">Es una prueba: <strong>nada de esto es dinero real</strong> y ninguna orden llega a un bróker. ${empezo ? `Empezó con ${euros(M.capital)} el ${esc(fecha(b.desde))} y sigue a la mejor estrategia de este mercado: <strong>${esc(L.nombre)}</strong>.` : `Tiene ${euros(M.capital)} de los ${euros(F.bolsa_ficticia)} ficticios y empieza el próximo día de mercado.`}
-          ${pos.length ? " Ahora tiene " + pos.slice(0, 5).map(([s, q]) => `${num(q, 6)} de ${esc(s)}`).join(", ") + (pos.length > 5 ? ` y ${pos.length - 5} más` : "") + "." : ""}</p>
-          <div class="etiquetas"><span class="etq sim">${ico("matraz")}Dinero ficticio</span>${M.datos_hasta ? `<span class="etq">Precios hasta el ${esc(fecha(M.datos_hasta))}</span>` : ""}${M.error ? `<span class="etq mal">Último intento con error</span>` : ""}</div>
-          ${M.error ? `<p class="error" style="margin-top:14px">${ico("alerta")}<span>${esc(M.error)}</span></p>` : ""}
+          <p class="etiqueta">Bolsa ficticia de ${nombre}</p>
+          <p class="total">${eurosGrande(b.valor ?? M.capital)}</p>
+          <p class="variacion">${empezo ? `<strong class="${clase(b.rendimiento_pct)}">${pct(b.rendimiento_pct)}</strong> desde que empezó con ${euros(M.capital)} el ${esc(fecha(b.desde))}` : `Aún no ha empezado: tiene ${euros(M.capital)} de los ${euros(F.bolsa_ficticia)} ficticios.`}</p>
+          <p class="frase">Es una prueba: <strong>nada de esto es dinero real</strong> y ninguna orden llega a un bróker. ${empezo ? `Sigue a la mejor estrategia de este mercado: <strong>${esc(L.nombre)}</strong>.` : "Empieza el próximo día de mercado."}
+          ${pos.length ? " Ahora tiene " + pos.slice(0, 5).map(([s, q]) => `${num(q, 6)} de ${tk(s)}`).join(", ") + (pos.length > 5 ? ` y ${pos.length - 5} más` : "") + "." : ""}</p>
+          ${M.datos_hasta ? `<p class="meta" style="margin-top:10px">Precios hasta el ${esc(fecha(M.datos_hasta))}.</p>` : ""}
+          ${M.error ? `<p class="error" style="margin-top:14px">${ico("alerta")}<span>El último intento falló: ${esc(M.error)}. Se reintentará el próximo día de mercado.</span></p>` : ""}
         </div>
         <dl class="datos">
-          <dt>Ganancia o pérdida</dt><dd class="num ${clase(b.rendimiento_pct)}">${pct(b.rendimiento_pct)}</dd>
-          <dt>Sin invertir</dt><dd class="num">${euros(b.efectivo ?? M.capital)}</dd>
-          <dt>Operaciones</dt><dd class="num">${num((b.operaciones || []).length, 0)}</dd>
-          <dt>Comisiones simuladas</dt><dd class="num">${euros(comis)}</dd>
-          <dt>Toda la bolsa ficticia</dt><dd class="num">${euros(F.valor_total)} <span class="${clase(F.rendimiento_total_pct)}">${pct(F.rendimiento_total_pct)}</span></dd>
+          <dt>Sin invertir</dt><dd>${euros(b.efectivo ?? M.capital)}</dd>
+          <dt>Operaciones</dt><dd>${num((b.operaciones || []).length, 0)}</dd>
+          <dt>Comisiones simuladas</dt><dd>${euros(comis)}</dd>
+          <dt>Toda la bolsa ficticia</dt><dd>${euros(F.valor_total)} <span class="${clase(F.rendimiento_total_pct)}">${pct(F.rendimiento_total_pct)}</span></dd>
         </dl>
-      </div>
+      </section>
 
-      <div class="dos">
-        <section class="superficie relleno" aria-labelledby="t-${m}-g">
-          <h3 id="t-${m}-g">Bolsa ficticia frente a comprar ${ref} y no tocar</h3>
+      <div class="rejilla dos-uno" style="margin-top:24px">
+        <section class="tarjeta" aria-labelledby="t-${m}-g">
+          <h2 id="t-${m}-g">Bolsa ficticia frente a comprar ${tk(ref)} y no tocar</h2>
+          <div class="leyenda"><span><i></i>Bolsa ficticia</span><span><i class="ref"></i>Comprar ${tk(ref)} y no tocar</span></div>
           <div class="grafico" id="g-${m}"></div>
-          <div class="leyenda"><span><i></i>Bolsa ficticia</span><span><i class="ref"></i>Comprar ${ref} y no tocar</span></div>
         </section>
-        <section class="superficie relleno" aria-labelledby="t-${m}-lider">
-          <h3 id="t-${m}-lider">La que lidera ahora</h3>
+        <section class="tarjeta" aria-labelledby="t-${m}-lider">
+          <h2 id="t-${m}-lider">La que lidera ahora</h2>
           <p><strong>${esc(L.nombre || "Comprar y no tocar")}</strong>${L.desde ? ` · desde el ${esc(fecha(L.desde))}` : ""}</p>
-          <p style="margin-top:6px;color:var(--ink-2)">${esc(L.descripcion || "")}</p>
+          <p style="margin-top:6px;color:var(--muted)">${esc(L.descripcion || "")}</p>
           <p class="nota">${esc(queEs)}</p>
         </section>
       </div>
@@ -685,28 +727,28 @@ footer { max-width: 1160px; margin: 0 auto; padding: 0 16px 36px; color: var(--i
       <section class="bloque" aria-labelledby="t-${m}-ops">
         <h2 id="t-${m}-ops">Operaciones de la bolsa ficticia</h2>
         <p class="explica">Cada compra y venta simulada, con su comisión y el motivo. Ninguna se ha enviado a ningún bróker.</p>
-        <div class="superficie relleno">${tablaOps(b.operaciones || [], "Todavía no hay operaciones ficticias en este mercado.")}</div>
+        <div class="tarjeta">${tablaOps(b.operaciones || [], "Todavía no hay operaciones ficticias en este mercado.")}</div>
       </section>
 
       <section class="bloque" aria-labelledby="t-${m}-lab">
         <h2 id="t-${m}-lab">Laboratorio de ${nombre}</h2>
         <p class="explica">Cada sábado inventa ideas para este mercado y las examina con el pasado. Ojo: ${m === "acciones" ? "la lista de empresas es la de hoy, y las que se hundieron ya no están, así que el pasado parece mejor de lo que fue" : "muchas criptos tienen poca historia y caídas enormes"}. Lo que cuenta de verdad son los 6 meses de prueba en directo.</p>
         ${cifrasLab(M.pruebas, M.contadores || {})}
-        <div class="superficie relleno">
+        <div class="tarjeta">
           <h3>En prueba con dinero ficticio</h3>
           ${inc.length ? inc.map(e => `
             <div class="inc">
               <strong>${esc(e.nombre)}</strong>
-              <div class="fila"><span>Día ${num(e.dias, 0)} · desde el ${esc(fecha(e.desde))}</span><span>Rinde <strong class="num ${clase(e.rendimiento_pct)}">${pct(e.rendimiento_pct)}</strong></span></div>
+              <div class="fila"><span>Día ${num(e.dias, 0)} · desde el ${esc(fecha(e.desde))}</span><span>Rinde <strong class="${clase(e.rendimiento_pct)}">${pct(e.rendimiento_pct)}</strong></span></div>
               <details class="plegable"><summary>Qué hace y sus ${num((e.operaciones || []).length, 0)} operaciones ${ico("abajo")}</summary><div>
                 <p style="margin-bottom:8px">${esc(e.descripcion)}</p>
                 ${e.examen ? `<p class="nota" style="margin:0 0 8px">En el examen: ${pct(e.examen.cagr_fuera_pct)} al año en los datos que no había visto, frente a ${pct(e.examen.cagr_fuera_vigente_pct)} de la referencia.</p>` : ""}
-                ${tablaOps(e.operaciones || [], "Aún no ha hecho ninguna operación.", true)}
+                ${tablaOps(e.operaciones || [], "Aún no ha hecho ninguna operación.")}
               </div></details>
             </div>`).join("") : vacio("Ninguna idea en prueba ahora mismo. El examen es cada sábado.")}
           ${(M.en_espera || []).length ? `<p class="nota">Esperando hueco: ${M.en_espera.map(esc).join(", ")}</p>` : ""}
-          ${recientes(M.recientes, true)}
         </div>
+        ${recientes(M.recientes, true)}
       </section>`;
     grafico($("g-" + m), b.curva || [], { vacio: "La línea aparecerá tras el segundo día de la bolsa ficticia.", etqB: "no tocar" });
   }
@@ -715,31 +757,31 @@ footer { max-width: 1160px; margin: 0 auto; padding: 0 16px 36px; color: var(--i
   function vistaMas(d) {
     const bt = d.backtest || {}, t = d.impuestos, inf = d.informativo || {};
     $("v-mas").innerHTML = `
-      <div class="apertura"><div>
-        <h1 class="titular">Más detalles</h1>
-        <p class="entradilla">Cómo le habría ido a la estrategia en el pasado, la estimación de impuestos, noticias y las palabras que verás en el panel.</p>
-      </div></div>
+      <div class="cabeza"><h1>Más detalles</h1></div>
+      <p class="frase" style="margin:-6px 0 8px">Cómo le habría ido a la estrategia en el pasado, la estimación de impuestos, noticias y las palabras que verás en el panel.</p>
       ${backtest(bt)}
       <section class="bloque" aria-labelledby="t-imp">
         <h2 id="t-imp">Impuestos del año</h2>
         <p class="explica">Estimación orientativa de lo que tocaría declarar por las ventas de la cartera de ETF. No es asesoría fiscal. Con dinero simulado no hay nada que declarar.</p>
-        <div class="superficie relleno">${t ? `<dl class="datos">
-          <dt>Ganancias</dt><dd class="num">${euros(t.ganancias || 0)}</dd>
-          <dt>Pérdidas que puedes restar</dt><dd class="num">${euros(t.perdidas_computables || 0)}</dd>
-          <dt>Pérdidas aplazadas (regla de los 2 meses)</dt><dd class="num">${euros(t.perdidas_diferidas_2_meses || 0)}</dd>
-          <dt>Saldo neto ${esc(t.anio)}</dt><dd class="num ${clase(t.saldo_neto)}">${euros(t.saldo_neto || 0)}</dd>
-          <dt>Impuesto estimado</dt><dd class="num">${euros(t.cuota_estimada_irpf || 0)}</dd></dl>
-          <p class="nota">${esc(t.aviso || "")}</p>` : vacio("Sin datos.")}</div>
+        <div class="tarjeta">${t ? `<dl class="datos">
+          <dt>Ganancias</dt><dd>${euros(t.ganancias || 0)}</dd>
+          <dt>Pérdidas que puedes restar</dt><dd>${euros(t.perdidas_computables || 0)}</dd>
+          <dt>Pérdidas aplazadas (regla de los 2 meses)</dt><dd>${euros(t.perdidas_diferidas_2_meses || 0)}</dd>
+          <dt>Saldo neto ${esc(t.anio)}</dt><dd class="${clase(t.saldo_neto)}">${euros(t.saldo_neto || 0)}</dd>
+          <dt>Impuesto estimado</dt><dd>${euros(t.cuota_estimada_irpf || 0)}</dd></dl>
+          <p class="nota">${esc(t.aviso || "")}</p>` : vacio("Sin datos de impuestos todavía.")}</div>
       </section>
       <section class="bloque" aria-labelledby="t-info">
         <h2 id="t-info">Mercado</h2>
         <p class="explica">Solo para informarte: nada de esto decide operaciones.</p>
-        <div class="superficie relleno">${informativo(inf)}</div>
+        <div class="tarjeta">${informativo(inf)}</div>
       </section>
       <section class="bloque" aria-labelledby="t-glos">
         <h2 id="t-glos">Palabras que verás</h2>
-        <div class="superficie relleno" style="margin-top:14px"><dl class="glosario">
+        <div class="tarjeta" style="margin-top:14px"><dl class="glosario">
           ${[["Dinero simulado o ficticio", "Euros de mentira que el bot usa para practicar. No salen de ninguna cuenta tuya y no se pueden perder ni ganar de verdad."],
+            ["Práctica · simulado", "La cartera de ETF: funciona igual que lo haría con dinero real, pero con un saldo simulado."],
+            ["Ficticio", "Las carteras de acciones y cripto: un laboratorio de pruebas que nunca podrá usar dinero real."],
             ["ETF", "Un fondo que cotiza en bolsa y compra muchas empresas a la vez. El bot usa ETF del mundo entero, que es la forma más repartida de invertir."],
             ["Media de 200 días", "El precio medio de los últimos 200 días de bolsa. Si el precio está por encima, se considera que el mercado sube; si está por debajo, que baja."],
             ["Comprar y no tocar", "Comprar una vez y olvidarse. Es la vara de medir: una estrategia solo vale la pena si le gana."],
@@ -754,39 +796,39 @@ footer { max-width: 1160px; margin: 0 auto; padding: 0 16px 36px; color: var(--i
   }
 
   function backtest(bt) {
-    if (!bt || !bt.con_tu_capital) return `<section class="bloque"><h2>Prueba con el pasado</h2><div class="superficie relleno" style="margin-top:14px">${vacio("Aún no hay backtest. Se genera con «python ejecutar.py backtest» en el portátil.")}</div></section>`;
+    if (!bt || !bt.con_tu_capital) return `<section class="bloque"><h2>Prueba con el pasado</h2><div class="tarjeta" style="margin-top:14px">${vacio("Aún no hay backtest. Se genera con «python ejecutar.py backtest» en el portátil.")}</div></section>`;
     const c = bt.con_tu_capital, b = c.bot || {}, r = c.comprar_y_mantener || {}, ic = bt.intervalo_confianza_bot || {};
     const filas = [["Valor final", euros(b.valor_final), euros(r.valor_final)], ["Ganancia media al año", pct(b.cagr_pct), pct(r.cagr_pct)], ["Peor caída", pct(b.caida_maxima_pct), pct(r.caida_maxima_pct)], ["Peor año", pct(b.peor_anio_pct), pct(r.peor_anio_pct)]];
     return `
-      <section class="bloque" aria-labelledby="t-bt">
+      <section class="bloque" aria-labelledby="t-bt" data-c="etf">
         <h2 id="t-bt">Prueba con el pasado (backtest)</h2>
-        <p class="explica">La estrategia de ETF aplicada a ${num(b.anios, 0)} años de precios reales, con ${euros(bt.capital)} de ejemplo y comisiones reales, frente a comprar ${esc(bt.referencia)} y no tocarlo. El pasado no garantiza el futuro.</p>
-        <div class="dos">
-          <div class="superficie relleno">
-            <h3>${esc(fecha(b.inicio))} – ${esc(fecha(b.fin))}</h3>
+        <p class="explica">La estrategia de ETF aplicada a ${num(b.anios, 0)} años de precios reales, con ${euros(bt.capital)} de ejemplo y comisiones reales, frente a comprar ${tk(bt.referencia)} y no tocarlo. El pasado no garantiza el futuro.</p>
+        <div class="rejilla dos-uno">
+          <div class="tarjeta">
+            <h3>${esc(fecha(b.inicio))} a ${esc(fecha(b.fin))}</h3>
+            <div class="leyenda"><span><i></i>Estrategia del bot</span><span><i class="ref"></i>Comprar ${tk(bt.referencia)} y no tocar</span></div>
             <div class="grafico" id="g-bt"></div>
-            <div class="leyenda"><span><i></i>Estrategia del bot</span><span><i class="ref"></i>Comprar ${esc(bt.referencia)} y no tocar</span></div>
           </div>
-          <div class="superficie relleno">
+          <div class="tarjeta">
             <h3>Resultado</h3>
-            <div class="tabla"><table><thead><tr><th scope="col"></th><th scope="col" class="der">Bot</th><th scope="col" class="der">No tocar</th></tr></thead>
-            <tbody>${filas.map(f => `<tr><td>${f[0]}</td><td class="der num">${f[1]}</td><td class="der num">${f[2]}</td></tr>`).join("")}</tbody></table></div>
+            <div class="tabla"><table><thead><tr><th scope="col"><span class="sr">Medida</span></th><th scope="col" class="der">Bot</th><th scope="col" class="der">No tocar</th></tr></thead>
+            <tbody>${filas.map(f => `<tr><td>${f[0]}</td><td class="der">${f[1]}</td><td class="der">${f[2]}</td></tr>`).join("")}</tbody></table></div>
             <p class="nota">${num(c.operaciones, 0)} operaciones y ${euros(c.comisiones_totales)} en comisiones.${ic.cagr_p5_pct != null ? ` Rango probable al año: entre ${pct(ic.cagr_p5_pct)} y ${pct(ic.cagr_p95_pct)}.` : ""}</p>
           </div>
         </div>
-        ${(bt.veredicto || []).length ? `<div class="superficie relleno" style="margin-top:16px"><h3>Conclusión</h3><ul class="lista">${bt.veredicto.map(v => `<li>${esc(v)}</li>`).join("")}</ul></div>` : ""}
+        ${(bt.veredicto || []).length ? `<div class="tarjeta" style="margin-top:24px"><h3>Conclusión</h3><ul class="lista">${bt.veredicto.map(v => `<li>${esc(v)}</li>`).join("")}</ul></div>` : ""}
       </section>`;
   }
 
   function informativo(inf) {
     const partes = [];
     const caja = (titulo, html) => `<details class="plegable"><summary>${esc(titulo)} ${ico("abajo")}</summary><div>${html}</div></details>`;
-    const err = (x) => x && x.error ? `<p class="error">${ico("alerta")}<span>No se pudo cargar: ${esc(x.error)}</span></p>` : null;
+    const err = (x) => x && x.error ? `<p class="error">${ico("alerta")}<span>No se pudo cargar: ${esc(x.error)}. Se reintentará en el próximo ciclo.</span></p>` : null;
     const cp = inf.copycat;
     if (cp !== undefined) partes.push(caja("Qué compran los grandes inversores (13F)", err(cp) || (Array.isArray(cp) && cp.length ? cp.map(i => `
       <p style="margin:0 0 8px"><strong>${esc(i.inversor)}</strong> · presentado el ${esc(fecha(i.presentado))}</p>
       <div class="tabla"><table><thead><tr><th scope="col">Empresa</th><th scope="col" class="der">Peso</th><th scope="col" class="der">Cambio</th></tr></thead>
-      <tbody>${(i.posiciones || []).map(p => `<tr><td>${esc(p.empresa)}</td><td class="der num">${num(p.peso_pct)} %</td><td class="der">${esc(p.cambio)}</td></tr>`).join("")}</tbody></table></div>
+      <tbody>${(i.posiciones || []).map(p => `<tr><td>${esc(p.empresa)}</td><td class="der">${num(p.peso_pct)}${NBSP}%</td><td class="der">${esc(p.cambio)}</td></tr>`).join("")}</tbody></table></div>
       <p class="nota">${esc(i.aviso)}</p>`).join("") : vacio("Sin datos."))));
     const cg = inf.congreso;
     if (cg !== undefined) partes.push(caja("Operaciones declaradas en el Congreso de EE. UU.", err(cg) || (Array.isArray(cg) && cg.length ? `<ul class="lista">${cg.map(f => `
@@ -794,7 +836,7 @@ footer { max-width: 1160px; margin: 0 auto; padding: 0 16px 36px; color: var(--i
     const nt = inf.noticias;
     if (nt !== undefined) partes.push(caja("Noticias", err(nt) || (Array.isArray(nt) && nt.length ? `<ul class="lista">${nt.map(n => `
       <li><a href="${enlace(n.enlace)}" target="_blank" rel="noopener">${esc(n.titulo)}</a><span class="meta">${esc(n.fuente)} · ${esc(fechaHora(n.fecha))}</span></li>`).join("")}</ul>` : vacio("Ningún titular con tus palabras clave."))));
-    return (partes.join("") || vacio("Los módulos informativos están apagados.")) + (inf.actualizado ? `<p class="nota">Actualizado el ${esc(fechaHora(inf.actualizado))}.</p>` : "");
+    return (partes.join("").replace('<details class="plegable">', '<details class="plegable" style="border-top:0">') || vacio("Los módulos informativos están apagados.")) + (inf.actualizado ? `<p class="nota">Actualizado el ${esc(fechaHora(inf.actualizado))}.</p>` : "");
   }
 
   /* ---------------- gráfico de líneas (ratón, dedo y teclado) ---------------- */
@@ -805,7 +847,7 @@ footer { max-width: 1160px; margin: 0 auto; padding: 0 16px 36px; color: var(--i
   function grafico(cont, serie, opc = {}) { if (!cont) return; graficos.set(cont, [serie, opc]); dibujar(cont, serie, opc); }
   function dibujar(cont, serie, opc = {}) {
     if (!serie || serie.length < 2) { cont.innerHTML = vacio(opc.vacio || "Sin datos."); return; }
-    const W = Math.max(280, Math.round(cont.clientWidth || 720)), H = W < 520 ? 190 : 230, m = { t: 12, r: 8, b: 26, l: 50 };
+    const W = Math.max(280, Math.round(cont.clientWidth || 720)), H = W < 520 ? 180 : 220, m = { t: 10, r: 8, b: 26, l: 52 };
     const vals = serie.flatMap(p => [p.a, p.b]).filter(v => v != null);
     let min = Math.min(...vals), max = Math.max(...vals);
     const pad = (max - min) * .08 || 1; min -= pad; max += pad;
@@ -813,28 +855,26 @@ footer { max-width: 1160px; margin: 0 auto; padding: 0 16px 36px; color: var(--i
     const y = (v) => m.t + (1 - (v - min) / (max - min)) * (H - m.t - m.b);
     const ruta = (k) => serie.map((p, i) => p[k] == null ? "" : `${i ? "L" : "M"}${x(i).toFixed(1)},${y(p[k]).toFixed(1)}`).join("");
     const lineasY = [], etqX = [];
-    for (let i = 0; i <= 4; i++) { const v = min + (max - min) * i / 4; lineasY.push(`<line class="eje" x1="${m.l}" x2="${W - m.r}" y1="${y(v)}" y2="${y(v)}"/><text class="etiq" x="${m.l - 8}" y="${y(v) + 4}" text-anchor="end">${num(v, (max - min) < 20 ? 1 : 0)}</text>`); }
+    for (let i = 0; i <= 3; i++) { const v = min + (max - min) * i / 3; lineasY.push(`<line class="eje" x1="${m.l}" x2="${W - m.r}" y1="${y(v)}" y2="${y(v)}"/><text class="etiq" x="${m.l - 8}" y="${y(v) + 4}" text-anchor="end">${num(v, (max - min) < 20 ? 1 : 0)}</text>`); }
     const nx = Math.min(W < 520 ? 2 : 4, serie.length - 1);
     for (let i = 0; i <= nx; i++) { const k = Math.round(i * (serie.length - 1) / nx); const f = aFecha(serie[k].f); etqX.push(`<text class="etiq" x="${x(k)}" y="${H - 6}" text-anchor="${i === 0 ? "start" : i === nx ? "end" : "middle"}">${f ? esc(f.toLocaleDateString("es-ES", { month: "short", year: "2-digit" })) : ""}</text>`); }
     const u = serie[serie.length - 1];
-    cont.innerHTML = `<svg class="g" viewBox="0 0 ${W} ${H}" role="img" tabindex="0" aria-label="${esc(`De ${num(serie[0].a)} a ${num(u.a)} euros entre ${fecha(serie[0].f)} y ${fecha(u.f)}. Usa las flechas para recorrer los valores.`)}">
+    cont.innerHTML = `<svg class="g" viewBox="0 0 ${W} ${H}" role="img" tabindex="0" aria-label="${esc(`De ${euros(serie[0].a)} a ${euros(u.a)} entre ${fecha(serie[0].f)} y ${fecha(u.f)}. Usa las flechas para recorrer los valores.`)}">
       ${lineasY.join("")}${etqX.join("")}
       <path class="area" d="${ruta("a")}L${x(serie.length - 1)},${H - m.b}L${x(0)},${H - m.b}Z"/>
       ${serie.some(p => p.b != null) ? `<path class="linea ref" d="${ruta("b")}"/>` : ""}
-      <path class="linea dibujar" d="${ruta("a")}"/>
+      <path class="linea" d="${ruta("a")}"/>
       <line class="guia" y1="${m.t}" y2="${H - m.b}" x1="-10" x2="-10" visibility="hidden"/>
       <circle class="punto" r="4" cx="-10" cy="-10" visibility="hidden"/>
     </svg><div class="bocadillo" aria-hidden="true"></div>`;
-    const svg = cont.querySelector("svg"), linea = svg.querySelector(".linea.dibujar");
-    linea.style.setProperty("--l", linea.getTotalLength());
-    const guia = svg.querySelector(".guia"), pt = svg.querySelector(".punto"), tip = cont.querySelector(".bocadillo");
+    const svg = cont.querySelector("svg"), guia = svg.querySelector(".guia"), pt = svg.querySelector(".punto"), tip = cont.querySelector(".bocadillo");
     let idx = serie.length - 1;
     const ver = (i) => {
       idx = Math.max(0, Math.min(serie.length - 1, i)); const p = serie[idx];
       guia.setAttribute("x1", x(idx)); guia.setAttribute("x2", x(idx)); guia.setAttribute("visibility", "visible");
       pt.setAttribute("cx", x(idx)); pt.setAttribute("cy", y(p.a)); pt.setAttribute("visibility", "visible");
-      const k = svg.getBoundingClientRect().width / W;
-      tip.style.left = Math.min(Math.max(x(idx) * k, 70), svg.getBoundingClientRect().width - 70) + "px"; tip.style.top = (y(p.a) * k) + "px";
+      const ancho = svg.getBoundingClientRect().width, k = ancho / W;
+      tip.style.left = Math.min(Math.max(x(idx) * k, 80), ancho - 80) + "px"; tip.style.top = (y(p.a) * k) + "px";
       tip.textContent = `${fecha(p.f)} · ${euros(p.a)}` + (p.b != null ? ` · ${opc.etqB || "no tocar"} ${euros(p.b)}` : "");
       tip.classList.add("on");
     };
@@ -849,7 +889,7 @@ footer { max-width: 1160px; margin: 0 auto; padding: 0 16px 36px; color: var(--i
     });
   }
 
-  setInterval(() => { if (datos) $("frescura").textContent = "Datos " + hace(datos.generado); }, 60000);
+  setInterval(() => { if (datos) $("frescura").textContent = "Actualizado " + hace(datos.generado); }, 60000);
   cargar();
 })();
 </script>
