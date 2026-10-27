@@ -1,5 +1,5 @@
 {
- "generado": "2026-10-27T07:31:13",
+ "generado": "2026-10-27T17:15:17",
  "modo": "PRÁCTICA",
  "broker": "simulado",
  "estrategia": {
@@ -13,11 +13,11 @@
   "exposicion_minima_pct": 50
  },
  "resumen": {
-  "valor": 198.66,
+  "valor": 200.0,
   "inicial": 200.0,
   "maximo": 200.0,
-  "rentabilidad_pct": -0.67,
-  "caida_desde_maximo_pct": -0.67,
+  "rentabilidad_pct": 0.0,
+  "caida_desde_maximo_pct": 0.0,
   "comisiones": 1.25,
   "num_operaciones": 1
  },
@@ -32,6 +32,10 @@
   {
    "f": "2026-10-26",
    "v": 198.66
+  },
+  {
+   "f": "2026-10-27",
+   "v": 200.0
   }
  ],
  "operaciones": [
@@ -47,6 +51,51 @@
  ],
  "bloqueadas": [],
  "decisiones": [
+  {
+   "fecha": "2026-10-27",
+   "estrategia": "tendencia",
+   "activos": [
+    {
+     "simbolo": "EUNL",
+     "precio": 131.67,
+     "rol": "riesgo",
+     "media": 121.1588,
+     "distancia_media_pct": 8.68,
+     "momentum_pct": 18.01
+    },
+    {
+     "simbolo": "VWCE",
+     "precio": 171.8,
+     "rol": "riesgo",
+     "media": 159.2986,
+     "distancia_media_pct": 7.85,
+     "momentum_pct": 18.3
+    }
+   ],
+   "estrategia_vigente": {
+    "id": "base",
+    "nombre": "Base: tendencia 200 días (50 % siempre invertido)",
+    "origen": "config",
+    "descripcion": "La estrategia configurada en config.json",
+    "activos": [
+     "EUNL",
+     "VWCE"
+    ]
+   },
+   "objetivo": {
+    "VWCE": 100.0
+   },
+   "rebalanceo": [
+    {
+     "simbolo": "VWCE",
+     "objetivo_pct": 100.0,
+     "actual_pct": 85.9,
+     "desviacion_pct": -14.1,
+     "mover": true
+    }
+   ],
+   "protecciones": []
+  },
   {
    "fecha": "2026-10-26",
    "estrategia": "tendencia",
@@ -1898,7 +1947,7 @@
   ]
  },
  "informativo": {
-  "actualizado": "2026-10-26T17:15:21",
+  "actualizado": "2026-10-27T17:15:16",
   "copycat": [
    {
     "inversor": "Berkshire Hathaway (Buffett)",
@@ -2117,8 +2166,8 @@
   "noticias": [
    {
     "titulo": "CRÓNICA DE BOLSA",
-    "enlace": "https://www.expansion.com/mercados/cronica-bolsa/2026/10/26/6adef961e5fdeacc278b4574.html",
-    "fecha": "2026-10-26T16:13:50+01:00",
+    "enlace": "https://www.expansion.com/mercados/cronica-bolsa/2026/10/27/6ae04bd2e5fdea2c718b4596.html",
+    "fecha": "2026-10-27T14:53:59+01:00",
     "fuente": "www.expansion.com"
    }
   ]
@@ -2534,5 +2583,5 @@
   "valor_total": 2982.0,
   "rendimiento_total_pct": -0.6
  },
- "ultimo_ciclo": "2026-10-26T17:15:21 (ok)"
+ "ultimo_ciclo": "2026-10-27T17:15:16 (ok)"
 }
