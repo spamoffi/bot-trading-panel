@@ -1,5 +1,5 @@
 {
- "generado": "2026-10-28T07:31:05",
+ "generado": "2026-10-28T17:15:15",
  "modo": "PRÁCTICA",
  "broker": "simulado",
  "estrategia": {
@@ -36,6 +36,10 @@
   {
    "f": "2026-10-27",
    "v": 200.0
+  },
+  {
+   "f": "2026-10-28",
+   "v": 200.0
   }
  ],
  "operaciones": [
@@ -51,6 +55,51 @@
  ],
  "bloqueadas": [],
  "decisiones": [
+  {
+   "fecha": "2026-10-28",
+   "estrategia": "tendencia",
+   "activos": [
+    {
+     "simbolo": "EUNL",
+     "precio": 131.75,
+     "rol": "riesgo",
+     "media": 121.2432,
+     "distancia_media_pct": 8.67,
+     "momentum_pct": 17.88
+    },
+    {
+     "simbolo": "VWCE",
+     "precio": 171.98,
+     "rol": "riesgo",
+     "media": 159.4084,
+     "distancia_media_pct": 7.89,
+     "momentum_pct": 18.12
+    }
+   ],
+   "estrategia_vigente": {
+    "id": "base",
+    "nombre": "Base: tendencia 200 días (50 % siempre invertido)",
+    "origen": "config",
+    "descripcion": "La estrategia configurada en config.json",
+    "activos": [
+     "EUNL",
+     "VWCE"
+    ]
+   },
+   "objetivo": {
+    "VWCE": 100.0
+   },
+   "rebalanceo": [
+    {
+     "simbolo": "VWCE",
+     "objetivo_pct": 100.0,
+     "actual_pct": 85.99,
+     "desviacion_pct": -14.01,
+     "mover": true
+    }
+   ],
+   "protecciones": []
+  },
   {
    "fecha": "2026-10-27",
    "estrategia": "tendencia",
@@ -1947,7 +1996,7 @@
   ]
  },
  "informativo": {
-  "actualizado": "2026-10-27T17:15:16",
+  "actualizado": "2026-10-28T17:15:14",
   "copycat": [
    {
     "inversor": "Berkshire Hathaway (Buffett)",
@@ -2165,9 +2214,57 @@
   ],
   "noticias": [
    {
-    "titulo": "CRÓNICA DE BOLSA",
-    "enlace": "https://www.expansion.com/mercados/cronica-bolsa/2026/10/27/6ae04bd2e5fdea2c718b4596.html",
-    "fecha": "2026-10-27T14:53:59+01:00",
+    "titulo": "Interior de la Bolsa de Madrid",
+    "enlace": "https://www.expansion.com/mercados/2026/10/28/6ae19fd68f7c07eade269a37.html",
+    "fecha": "2026-10-28T08:14:58+01:00",
+    "fuente": "www.expansion.com"
+   },
+   {
+    "titulo": "La Bolsa sube el 0,4 % y roza los 19.000 puntos pese a caer Wall Street y subir el crudo",
+    "enlace": "https://www.expansion.com/mercados/cronica-bolsa/2026/10/28/ibex-digiere-primera-oleada-resultados.html",
+    "fecha": "2026-10-28T08:03:08+01:00",
+    "fuente": "www.expansion.com"
+   },
+   {
+    "titulo": "Christine Lagarde, presidenta del Banco Central Europeo (BCE).",
+    "enlace": "https://www.expansion.com/mercados/2026/10/28/6ae11ccd468aeb501d8b4596.html",
+    "fecha": "2026-10-28T00:47:48+01:00",
+    "fuente": "www.expansion.com"
+   },
+   {
+    "titulo": "Interior de la Bolsa de Nueva York",
+    "enlace": "https://www.expansion.com/mercados/criptomonedas/2026/10/28/6ae09ecce5fdeabe708b45ad.html",
+    "fecha": "2026-10-28T00:47:46+01:00",
+    "fuente": "www.expansion.com"
+   },
+   {
+    "titulo": "Mina El Moto capta 170 millones en su salto a la Bolsa de Londres",
+    "enlace": "https://www.expansion.com/empresas/2026/10/27/6ae05b73468aeb796d8b458a.html",
+    "fecha": "2026-10-27T09:06:18+01:00",
+    "fuente": "www.expansion.com"
+   },
+   {
+    "titulo": "Traders en la Bolsa de Nueva York",
+    "enlace": "https://www.expansion.com/mercados/2026/10/27/6adf5d3c468aebeb6f8b4591.html",
+    "fecha": "2026-10-27T00:51:46+01:00",
+    "fuente": "www.expansion.com"
+   },
+   {
+    "titulo": "El presidente de la Reserva Federal, Kevin Warsh.",
+    "enlace": "https://www.expansion.com/mercados/2026/10/27/6adfa0cbe5fdea070b8b4585.html",
+    "fecha": "2026-10-27T00:51:24+01:00",
+    "fuente": "www.expansion.com"
+   },
+   {
+    "titulo": "Los hermanos Amodei desnudan las cuentas de Anthropic para salir a Bolsa",
+    "enlace": "https://www.expansion.com/empresas/2026/10/26/6adf536ae5fdea212e8b4576.html",
+    "fecha": "2026-10-26T14:23:10+01:00",
+    "fuente": "www.expansion.com"
+   },
+   {
+    "titulo": "Monitor de la Bolsa de Madrid",
+    "enlace": "https://www.expansion.com/opinion/2026/10/23/inquietud-crudo-alto-coste-ia.html",
+    "fecha": "2026-10-23T12:57:57+02:00",
     "fuente": "www.expansion.com"
    }
   ]
@@ -2593,5 +2690,5 @@
   "valor_total": 3000.11,
   "rendimiento_total_pct": 0.0
  },
- "ultimo_ciclo": "2026-10-27T17:15:16 (ok)"
+ "ultimo_ciclo": "2026-10-28T17:15:14 (ok)"
 }
