@@ -1,5 +1,5 @@
 {
- "generado": "2026-10-29T07:30:53",
+ "generado": "2026-10-29T17:15:08",
  "modo": "PRÁCTICA",
  "broker": "simulado",
  "estrategia": {
@@ -40,6 +40,10 @@
   {
    "f": "2026-10-28",
    "v": 200.0
+  },
+  {
+   "f": "2026-10-29",
+   "v": 200.0
   }
  ],
  "operaciones": [
@@ -55,6 +59,51 @@
  ],
  "bloqueadas": [],
  "decisiones": [
+  {
+   "fecha": "2026-10-29",
+   "estrategia": "tendencia",
+   "activos": [
+    {
+     "simbolo": "EUNL",
+     "precio": 131.67,
+     "rol": "riesgo",
+     "media": 121.3358,
+     "distancia_media_pct": 8.52,
+     "momentum_pct": 17.66
+    },
+    {
+     "simbolo": "VWCE",
+     "precio": 171.74,
+     "rol": "riesgo",
+     "media": 159.5267,
+     "distancia_media_pct": 7.66,
+     "momentum_pct": 17.9
+    }
+   ],
+   "estrategia_vigente": {
+    "id": "base",
+    "nombre": "Base: tendencia 200 días (50 % siempre invertido)",
+    "origen": "config",
+    "descripcion": "La estrategia configurada en config.json",
+    "activos": [
+     "EUNL",
+     "VWCE"
+    ]
+   },
+   "objetivo": {
+    "VWCE": 100.0
+   },
+   "rebalanceo": [
+    {
+     "simbolo": "VWCE",
+     "objetivo_pct": 100.0,
+     "actual_pct": 85.87,
+     "desviacion_pct": -14.13,
+     "mover": true
+    }
+   ],
+   "protecciones": []
+  },
   {
    "fecha": "2026-10-28",
    "estrategia": "tendencia",
@@ -1996,7 +2045,7 @@
   ]
  },
  "informativo": {
-  "actualizado": "2026-10-28T17:15:14",
+  "actualizado": "2026-10-29T17:15:06",
   "copycat": [
    {
     "inversor": "Berkshire Hathaway (Buffett)",
@@ -2061,6 +2110,36 @@
    }
   ],
   "congreso": [
+   {
+    "fecha": "2026-10-28",
+    "miembro": "Suzan K. DelBene",
+    "distrito": "WA01",
+    "pdf": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035689.pdf"
+   },
+   {
+    "fecha": "2026-10-27",
+    "miembro": "Jodey Arrington",
+    "distrito": "TX19",
+    "pdf": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035714.pdf"
+   },
+   {
+    "fecha": "2026-10-27",
+    "miembro": "Sheri Biggs",
+    "distrito": "SC03",
+    "pdf": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035525.pdf"
+   },
+   {
+    "fecha": "2026-10-27",
+    "miembro": "Max Miller",
+    "distrito": "OH07",
+    "pdf": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035715.pdf"
+   },
+   {
+    "fecha": "2026-10-27",
+    "miembro": "Pete Sessions",
+    "distrito": "TX17",
+    "pdf": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035563.pdf"
+   },
    {
     "fecha": "2026-10-22",
     "miembro": "Cleo Fields",
@@ -2180,67 +2259,55 @@
     "miembro": "Josh Gottheimer",
     "distrito": "NJ05",
     "pdf": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035590.pdf"
-   },
-   {
-    "fecha": "2026-10-07",
-    "miembro": "Rohit Khanna",
-    "distrito": "CA17",
-    "pdf": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/9116376.pdf"
-   },
-   {
-    "fecha": "2026-10-07",
-    "miembro": "Maria Elvira Salazar",
-    "distrito": "FL27",
-    "pdf": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035562.pdf"
-   },
-   {
-    "fecha": "2026-10-05",
-    "miembro": "Lloyd Doggett",
-    "distrito": "TX37",
-    "pdf": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035580.pdf"
-   },
-   {
-    "fecha": "2026-10-05",
-    "miembro": "Vince Fong",
-    "distrito": "CA20",
-    "pdf": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035539.pdf"
-   },
-   {
-    "fecha": "2026-10-02",
-    "miembro": "Nancy Pelosi",
-    "distrito": "CA11",
-    "pdf": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035553.pdf"
    }
   ],
   "noticias": [
    {
-    "titulo": "Interior de la Bolsa de Madrid",
-    "enlace": "https://www.expansion.com/mercados/2026/10/28/6ae19fd68f7c07eade269a37.html",
-    "fecha": "2026-10-28T08:14:58+01:00",
+    "titulo": "Inflation surges, PCE shows. Fed pause on rate hikes unlikely to last with prices still rising.",
+    "enlace": "https://www.marketwatch.com/story/inflation-surges-pce-shows-fed-pause-on-rate-hikes-unlikely-to-last-long-with-prices-still-rising-79128886?mod=mw_rss_topstories",
+    "fecha": "2026-10-29T14:38:00+00:00",
+    "fuente": "feeds.content.dowjones.io"
+   },
+   {
+    "titulo": "Lagarde anuncia su salida del BCE",
+    "enlace": "https://www.expansion.com/mercados/2026/10/29/lagarde-anuncia-deja-presidencia-bce-7-febrero.html",
+    "fecha": "2026-10-29T11:06:20+01:00",
     "fuente": "www.expansion.com"
    },
    {
-    "titulo": "La Bolsa sube el 0,4 % y roza los 19.000 puntos pese a caer Wall Street y subir el crudo",
-    "enlace": "https://www.expansion.com/mercados/cronica-bolsa/2026/10/28/ibex-digiere-primera-oleada-resultados.html",
-    "fecha": "2026-10-28T08:03:08+01:00",
+    "titulo": "Trader en la Bolsa de Nueva York",
+    "enlace": "https://www.expansion.com/mercados/2026/10/29/valores-sectores-aprovechar-mayores-rotaciones-pandemia.html",
+    "fecha": "2026-10-29T08:10:26+01:00",
+    "fuente": "www.expansion.com"
+   },
+   {
+    "titulo": "La bolsa española baja el 1,45 % y desciende de los 18.900 puntos",
+    "enlace": "https://www.expansion.com/mercados/cronica-bolsa/2026/10/29/ibex-desbordado-referencias.html",
+    "fecha": "2026-10-29T07:53:26+01:00",
+    "fuente": "www.expansion.com"
+   },
+   {
+    "titulo": "Kevin Warsh, presidente de la Reserva Federal de EEUU, en una rueda de prensa.",
+    "enlace": "https://www.expansion.com/mercados/2026/10/28/fed-mantiene-tipos-4-puertas-elecciones-midterm.html",
+    "fecha": "2026-10-28T19:00:57+01:00",
+    "fuente": "www.expansion.com"
+   },
+   {
+    "titulo": "Flutter es dueña de las casas de apuestas Betfair, Paddy Power y PokerStars.",
+    "enlace": "https://www.expansion.com/economia/financial-times/2026/10/28/caida-flutter-advertencia-empresas-quieren-cotizar-estados-unidos.html",
+    "fecha": "2026-10-28T18:55:14+01:00",
     "fuente": "www.expansion.com"
    },
    {
     "titulo": "Christine Lagarde, presidenta del Banco Central Europeo (BCE).",
-    "enlace": "https://www.expansion.com/mercados/2026/10/28/6ae11ccd468aeb501d8b4596.html",
-    "fecha": "2026-10-28T00:47:48+01:00",
+    "enlace": "https://www.expansion.com/economia/financial-times/2026/10/28/bce-necesita-transmision-fluida-transicion-ordenada.html",
+    "fecha": "2026-10-28T18:14:05+01:00",
     "fuente": "www.expansion.com"
    },
    {
     "titulo": "Interior de la Bolsa de Nueva York",
     "enlace": "https://www.expansion.com/mercados/criptomonedas/2026/10/28/6ae09ecce5fdeabe708b45ad.html",
     "fecha": "2026-10-28T00:47:46+01:00",
-    "fuente": "www.expansion.com"
-   },
-   {
-    "titulo": "Mina El Moto capta 170 millones en su salto a la Bolsa de Londres",
-    "enlace": "https://www.expansion.com/empresas/2026/10/27/6ae05b73468aeb796d8b458a.html",
-    "fecha": "2026-10-27T09:06:18+01:00",
     "fuente": "www.expansion.com"
    },
    {
@@ -2259,12 +2326,6 @@
     "titulo": "Los hermanos Amodei desnudan las cuentas de Anthropic para salir a Bolsa",
     "enlace": "https://www.expansion.com/empresas/2026/10/26/6adf536ae5fdea212e8b4576.html",
     "fecha": "2026-10-26T14:23:10+01:00",
-    "fuente": "www.expansion.com"
-   },
-   {
-    "titulo": "Monitor de la Bolsa de Madrid",
-    "enlace": "https://www.expansion.com/opinion/2026/10/23/inquietud-crudo-alto-coste-ia.html",
-    "fecha": "2026-10-23T12:57:57+02:00",
     "fuente": "www.expansion.com"
    }
   ]
@@ -2700,5 +2761,5 @@
   "valor_total": 3021.41,
   "rendimiento_total_pct": 0.71
  },
- "ultimo_ciclo": "2026-10-28T17:15:14 (ok)"
+ "ultimo_ciclo": "2026-10-29T17:15:06 (ok)"
 }
