@@ -1,5 +1,5 @@
 {
- "generado": "2026-10-28T17:15:15",
+ "generado": "2026-10-29T07:30:53",
  "modo": "PRÁCTICA",
  "broker": "simulado",
  "estrategia": {
@@ -2391,12 +2391,12 @@
     "dinero": "ficticio",
     "capital": 1500.0,
     "referencia": "EUNL",
-    "datos_hasta": "2026-10-27",
+    "datos_hasta": "2026-10-28",
     "valores": 761,
-    "actualizado": "2026-10-28T07:31:05",
+    "actualizado": "2026-10-29T07:30:53",
     "bolsa": {
-     "valor": 1518.17,
-     "rendimiento_pct": 1.21,
+     "valor": 1519.05,
+     "rendimiento_pct": 1.27,
      "efectivo": 69.8,
      "posiciones": {
       "EUNL": 11.0
@@ -2417,6 +2417,11 @@
        "f": "2026-10-28",
        "a": 1518.1659,
        "b": 1518.1659
+      },
+      {
+       "f": "2026-10-29",
+       "a": 1519.0459,
+       "b": 1519.0459
       }
      ],
      "operaciones": [
@@ -2541,12 +2546,12 @@
     "dinero": "ficticio",
     "capital": 1500.0,
     "referencia": "BTC-EUR",
-    "datos_hasta": "2026-10-26",
+    "datos_hasta": "2026-10-27",
     "valores": 100,
-    "actualizado": "2026-10-28T07:31:05",
+    "actualizado": "2026-10-29T07:30:53",
     "bolsa": {
-     "valor": 1481.94,
-     "rendimiento_pct": -1.2,
+     "valor": 1502.36,
+     "rendimiento_pct": 0.16,
      "efectivo": 49.89,
      "posiciones": {
       "BTC-EUR": 0.02
@@ -2567,6 +2572,11 @@
        "f": "2026-10-28",
        "a": 1481.943,
        "b": 1481.943
+      },
+      {
+       "f": "2026-10-29",
+       "a": 1502.3624,
+       "b": 1502.3624
       }
      ],
      "operaciones": [
@@ -2687,8 +2697,8 @@
     "pruebas": 36
    }
   },
-  "valor_total": 3000.11,
-  "rendimiento_total_pct": 0.0
+  "valor_total": 3021.41,
+  "rendimiento_total_pct": 0.71
  },
  "ultimo_ciclo": "2026-10-28T17:15:14 (ok)"
 }
