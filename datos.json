@@ -1,5 +1,5 @@
 {
- "generado": "2026-10-30T07:31:01",
+ "generado": "2026-10-30T17:15:08",
  "modo": "PRÁCTICA",
  "broker": "simulado",
  "estrategia": {
@@ -13,11 +13,11 @@
   "exposicion_minima_pct": 50
  },
  "resumen": {
-  "valor": 200.0,
+  "valor": 197.6,
   "inicial": 200.0,
   "maximo": 200.0,
-  "rentabilidad_pct": 0.0,
-  "caida_desde_maximo_pct": 0.0,
+  "rentabilidad_pct": -1.2,
+  "caida_desde_maximo_pct": -1.2,
   "comisiones": 1.25,
   "num_operaciones": 1
  },
@@ -44,6 +44,10 @@
   {
    "f": "2026-10-29",
    "v": 200.0
+  },
+  {
+   "f": "2026-10-30",
+   "v": 197.6
   }
  ],
  "operaciones": [
@@ -59,6 +63,51 @@
  ],
  "bloqueadas": [],
  "decisiones": [
+  {
+   "fecha": "2026-10-30",
+   "estrategia": "tendencia",
+   "activos": [
+    {
+     "simbolo": "EUNL",
+     "precio": 129.75,
+     "rol": "riesgo",
+     "media": 121.4226,
+     "distancia_media_pct": 6.86,
+     "momentum_pct": 16.02
+    },
+    {
+     "simbolo": "VWCE",
+     "precio": 168.98,
+     "rol": "riesgo",
+     "media": 159.6368,
+     "distancia_media_pct": 5.85,
+     "momentum_pct": 16.11
+    }
+   ],
+   "estrategia_vigente": {
+    "id": "base",
+    "nombre": "Base: tendencia 200 días (50 % siempre invertido)",
+    "origen": "config",
+    "descripcion": "La estrategia configurada en config.json",
+    "activos": [
+     "EUNL",
+     "VWCE"
+    ]
+   },
+   "objetivo": {
+    "VWCE": 100.0
+   },
+   "rebalanceo": [
+    {
+     "simbolo": "VWCE",
+     "objetivo_pct": 100.0,
+     "actual_pct": 85.52,
+     "desviacion_pct": -14.48,
+     "mover": true
+    }
+   ],
+   "protecciones": []
+  },
   {
    "fecha": "2026-10-29",
    "estrategia": "tendencia",
@@ -2045,7 +2094,7 @@
   ]
  },
  "informativo": {
-  "actualizado": "2026-10-29T17:15:06",
+  "actualizado": "2026-10-30T17:15:07",
   "copycat": [
    {
     "inversor": "Berkshire Hathaway (Buffett)",
@@ -2117,6 +2166,12 @@
     "pdf": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035689.pdf"
    },
    {
+    "fecha": "2026-10-28",
+    "miembro": "Kevin Hern",
+    "distrito": "OK01",
+    "pdf": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035710.pdf"
+   },
+   {
     "fecha": "2026-10-27",
     "miembro": "Jodey Arrington",
     "distrito": "TX19",
@@ -2127,6 +2182,24 @@
     "miembro": "Sheri Biggs",
     "distrito": "SC03",
     "pdf": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035525.pdf"
+   },
+   {
+    "fecha": "2026-10-27",
+    "miembro": "Diana Harshbarger",
+    "distrito": "TN01",
+    "pdf": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/9116389.pdf"
+   },
+   {
+    "fecha": "2026-10-27",
+    "miembro": "Diana Harshbarger",
+    "distrito": "TN01",
+    "pdf": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/9116390.pdf"
+   },
+   {
+    "fecha": "2026-10-27",
+    "miembro": "Diana Harshbarger",
+    "distrito": "TN01",
+    "pdf": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/9116391.pdf"
    },
    {
     "fecha": "2026-10-27",
@@ -2235,38 +2308,26 @@
     "miembro": "Kevin Hern",
     "distrito": "OK01",
     "pdf": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035588.pdf"
-   },
-   {
-    "fecha": "2026-10-12",
-    "miembro": "Gilbert Cisneros",
-    "distrito": "CA31",
-    "pdf": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035622.pdf"
-   },
-   {
-    "fecha": "2026-10-12",
-    "miembro": "Rick Larsen",
-    "distrito": "WA02",
-    "pdf": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035635.pdf"
-   },
-   {
-    "fecha": "2026-10-12",
-    "miembro": "Lisa McClain",
-    "distrito": "MI09",
-    "pdf": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035585.pdf"
-   },
-   {
-    "fecha": "2026-10-07",
-    "miembro": "Josh Gottheimer",
-    "distrito": "NJ05",
-    "pdf": "https://disclosures-clerk.house.gov/public_disc/ptr-pdfs/2026/20035590.pdf"
    }
   ],
   "noticias": [
    {
-    "titulo": "Inflation surges, PCE shows. Fed pause on rate hikes unlikely to last with prices still rising.",
-    "enlace": "https://www.marketwatch.com/story/inflation-surges-pce-shows-fed-pause-on-rate-hikes-unlikely-to-last-long-with-prices-still-rising-79128886?mod=mw_rss_topstories",
-    "fecha": "2026-10-29T14:38:00+00:00",
-    "fuente": "feeds.content.dowjones.io"
+    "titulo": "Bolsacaidas",
+    "enlace": "https://www.expansion.com/mercados/2026/10/30/intel-amazon-desatan-oleada-bajista-tecnologicas.html",
+    "fecha": "2026-10-30T08:58:20+01:00",
+    "fuente": "www.expansion.com"
+   },
+   {
+    "titulo": "Interior de la Bolsa de Madrid",
+    "enlace": "https://www.expansion.com/mercados/2026/10/30/6ae4402b8f7c07eade2e968a.html",
+    "fecha": "2026-10-30T08:01:18+01:00",
+    "fuente": "www.expansion.com"
+   },
+   {
+    "titulo": "La bolsa española cae el 0,14 % por la bajada de la banca y mientras el brent cede el 1 %",
+    "enlace": "https://www.expansion.com/mercados/2026/10/30/ibex-intenta-resistir-tormenta-tecnologica.html",
+    "fecha": "2026-10-30T07:56:26+01:00",
+    "fuente": "www.expansion.com"
    },
    {
     "titulo": "Lagarde anuncia su salida del BCE",
@@ -2278,12 +2339,6 @@
     "titulo": "Trader en la Bolsa de Nueva York",
     "enlace": "https://www.expansion.com/mercados/2026/10/29/valores-sectores-aprovechar-mayores-rotaciones-pandemia.html",
     "fecha": "2026-10-29T08:10:26+01:00",
-    "fuente": "www.expansion.com"
-   },
-   {
-    "titulo": "La bolsa española baja el 1,45 % y desciende de los 18.900 puntos",
-    "enlace": "https://www.expansion.com/mercados/cronica-bolsa/2026/10/29/ibex-desbordado-referencias.html",
-    "fecha": "2026-10-29T07:53:26+01:00",
     "fuente": "www.expansion.com"
    },
    {
@@ -2771,5 +2826,5 @@
   "valor_total": 3025.04,
   "rendimiento_total_pct": 0.83
  },
- "ultimo_ciclo": "2026-10-29T17:15:06 (ok)"
+ "ultimo_ciclo": "2026-10-30T17:15:06 (ok)"
 }
